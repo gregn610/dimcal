@@ -81,6 +81,18 @@ AND   EXTRACT( DOW   FROM calendar_date) = 1 -- Mon yyyy/01/15
 ;
 
 
+-- Victory Day
+-- Third Monday of August
+-- Celebrated the U.S. victory against Japan in the conclusion of World War II. Was in place 1948 to 1975.
+UPDATE dim_calendar
+SET hol_us_fed = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 15 AND 21
+AND   EXTRACT( MONTH FROM calendar_date) = 8
+AND   EXTRACT( DOW   FROM calendar_date) = 1 -- Mon yyyy/01/15
+AND   EXTRACT( YEAR FROM calendar_date) <= 1975
+;
+
+
 
 -- Labor Day
 -- September 1–7 (Floating Monday)
