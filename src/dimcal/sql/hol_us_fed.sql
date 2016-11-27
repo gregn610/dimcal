@@ -77,7 +77,6 @@ UPDATE dim_calendar
 SET hol_us_fed = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 4
 AND   EXTRACT( MONTH FROM calendar_date) = 7
-AND   EXTRACT( DOW   FROM calendar_date) = 1 -- Mon yyyy/01/15
 ;
 
 
