@@ -111,9 +111,18 @@ AND   EXTRACT( MONTH FROM calendar_date) = 12
 -- Boxing day
 UPDATE dim_calendar
 SET hol_gb_sct = TRUE
-WHERE EXTRACT( MONTH FROM calendar_date) = 12
-AND EXTRACT( DAY   FROM calendar_date) = 26
+WHERE EXTRACT( DAY   FROM calendar_date) = 26
+AND   EXTRACT( MONTH FROM calendar_date) = 12
 ;
+
+-- In 2012, there was a special holiday on Tuesday, 5 June, to celebrate the Diamond Jubilee of Elizabeth II.
+UPDATE dim_calendar
+SET hol_gb_sct = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 05
+AND   EXTRACT( MONTH FROM calendar_date) = 06
+AND   EXTRACT( YEAR  FROM calendar_date) = 2012
+;
+
 
 
 COMMIT;

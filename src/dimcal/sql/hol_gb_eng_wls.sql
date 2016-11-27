@@ -83,7 +83,18 @@ SET hol_gb_eng_wls = TRUE
 FROM cte
 WHERE dim_calendar.calendar_date = cte.first_mon_may
 AND EXTRACT(YEAR FROM calendar_date) >= 1978
+AND EXTRACT(YEAR FROM calendar_date) != 1995
 ;
+
+--In 1995 the May Day bank holiday was moved to 8 May as it was the 50th anniversary of VE Day
+UPDATE dim_calendar
+SET hol_gb_eng_wls = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 08
+AND   EXTRACT( MONTH FROM calendar_date) = 05
+AND   EXTRACT( YEAR FROM calendar_date) = 1995
+;
+
+
 
 -- Spring Bank Holiday
 -- Wikipedia says
@@ -103,6 +114,23 @@ SET hol_gb_eng_wls = TRUE
 FROM cte
 WHERE dim_calendar.calendar_date = cte.last_mon_may
 AND EXTRACT(YEAR FROM calendar_date) >= 1965
+AND EXTRACT(YEAR FROM calendar_date) != 2002
+AND EXTRACT(YEAR FROM calendar_date) != 2012
+;
+-- The Spring Bank Holiday was moved from 27 May to 4 June to make it a four-day weekend
+UPDATE dim_calendar
+SET hol_gb_eng_wls = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 04
+AND   EXTRACT( MONTH FROM calendar_date) = 06
+AND   EXTRACT( YEAR   FROM calendar_date) = 2002
+;
+-- to make it a four-day weekend, the Spring Bank Holiday that would usually have occurred at the end of May was delayed
+-- until Monday, 4 June 2012.[21]
+UPDATE dim_calendar
+SET hol_gb_eng_wls = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 04
+AND   EXTRACT( MONTH FROM calendar_date) = 06
+AND   EXTRACT( YEAR  FROM calendar_date) = 2012
 ;
 
 
@@ -161,10 +189,65 @@ AND (
 --   Legislation does not name the holiday, but states that it falls on "26th December, if it be not a Sunday."[12]
 UPDATE dim_calendar
 SET hol_gb_eng_wls = TRUE
-WHERE EXTRACT( MONTH FROM calendar_date) = 12
-AND EXTRACT( DAY   FROM calendar_date) = 26
-AND EXTRACT( DOW   FROM calendar_date) != 0 -- Sun yyyy/12/26 )
+WHERE EXTRACT( DAY   FROM calendar_date) = 26
+AND   EXTRACT( MONTH FROM calendar_date) = 12
+AND   EXTRACT( DOW   FROM calendar_date) != 0 -- Sun yyyy/12/26 )
 ;
+
+-- Silver Jubilee of Elizabeth II
+-- Wikpedia Says 7 June 1977 was made a special bank holiday as part of the Silver Jubilee of Elizabeth II
+UPDATE dim_calendar
+SET hol_gb_eng_wls = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 7
+AND   EXTRACT( MONTH FROM calendar_date) = 6
+AND   EXTRACT( YEAR  FROM calendar_date) = 1977
+;
+
+
+-- The wedding of Charles, Prince of Wales, and Lady Diana Spencer on 29 July 1981 resulted in an extra bank holiday
+UPDATE dim_calendar
+SET hol_gb_eng_wls = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 29
+AND   EXTRACT( MONTH FROM calendar_date) = 7
+AND   EXTRACT( YEAR  FROM calendar_date) = 1981
+;
+
+-- 31 December 1999 was a one-off bank holiday as part of the Millennium celebrations
+UPDATE dim_calendar
+SET hol_gb_eng_wls = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 31
+AND   EXTRACT( MONTH FROM calendar_date) = 12
+AND   EXTRACT( YEAR  FROM calendar_date) = 1999
+;
+
+
+-- In 2002, there was a special holiday on Monday, 3 June, to celebrate the Golden Jubilee of Elizabeth II.
+UPDATE dim_calendar
+SET hol_gb_eng_wls = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 03
+AND   EXTRACT( MONTH FROM calendar_date) = 06
+AND   EXTRACT( YEAR  FROM calendar_date) = 2002
+;
+
+--There was a special holiday on Friday, 29 April 2011 to celebrate the wedding of Prince William and Catherine Middleton
+UPDATE dim_calendar
+SET hol_gb_eng_wls = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 29
+AND   EXTRACT( MONTH FROM calendar_date) = 04
+AND   EXTRACT( YEAR  FROM calendar_date) = 2011
+;
+
+
+-- In 2012, there was a special holiday on Tuesday, 5 June, to celebrate the Diamond Jubilee of Elizabeth II. Therefore,
+-- to make it a four-day weekend, the Spring Bank Holiday that would usually have occurred at the end of May was delayed
+-- until Monday, 4 June 2012.[21]
+UPDATE dim_calendar
+SET hol_gb_eng_wls = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 05
+AND   EXTRACT( MONTH FROM calendar_date) = 06
+AND   EXTRACT( YEAR  FROM calendar_date) = 2012
+;
+
 
 
 COMMIT;
