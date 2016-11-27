@@ -19,6 +19,9 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,hol_gb_eng_wls            BOOLEAN DEFAULT FALSE
     ,hol_gb_sct                BOOLEAN DEFAULT FALSE
     ,hol_gb_nir                BOOLEAN DEFAULT FALSE
+
+    ,hol_us_fed                BOOLEAN DEFAULT FALSE
+
 );
 
 CREATE INDEX IF NOT EXISTS idx_dim_calendar_calendar_date
