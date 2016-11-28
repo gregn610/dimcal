@@ -51,12 +51,12 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 
 -- 40 days after Easter	Ascension Day	Hemelvaartsdag	The subsequent Friday is a day off for most people.
 WITH cte AS (
-    SELECT calendar_date  + INTERVAL '38' DAYS AS easter_mon_plus_38
+    SELECT ( calendar_date  + INTERVAL '38 DAYS'   ) AS easter_mon_plus_38
     FROM dim_calendar 
     WHERE calc_western_easter_mon = TRUE
 )
 UPDATE dim_calendar
-SET SET hol_nl = TRUE
+SET hol_nl = TRUE
 FROM cte
 WHERE dim_calendar.calendar_date = cte.easter_mon_plus_38
 ; 
@@ -64,12 +64,12 @@ WHERE dim_calendar.calendar_date = cte.easter_mon_plus_38
 
 -- 7 weeks after Easter	Pentecost	Pinksteren	A two-day holiday (Whitsunday and the subsequent Monday).
 WITH cte AS (
-    SELECT calendar_date  + INTERVAL '49' DAYS AS easter_mon_plus_49
+    SELECT ( calendar_date  + INTERVAL '49 DAYS'   ) AS easter_mon_plus_49
     FROM dim_calendar 
     WHERE calc_western_easter_mon = TRUE
 )
 UPDATE dim_calendar
-SET SET hol_nl = TRUE
+SET hol_nl = TRUE
 FROM cte
 WHERE dim_calendar.calendar_date = cte.easter_mon_plus_49
 ; 

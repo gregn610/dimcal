@@ -49,7 +49,7 @@ WITH cte AS (
            MIN(calendar_date) AS second_mon_oct
            FROM dim_calendar AS dc2
            WHERE EXTRACT(MONTH FROM calendar_date) = 10
-           AND EXTRACT( DAY FROM calendar_date > 7
+           AND EXTRACT( DAY FROM calendar_date ) > 7
            AND EXTRACT( DOW FROM calendar_date) = 1
            GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
 )

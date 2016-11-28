@@ -16,12 +16,30 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,calc_tbc8                 BOOLEAN DEFAULT FALSE
     ,calc_tbc9                 BOOLEAN DEFAULT FALSE
     --
-    ,hol_gb_eng_wls            BOOLEAN DEFAULT FALSE
-    ,hol_gb_sct                BOOLEAN DEFAULT FALSE
-    ,hol_gb_nir                BOOLEAN DEFAULT FALSE
-
-    ,hol_mt                    BOOLEAN DEFAULT FALSE
-    ,hol_us_fed                BOOLEAN DEFAULT FALSE
+    ,hol_be                     BOOLEAN DEFAULT FALSE
+    ,hol_ca_ab                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_bc                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_fed                 BOOLEAN DEFAULT FALSE
+    ,hol_ca_mb                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_nat                 BOOLEAN DEFAULT FALSE
+    ,hol_ca_nb                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_nl                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_ns                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_nt                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_nu                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_on                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_pe                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_qc                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_sk                  BOOLEAN DEFAULT FALSE
+    ,hol_ca_yt                  BOOLEAN DEFAULT FALSE
+    ,hol_fr                     BOOLEAN DEFAULT FALSE
+    ,hol_gb_eng_wls             BOOLEAN DEFAULT FALSE
+    ,hol_gb_sct                 BOOLEAN DEFAULT FALSE
+    ,hol_gb_nir                 BOOLEAN DEFAULT FALSE
+    ,hol_ie                     BOOLEAN DEFAULT FALSE
+    ,hol_mt                     BOOLEAN DEFAULT FALSE
+    ,hol_nl                     BOOLEAN DEFAULT FALSE
+    ,hol_us_fed                 BOOLEAN DEFAULT FALSE
 
 );
 

@@ -14,7 +14,7 @@ SET hol_ca_yt = FALSE
 --            MIN(calendar_date) AS second_mon_feb
 --            FROM dim_calendar AS dc2
 --            WHERE EXTRACT(MONTH FROM calendar_date) = 2
---            AND EXTRACT( DAY FROM calendar_date > 7
+--            AND EXTRACT( DAY FROM calendar_date ) > 7
 --            AND EXTRACT( DOW FROM calendar_date) = 1
 --            GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
 -- )
@@ -32,7 +32,7 @@ SET hol_ca_yt = FALSE
 --            MIN(calendar_date) AS third_mon_feb
 --            FROM dim_calendar AS dc2
 --            WHERE EXTRACT(MONTH FROM calendar_date) = 2
---            AND EXTRACT( DAY FROM calendar_date > 14
+--            AND EXTRACT( DAY FROM calendar_date ) > 14
 --            AND EXTRACT( DOW FROM calendar_date) = 1
 --            GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
 -- )
@@ -80,7 +80,7 @@ WITH cte AS (
            MAX(calendar_date) AS mon_may_24
            FROM dim_calendar AS dc2
            WHERE EXTRACT(MONTH FROM calendar_date) = 5
-           AND   EXTRACT(DAY FROM celndar_date) <= 24
+           AND   EXTRACT(DAY FROM calendar_date) <= 24
            AND EXTRACT( DOW FROM calendar_date) = 1
            GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
 )
@@ -128,7 +128,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 7
 --            MIN(calendar_date) AS third_fri_aug
 --            FROM dim_calendar AS dc2
 --            WHERE EXTRACT(MONTH FROM calendar_date) = 8
---            AND EXTRACT( DAY FROM calendar_date > 21
+--            AND EXTRACT( DAY FROM calendar_date ) > 21
 --            AND EXTRACT( DOW FROM calendar_date) = 5
 --            GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
 -- )
@@ -145,7 +145,7 @@ WITH cte AS (
            MIN(calendar_date) AS third_mon_aug
            FROM dim_calendar AS dc2
            WHERE EXTRACT(MONTH FROM calendar_date) = 8
-           AND EXTRACT( DAY FROM calendar_date > 21
+           AND EXTRACT( DAY FROM calendar_date ) > 21
            AND EXTRACT( DOW FROM calendar_date) = 1
            GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
 )

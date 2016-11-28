@@ -42,12 +42,12 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 
 -- moveable	Ascension Day	Ascension	Thursday, 39 days after Easter Sunday
 WITH cte AS (
-    SELECT calendar_date  + INTERVAL '38' DAYS AS easter_mon_plus_38
+    SELECT ( calendar_date  + INTERVAL '38 DAYS'   ) AS easter_mon_plus_38
     FROM dim_calendar 
     WHERE calc_western_easter_mon = TRUE
 )
 UPDATE dim_calendar
-SET SET hol_fr = TRUE
+SET hol_fr = TRUE
 FROM cte
 WHERE dim_calendar.calendar_date = cte.easter_mon_plus_38
 ; 
@@ -55,12 +55,12 @@ WHERE dim_calendar.calendar_date = cte.easter_mon_plus_38
 
 -- moveable	Whit Monday	Lundi de Pentecôte	Monday after Pentecost (50 days after Easter), observed only in some businesses, see notes
 WITH cte AS (
-    SELECT calendar_date  + INTERVAL '49' DAYS AS easter_mon_plus_49
+    SELECT ( calendar_date  + INTERVAL '49 DAYS'   ) AS easter_mon_plus_49
     FROM dim_calendar 
     WHERE calc_western_easter_mon = TRUE
 )
 UPDATE dim_calendar
-SET SET hol_fr = TRUE
+SET hol_fr = TRUE
 FROM cte
 WHERE dim_calendar.calendar_date = cte.easter_mon_plus_49
 ; 
