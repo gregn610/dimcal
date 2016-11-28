@@ -225,3 +225,63 @@ AND   EXTRACT( MONTH FROM calendar_date) = 12
 
 
 COMMIT;
+/*
+ Alabama                     hol_us_al.sql
+ Alaska                      hol_us_ak.sql
+ Arizona                     hol_us_az.sql
+ Arkansas                    hol_us_ar.sql
+ California                  hol_us_ca.sql
+ Colorado                    hol_us_co.sql
+ Connecticut                 hol_us_ct.sql
+ Delaware                    hol_us_de.sql
+ District of Columbia        hol_us_dc.sql
+ Florida                     hol_us_fl.sql
+ Georgia                     hol_us_ga.sql
+ Hawaii                      hol_us_hi.sql
+ Idaho                       hol_us_id.sql
+ Illinois                    hol_us_il.sql
+ Indiana                     hol_us_in.sql
+ Iowa                        hol_us_ia.sql
+ Kansas                       hol_us_ks.sql
+ Kentucky                       hol_us_ky.sql
+ Louisiana                       hol_us_la.sql
+ Maine                       hol_us_me.sql
+ Maryland                       hol_us_md.sql
+ Massachusetts                       hol_us_ma.sql
+ Michigan                       hol_us_mi.sql
+ Minnesota                       hol_us_mn.sql
+ Mississippi                       hol_us_ms.sql
+ Missouri                       hol_us_mo.sql
+ Montana                       hol_us_mt.sql
+ Nebraska                       hol_us_ne.sql
+ Nevada                       hol_us_nv.sql
+ New Hampshire                       hol_us_nh.sql
+ New Jersey                       hol_us_nj.sql
+ New Mexico                       hol_us_nm.sql
+ New York                       hol_us_ny.sql
+ North Carolina                       hol_us_nc.sql
+  North Dakota                       hol_us_nd.sql
+ Ohio                       hol_us_oh.sql
+ Oklahoma                       hol_us_ok.sql
+ Oregon                       hol_us_or.sql
+ Pennsylvania                       hol_us_pa.sql
+ Rhode Island                       hol_us_ri.sql
+ South Carolina                       hol_us_sc.sql
+ South Dakota                       hol_us_sd.sql
+ Tennessee                       hol_us_tn.sql
+ Texas                       hol_us_tx.sql
+ Utah                       hol_us_ut.sql
+ Vermont                       hol_us_vt.sql
+ Virginia                       hol_us_va.sql
+ Washington                       hol_us_wa.sql
+ West Virginia                       hol_us_wv.sql
+ Wisconsin                       hol_us_wi.sql
+ Wyoming                       hol_us_wy.sql
+ American Samoa                       hol_us_as.sql
+ Guam                       hol_us_gu.sql
+ Northern Mariana Islands                       hol_us_mp.sql
+ Puerto Rico                       hol_us_pr.sql
+ U.S. Virgin Islands                       hol_us_vi.sql
+U.S. Minor Outlying Islands     hol_us_um.sql
+
+*/
