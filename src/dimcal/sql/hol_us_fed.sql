@@ -37,6 +37,7 @@ SET hol_us_fed = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 15 AND 21
 AND   EXTRACT( MONTH FROM calendar_date) = 1
 AND   EXTRACT( DOW   FROM calendar_date) = 1 -- Mon yyyy/01/15
+AND   EXTRACT( YEAR FROM calendar_date) >= 1996
 ;
 
 
