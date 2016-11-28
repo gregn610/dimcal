@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,hol_gb_sct                BOOLEAN DEFAULT FALSE
     ,hol_gb_nir                BOOLEAN DEFAULT FALSE
 
+    ,hol_mt                    BOOLEAN DEFAULT FALSE
     ,hol_us_fed                BOOLEAN DEFAULT FALSE
 
 );
