@@ -38,9 +38,15 @@ WHERE dim_calendar.calendar_date = cte.easter_mon_plus_38
 ; 
 
 -- Pentecost Monday	Monday after Pentecost	Pinkstermaandag	Lundi de Pentecôte	Pfingstmontag
+WITH cte AS (
+    SELECT calendar_date  + INTERVAL '49' DAYS AS easter_mon_plus_49
+    FROM dim_calendar 
+    WHERE calc_western_easter_mon = TRUE
+)
 UPDATE dim_calendar
 SET hol_be = TRUE
-WHERE calc_western_whit_mon = TRUE;
+FROM cte
+WHERE dim_calendar.calendar_date = cte.easter_mon_plus_49
 ; 
 
 -- Belgian National Day	July 21	Nationale feestdag	Fête nationale	Nationalfeiertag
