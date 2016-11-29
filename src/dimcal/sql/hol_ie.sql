@@ -176,12 +176,6 @@ FROM cte2
 WHERE dim_calendar.calendar_date = cte2.next_free_day
 ;
 
--- Reset Sat / Sun holidays
-UPDATE dim_calendar
-SET hol_ie = FALSE
-WHERE hol_ie = TRUE
-AND EXTRACT ( DOW FROM calendar_date) IN (0,6)
-;
 
 
 
