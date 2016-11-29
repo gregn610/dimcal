@@ -144,6 +144,28 @@ AND   EXTRACT( MONTH FROM calendar_date) = 12
 
 
 
+-- Roll Sat holidays to prev working day
+WITH cte1 AS (
+SELECT calendar_date AS holiday_weekend_day
+FROM dim_calendar
+WHERE hol_us_fed = TRUE
+AND EXTRACT( DOW FROM calendar_date) = 6 -- Sat
+),
+cte2 AS (
+SELECT MAX(dc2.calendar_date) AS last_free_day
+FROM cte1, dim_calendar as dc2
+WHERE dc2.calendar_date < cte1.holiday_weekend_day
+AND EXTRACT( DOW FROM dc2.calendar_date) BETWEEN 1 AND 5
+AND dc2.hol_us_fed = FALSE
+GROUP BY cte1.holiday_weekend_day
+)
+UPDATE dim_calendar
+SET hol_us_fed = TRUE
+FROM cte2
+WHERE dim_calendar.calendar_date = cte2.last_free_day
+;
+
+
 
 -- Roll Sun holidays to next working day
 WITH cte1 AS (
