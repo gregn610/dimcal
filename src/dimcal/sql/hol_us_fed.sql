@@ -10,25 +10,7 @@ UPDATE dim_calendar
 SET hol_us_fed = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1
 AND   EXTRACT( MONTH FROM calendar_date) = 1
-AND   EXTRACT( DOW   FROM calendar_date) BETWEEN 1 AND 5 -- Sunday (0) to Saturday (6)
 ;
-
--- New Years day 02 Jan
-UPDATE dim_calendar
-SET hol_us_fed = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 2
-AND   EXTRACT( MONTH FROM calendar_date) = 1
-AND   EXTRACT( DOW   FROM calendar_date) = 1 -- Mon yyyy/01/02
-;
--- New Years day 03 Jan
-UPDATE dim_calendar
-SET hol_us_fed = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 3
-AND   EXTRACT( MONTH FROM calendar_date) = 1
-AND   EXTRACT( DOW   FROM calendar_date) = 1 -- Mon yyyy/01/03
-;
-
-
 
 -- Birthday of Martin Luther King, Jr.
 -- January 15–21 (Floating Monday)
