@@ -98,7 +98,7 @@ WHERE dim_calendar.calendar_date = cte.first_mon_aug
 -- The last Monday in October. (Lá Saoire Oíche Shamhna). First observed in 1977.[6]
 WITH cte AS (
     SELECT EXTRACT(YEAR FROM dc2.calendar_date) AS yr,
-           MIN(calendar_date) AS first_mon_oct
+           MAX(calendar_date) AS last_mon_oct
            FROM dim_calendar AS dc2
            WHERE EXTRACT(MONTH FROM calendar_date) = 10
            AND EXTRACT(DOW FROM calendar_date) = 1
@@ -107,7 +107,7 @@ WITH cte AS (
 UPDATE dim_calendar
 SET hol_ie = TRUE
 FROM cte
-WHERE dim_calendar.calendar_date = cte.first_mon_oct
+WHERE dim_calendar.calendar_date = cte.last_mon_oct
 ;
 
 -- 25 December	
