@@ -26,15 +26,9 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 ; 
 
 -- Ascension	39 days after Easter	Onze Lieve Heer hemelvaart	Ascension	Christi Himmelfahrt
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '38 DAYS'   ) AS easter_mon_plus_38
-    FROM dim_calendar 
-    WHERE calc_western_easter_mon = TRUE
-)
 UPDATE dim_calendar
 SET hol_be = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.easter_mon_plus_38
+WHERE calc_western_ascension_thu = TRUE
 ; 
 
 -- Pentecost Monday	Monday after Pentecost	Pinkstermaandag	Lundi de Pentecôte	Pfingstmontag
