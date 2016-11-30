@@ -172,6 +172,21 @@ WHERE dim_calendar.calendar_date = cte.easter_mon_plus_49
 ; 
 
 
+
+-- Corpus Christi Thursday 
+WITH cte AS (
+    SELECT ( calendar_date  + INTERVAL '59 DAYS'   ) AS easter_mon_plus_59
+    FROM dim_calendar 
+    WHERE calc_western_easter_mon = TRUE
+)
+UPDATE dim_calendar
+SET calc_western_corpuschristi_thu = TRUE
+FROM cte
+WHERE dim_calendar.calendar_date = cte.easter_mon_plus_59
+; 
+
+
+
 COMMIT;
 
 -- Unit test
