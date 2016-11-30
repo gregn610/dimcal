@@ -145,6 +145,22 @@ UPDATE dim_calendar SET calc_western_easter_mon = TRUE WHERE calendar_date = '20
 UPDATE dim_calendar SET calc_western_easter_mon = TRUE WHERE calendar_date = '2036-04-13'::DATE + INTERVAL '1 DAY';
 UPDATE dim_calendar SET calc_western_easter_mon = TRUE WHERE calendar_date = '2037-04-05'::DATE + INTERVAL '1 DAY';
 
+
+-- Ascension	39 days after Easter	Onze Lieve Heer hemelvaart	Ascension	Christi Himmelfahrt
+WITH cte AS (
+    SELECT ( calendar_date  + INTERVAL '38 DAYS'   ) AS easter_mon_plus_38
+    FROM dim_calendar 
+    WHERE calc_western_easter_mon = TRUE
+)
+UPDATE dim_calendar
+SET calc_western_ascension_thu = TRUE
+FROM cte
+WHERE dim_calendar.calendar_date = cte.easter_mon_plus_38
+; 
+
+
+
+
 COMMIT;
 
 -- Unit test
