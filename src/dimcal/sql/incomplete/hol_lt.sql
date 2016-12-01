@@ -32,8 +32,24 @@ AND   EXTRACT( YEAR  FROM calendar_date) >= 1990
 ;
 
 
--- The first Sunday after the full moon that occurs on or soonest after 21 March and following Monday	Easter	Velykos	Commemorates resurrection of Jesus
-???
+-- The first Sunday after the full moon that occurs on or soonest after 21 March 
+-- and following Monday	Easter	Velykos	Commemorates resurrection of Jesus
+WITH cte AS (
+    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
+    FROM dim_calendar 
+    WHERE calc_western_good_fri = TRUE
+)
+UPDATE dim_calendar
+SET hol_lt = TRUE
+FROM cte
+WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+; 
+-- Easter Monday – date variable
+UPDATE dim_calendar
+SET hol_lt = TRUE
+WHERE calc_western_easter_mon = TRUE
+;
+
 
 -- May 1	International Working Day	Tarptautinė darbo diena	 
 UPDATE dim_calendar
