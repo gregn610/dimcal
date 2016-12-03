@@ -45,7 +45,6 @@ class DimCalendar(models.Model):
 
 
     class Meta:
-        managed = False
         db_table = 'dim_calendar'
 
     def _get_countries(self):

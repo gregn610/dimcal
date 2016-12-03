@@ -170,4 +170,4 @@ FROM cte2
 WHERE dim_calendar.calendar_date = cte2.next_free_day
 ;
 
-COMMIT
+COMMIT;
