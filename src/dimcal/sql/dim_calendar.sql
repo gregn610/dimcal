@@ -19,9 +19,6 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,hol_at                     BOOLEAN DEFAULT FALSE
     ,hol_be                     BOOLEAN DEFAULT FALSE
     ,hol_bg                     BOOLEAN DEFAULT FALSE
-    ,hol_dk                     BOOLEAN DEFAULT FALSE
-    ,hol_ee                     BOOLEAN DEFAULT FALSE
-    ,hol_fi                     BOOLEAN DEFAULT FALSE
     ,hol_ca_ab                  BOOLEAN DEFAULT FALSE
     ,hol_ca_bc                  BOOLEAN DEFAULT FALSE
     ,hol_ca_fed                 BOOLEAN DEFAULT FALSE
@@ -39,8 +36,10 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,hol_ca_yt                  BOOLEAN DEFAULT FALSE
     ,hol_cy                     BOOLEAN DEFAULT FALSE
     ,hol_cz                     BOOLEAN DEFAULT FALSE
-    ,hol_fr                     BOOLEAN DEFAULT FALSE
+    ,hol_dk                     BOOLEAN DEFAULT FALSE
+    ,hol_ee                     BOOLEAN DEFAULT FALSE
     ,hol_fi                     BOOLEAN DEFAULT FALSE
+    ,hol_fr                     BOOLEAN DEFAULT FALSE
     ,hol_gb_eng_wls             BOOLEAN DEFAULT FALSE
     ,hol_gb_sct                 BOOLEAN DEFAULT FALSE
     ,hol_gb_nir                 BOOLEAN DEFAULT FALSE
