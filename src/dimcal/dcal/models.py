@@ -41,6 +41,7 @@ class DimCalendar(models.Model):
     hol_cz                     = models.NullBooleanField()
     hol_dk                     = models.NullBooleanField()
     hol_ee                     = models.NullBooleanField()
+    hol_es_nat                 = models.NullBooleanField()
     hol_fi                     = models.NullBooleanField()
     hol_fr                     = models.NullBooleanField()
     hol_gb_eng_wls             = models.NullBooleanField()

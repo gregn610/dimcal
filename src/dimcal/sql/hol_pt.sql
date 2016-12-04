@@ -12,7 +12,7 @@ UPDATE dim_calendar
 SET hol_pt = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1
 AND   EXTRACT( MONTH FROM calendar_date) = 1
-; 
+;
 
 
 -- moveable	Carnival	Carnaval	Carnival in Portugal is an annual festival, that ends on Shrove Tuesday (called Fat Tuesday in Madeira - Terça-feira Gorda in Portuguese) the day before Ash Wednesday (first day of Lent). 

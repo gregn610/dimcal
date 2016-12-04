@@ -7,7 +7,8 @@ SET hol_cz = FALSE
 ;
 
 
--- 1 January	Restoration Day of the Independent Czech State; New Year's Day	Den obnovy samostatného českého státu; Nový rok	Czechoslovakia split into the Czech Republic and Slovakia.
+-- 1 January	Restoration Day of the Independent Czech State;
+-- New Year's Day	Den obnovy samostatného českého státu; Nový rok	Czechoslovakia split into the Czech Republic and Slovakia.
 UPDATE dim_calendar
 SET hol_cz = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1

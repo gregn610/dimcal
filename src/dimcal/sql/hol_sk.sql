@@ -7,12 +7,13 @@ SET hol_sk = FALSE
 ;
 
 
--- 1 January (1993)	Day of the Establishment of the Slovak Republic	Deň vzniku Slovenskej republiky	Czechoslovakia split into the Czech Republic and Slovakia
+-- 1 January (1993)	Day of the Establishment of the Slovak Republic	Deň vzniku Slovenskej republiky
+-- Czechoslovakia split into the Czech Republic and Slovakia
 UPDATE dim_calendar
 SET hol_sk = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1
 AND   EXTRACT( MONTH FROM calendar_date) = 1
-AND   EXTRACT( YEAR FROM calendar_date) >= 1993
+-- AND   EXTRACT( YEAR FROM calendar_date) >= 1993
 ; 
 
 

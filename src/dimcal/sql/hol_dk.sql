@@ -13,7 +13,22 @@ UPDATE dim_calendar
 SET hol_dk = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1
 AND   EXTRACT( MONTH FROM calendar_date) = 1
-; 
+;
+
+
+
+-- Palm Sunday
+WITH cte AS (
+    SELECT ( calendar_date - INTERVAL '5 DAY'   ) AS good_fri_minus_5
+    FROM dim_calendar
+    WHERE calc_western_good_fri = TRUE
+)
+UPDATE dim_calendar
+SET hol_dk = TRUE
+FROM cte
+WHERE dim_calendar.calendar_date = cte.good_fri_minus_5
+;
+
 
 
 -- The Thursday before Easter Sunday	Maundy Thursday	Skærtorsdag	 
