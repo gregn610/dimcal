@@ -47,7 +47,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 ; 
 
 
--- 5 July	Saints Cyril and Methodius Day	Den slovanských věrozvěstů Cyrila a Metoděje	In 863, Church teachers St. Cyril (Constantine) and Metoděj (Methodius) came from the Balkans to Great Moravia to propagate Christian faith and literacy.
+-- 5 July	Saints Cyril and Methodius Day	Den slovanských věrozvěstů Cyrila a Metoděje
 UPDATE dim_calendar
 SET hol_cz = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 5

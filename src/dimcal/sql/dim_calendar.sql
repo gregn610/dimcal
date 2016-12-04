@@ -5,16 +5,26 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,calendar_date             DATE NOT NULL
     --
     ,calc_full_moon            BOOLEAN DEFAULT FALSE
-    ,calc_western_good_fri     BOOLEAN DEFAULT FALSE
-    ,calc_western_easter_mon   BOOLEAN DEFAULT FALSE
-    ,calc_western_ascension_thu BOOLEAN DEFAULT FALSE
-    ,calc_western_whit_mon     BOOLEAN DEFAULT FALSE
+    --
+    ,calc_western_epiphany          BOOLEAN DEFAULT FALSE
+    ,calc_western_clean_mon         BOOLEAN DEFAULT FALSE
+    ,calc_western_annunciation      BOOLEAN DEFAULT FALSE
+    ,calc_western_ash_wed           BOOLEAN DEFAULT FALSE
+    ,calc_western_palm_sun          BOOLEAN DEFAULT FALSE
+    ,calc_western_holy_thu          BOOLEAN DEFAULT FALSE
+    ,calc_western_good_fri          BOOLEAN DEFAULT FALSE
+    ,calc_western_easter_sat        BOOLEAN DEFAULT FALSE
+    ,calc_western_easter_sun        BOOLEAN DEFAULT FALSE
+    ,calc_western_easter_mon        BOOLEAN DEFAULT FALSE
+    ,calc_western_all_saints        BOOLEAN DEFAULT FALSE
+    ,calc_western_immaculate_con    BOOLEAN DEFAULT FALSE
+    ,calc_western_christmas_eve     BOOLEAN DEFAULT FALSE
+    ,calc_western_christmas         BOOLEAN DEFAULT FALSE
+    ,calc_western_ascension_thu     BOOLEAN DEFAULT FALSE
+    ,calc_western_assumption        BOOLEAN DEFAULT FALSE
+    ,calc_western_whit_sun          BOOLEAN DEFAULT FALSE
+    ,calc_western_whit_mon          BOOLEAN DEFAULT FALSE
     ,calc_western_corpuschristi_thu BOOLEAN DEFAULT FALSE
-    ,calc_tbc5                 BOOLEAN DEFAULT FALSE
-    ,calc_tbc6                 BOOLEAN DEFAULT FALSE
-    ,calc_tbc7                 BOOLEAN DEFAULT FALSE
-    ,calc_tbc8                 BOOLEAN DEFAULT FALSE
-    ,calc_tbc9                 BOOLEAN DEFAULT FALSE
     --
     ,hol_at                     BOOLEAN DEFAULT FALSE
     ,hol_be                     BOOLEAN DEFAULT FALSE
