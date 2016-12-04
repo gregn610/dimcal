@@ -18,7 +18,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 
 -- The Thursday before Easter Sunday	Maundy Thursday	Skærtorsdag	 
 WITH cte AS (
-    SELECT ( calendar_date  1 INTERVAL '1 DAY'   ) AS good_fri_minus_1
+    SELECT ( calendar_date - INTERVAL '1 DAY'   ) AS good_fri_minus_1
     FROM dim_calendar 
     WHERE calc_western_good_fri = TRUE
 )

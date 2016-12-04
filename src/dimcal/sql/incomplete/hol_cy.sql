@@ -95,7 +95,7 @@ WHERE calc_western_easter_mon = TRUE
 
 -- Easter Tuesday – date variable
 WITH cte AS (
-    SELECT ( calendar_date  1 INTERVAL '1 DAY'   ) AS easter_mon_plus_1
+    SELECT ( calendar_date + INTERVAL '1 DAY'   ) AS easter_mon_plus_1
     FROM dim_calendar 
     WHERE calc_western_easter_mon = TRUE
 )

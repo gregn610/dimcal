@@ -11,7 +11,7 @@ SET hol_gr = FALSE
 UPDATE dim_calendar
 SET hol_gr = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM caelndar_date) = 1
+AND   EXTRACT( MONTH FROM calendar_date) = 1
 ;
 
 
@@ -19,7 +19,7 @@ AND   EXTRACT( MONTH FROM caelndar_date) = 1
 UPDATE dim_calendar
 SET hol_gr = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 6
-AND   EXTRACT( MONTH FROM caelndar_date) = 1
+AND   EXTRACT( MONTH FROM calendar_date) = 1
 ;
 
 
@@ -41,7 +41,7 @@ WHERE dim_calendar.calendar_date = cte.easter_mon_minus_49
 UPDATE dim_calendar
 SET hol_gr = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM caelndar_date) = 3
+AND   EXTRACT( MONTH FROM calendar_date) = 3
 ;
 
 
@@ -67,7 +67,7 @@ WHERE calc_western_easter_mon = TRUE
 UPDATE dim_calendar
 SET hol_gr = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM caelndar_date) = 5
+AND   EXTRACT( MONTH FROM calendar_date) = 5
 ;
 
 
@@ -86,7 +86,7 @@ WHERE calc_western_whit_mon = TRUE
 UPDATE dim_calendar
 SET hol_gr = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM caelndar_date) = 8
+AND   EXTRACT( MONTH FROM calendar_date) = 8
 ;
 
 
@@ -94,7 +94,7 @@ AND   EXTRACT( MONTH FROM caelndar_date) = 8
 UPDATE dim_calendar
 SET hol_gr = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 28
-AND   EXTRACT( MONTH FROM caelndar_date) = 10
+AND   EXTRACT( MONTH FROM calendar_date) = 10
 ;
 
 
@@ -102,7 +102,7 @@ AND   EXTRACT( MONTH FROM caelndar_date) = 10
 UPDATE dim_calendar
 SET hol_gr = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM caelndar_date) = 12
+AND   EXTRACT( MONTH FROM calendar_date) = 12
 ;
 
 
@@ -110,7 +110,7 @@ AND   EXTRACT( MONTH FROM caelndar_date) = 12
 UPDATE dim_calendar
 SET hol_gr = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 26
-AND   EXTRACT( MONTH FROM caelndar_date) = 12
+AND   EXTRACT( MONTH FROM calendar_date) = 12
 ;
 
 

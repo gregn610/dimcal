@@ -79,6 +79,7 @@ AND   EXTRACT( YEAR  FROM calendar_date) >= 1991
 
 
 -- December 24	Christmas Eve	jõululaupäev	UPDATE dim_calendar
+UPDATE dim_calendar
 SET hol_ee = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 24
 AND   EXTRACT( MONTH FROM calendar_date) = 12

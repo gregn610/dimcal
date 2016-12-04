@@ -57,7 +57,7 @@ UPDATE dim_calendar
 SET hol_pl = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 3
 AND   EXTRACT( MONTH FROM calendar_date) = 5
-AND   EXTRACT( YEAR  FROM calendar_date) > = 1989
+AND   EXTRACT( YEAR  FROM calendar_date) >= 1989
 ;
 
 
@@ -65,7 +65,7 @@ AND   EXTRACT( YEAR  FROM calendar_date) > = 1989
 -- As this holiday always falls on a Sunday, it is not widely known that it is considered a non-working day, as all 
 -- Sundays are already non-working days and holidays falling on Sunday don't give the right to another free day.
 WITH cte AS (
-    SELECT ( calendar_date 1 INTERVAL '1 DAY'   ) AS whit_mon_minus_1
+    SELECT ( calendar_date + INTERVAL '1 DAY'   ) AS whit_mon_minus_1
     FROM dim_calendar 
     WHERE calc_western_whit_mon = TRUE
 )

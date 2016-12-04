@@ -2,7 +2,7 @@
 
 BEGIN;
 
-UPDATE di_calendar
+UPDATE dim_calendar
 SET hol_hu = FALSE
 ;
 
@@ -51,7 +51,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 
 -- Moveable	Pentecost Sunday	Pünkösdvasárnap	Sunday, 49 days after Easter
 WITH cte AS (
-    SELECT ( calendar_date  1 INTERVAL '1 DAY'   ) AS whit_mon_minus_1
+    SELECT ( calendar_date - INTERVAL '1 DAY'   ) AS whit_mon_minus_1
     FROM dim_calendar 
     WHERE calc_western_whit_mon = TRUE
 )

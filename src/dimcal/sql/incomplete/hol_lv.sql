@@ -51,7 +51,7 @@ SET hol_lv = TRUE
 WHERE EXTRACT( DOW   FROM calendar_date) BETWEEN 1 AND 5
 AND   EXTRACT( DAY   FROM calendar_date) = 4
 AND   EXTRACT( MONTH FROM calendar_date) = 5
-AND   EXTRACT( YEAR  FROM caelndar_date) >= 1990 
+AND   EXTRACT( YEAR  FROM calendar_date) >= 1990
 ;
 -- Sat roll
 UPDATE dim_calendar
@@ -59,7 +59,7 @@ SET hol_lv = TRUE
 WHERE EXTRACT( DOW   FROM calendar_date) = 6
 AND   EXTRACT( DAY   FROM calendar_date) = 6
 AND   EXTRACT( MONTH FROM calendar_date) = 5
-AND   EXTRACT( YEAR  FROM caelndar_date) >= 1990 
+AND   EXTRACT( YEAR  FROM calendar_date) >= 1990 
 ;
 -- Sun roll
 UPDATE dim_calendar
@@ -67,7 +67,7 @@ SET hol_lv = TRUE
 WHERE EXTRACT( DOW   FROM calendar_date) = 0
 AND   EXTRACT( DAY   FROM calendar_date) = 5
 AND   EXTRACT( MONTH FROM calendar_date) = 5
-AND   EXTRACT( YEAR  FROM caelndar_date) >= 1990 
+AND   EXTRACT( YEAR  FROM calendar_date) >= 1990 
 ;
 
 
@@ -75,7 +75,7 @@ AND   EXTRACT( YEAR  FROM caelndar_date) >= 1990
 UPDATE dim_calendar
 SET hol_lv = TRUE
 WHERE EXTRACT( DOW   FROM calendar_date) = 0 -- Sun
-AND   EXTRACT( DAY   FROM caelndar_date) BETWEEN 8 and 15 
+AND   EXTRACT( DAY   FROM calendar_date) BETWEEN 8 and 15 
 AND   EXTRACT( MONTH FROM calendar_date) = 5
 ;
 
@@ -101,7 +101,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 6
 -- If the day is on the weekend the next Monday is a holiday.
 UPDATE dim_calendar
 SET hol_lv = TRUE
-WHERE EXTRACT( DOW   FROM calendar_date) = BETWEEN 1 AND 5
+WHERE EXTRACT( DOW   FROM calendar_date) BETWEEN 1 AND 5
 AND   EXTRACT( DAY   FROM calendar_date) = 18
 AND   EXTRACT( MONTH FROM calendar_date) = 11
 ;

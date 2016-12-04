@@ -89,7 +89,7 @@ WITH cte AS (
     SELECT ( calendar_date  + INTERVAL '33 DAYS'   ) AS easter_mon_plus_33
     FROM dim_calendar 
     WHERE calc_western_easter_mon = TRUE
-    AND (YEAR FROM calendar_date) BETWEEN 1973 AND 2001
+    AND EXTRACT( YEAR FROM calendar_date) BETWEEN 1973 AND 2001
 )
 UPDATE dim_calendar
 SET hol_fi = TRUE
@@ -132,7 +132,7 @@ SET hol_fi = TRUE
 WHERE (
 (EXTRACT( DAY   FROM calendar_date) = 31 AND  EXTRACT( MONTH FROM calendar_date) = 10)
 OR
-(EXTRACT( DAY   FROM calendar_date) = BETWEEN 1 AND 6 AND   EXTRACT( MONTH FROM calendar_date) = 11)
+(EXTRACT( DAY   FROM calendar_date) BETWEEN 1 AND 6 AND   EXTRACT( MONTH FROM calendar_date) = 11)
 )
 AND   EXTRACT( YEAR FROM calendar_date) >= 2005
 AND   EXTRACT( DOW  FROM calendar_date) = 6 -- Sat
