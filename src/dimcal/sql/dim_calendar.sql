@@ -16,7 +16,12 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,calc_tbc8                 BOOLEAN DEFAULT FALSE
     ,calc_tbc9                 BOOLEAN DEFAULT FALSE
     --
+    ,hol_at                     BOOLEAN DEFAULT FALSE
     ,hol_be                     BOOLEAN DEFAULT FALSE
+    ,hol_bg                     BOOLEAN DEFAULT FALSE
+    ,hol_dk                     BOOLEAN DEFAULT FALSE
+    ,hol_ee                     BOOLEAN DEFAULT FALSE
+    ,hol_fi                     BOOLEAN DEFAULT FALSE
     ,hol_ca_ab                  BOOLEAN DEFAULT FALSE
     ,hol_ca_bc                  BOOLEAN DEFAULT FALSE
     ,hol_ca_fed                 BOOLEAN DEFAULT FALSE
@@ -32,13 +37,28 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,hol_ca_qc                  BOOLEAN DEFAULT FALSE
     ,hol_ca_sk                  BOOLEAN DEFAULT FALSE
     ,hol_ca_yt                  BOOLEAN DEFAULT FALSE
+    ,hol_cy                     BOOLEAN DEFAULT FALSE
+    ,hol_cz                     BOOLEAN DEFAULT FALSE
     ,hol_fr                     BOOLEAN DEFAULT FALSE
+    ,hol_fi                     BOOLEAN DEFAULT FALSE
     ,hol_gb_eng_wls             BOOLEAN DEFAULT FALSE
     ,hol_gb_sct                 BOOLEAN DEFAULT FALSE
     ,hol_gb_nir                 BOOLEAN DEFAULT FALSE
+    ,hol_gr                     BOOLEAN DEFAULT FALSE
+    ,hol_hr                     BOOLEAN DEFAULT FALSE
+    ,hol_hu                     BOOLEAN DEFAULT FALSE
     ,hol_ie                     BOOLEAN DEFAULT FALSE
+    ,hol_it                     BOOLEAN DEFAULT FALSE
+    ,hol_lt                     BOOLEAN DEFAULT FALSE
+    ,hol_lu                     BOOLEAN DEFAULT FALSE
+    ,hol_lv                     BOOLEAN DEFAULT FALSE
     ,hol_mt                     BOOLEAN DEFAULT FALSE
     ,hol_nl                     BOOLEAN DEFAULT FALSE
+    ,hol_pl                     BOOLEAN DEFAULT FALSE
+    ,hol_pt                     BOOLEAN DEFAULT FALSE
+    ,hol_ro                     BOOLEAN DEFAULT FALSE
+    ,hol_si                     BOOLEAN DEFAULT FALSE
+    ,hol_sk                     BOOLEAN DEFAULT FALSE
     ,hol_us_fed                 BOOLEAN DEFAULT FALSE
 
 );
