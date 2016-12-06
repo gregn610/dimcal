@@ -23,16 +23,10 @@ WHERE calc_western_epiphany = TRUE
 
 
 -- moveable Easter – 48 days. Clean Monday or Shrove Monday	Kathará Deftéra	Καθαρά Δευτέρα	The first day of Lent
--- Ash Monday. 48 Days before easter
-WITH cte AS (
-    SELECT ( calendar_date  - INTERVAL '49 DAYS'   ) AS easter_mon_minus_49
-    FROM dim_calendar 
-    WHERE calc_western_easter_mon = TRUE
-)
 UPDATE dim_calendar
 SET hol_gr = TRUE
 FROM cte
-WHERE dim_calendar.calendar_date = cte.easter_mon_minus_49
+WHERE calc_western_clean_mon = TRUE
 ; 
 
 
