@@ -50,8 +50,8 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 -- June 23	Victory Day	võidupüha and jaanilaupäev	Celebrates the victory in the Battle of Võnnu during the Estonian War of Independence.
 UPDATE dim_calendar
 SET hol_ee = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 23
-AND   EXTRACT( MONTH FROM calendar_date) = 6
+WHERE calc_western_whit_sun = TRUE
+; 
 ; 
 
 
