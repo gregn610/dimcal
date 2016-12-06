@@ -141,14 +141,14 @@ UPDATE dim_calendar SET calc_western_easter_sun = TRUE WHERE calendar_date = '20
 -- Clean Monday – date variable
 -- Ash Monday. 48 Days before easter
 WITH cte AS (
-    SELECT ( calendar_date  - INTERVAL '48 DAYS'   ) AS easter_mon_minus_48
+    SELECT ( calendar_date  - INTERVAL '48 DAYS'   ) AS easter_sun_minus_48
     FROM dim_calendar
     WHERE calc_western_easter_sun = TRUE
 )
 UPDATE dim_calendar
 SET calc_western_clean_mon = TRUE
 FROM cte
-WHERE dim_calendar.calendar_date = cte.easter_mon_minus_48
+WHERE dim_calendar.calendar_date = cte.easter_sun_minus_48
 ;
 
 
