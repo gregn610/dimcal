@@ -52,15 +52,9 @@ WHERE calc_western_good_fri = TRUE
 
 
 -- March/April	Easter Sunday	Påskedag	 
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar 
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_dk = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ; 
 
 
@@ -71,7 +65,27 @@ WHERE calc_western_easter_mon = TRUE
 ;
 
 
--- The 4th Friday after Easter	General Prayer Day	Store bededag	A collection of minor Christian holy days consolidated into one day. The name translates literally from Danish language, "Great Prayer Day".
+-- The 4th Friday after Easter	General Prayer Day	Store bededag
+WITH cte AS (
+    SELECT ( calendar_date  + INTERVAL '28 DAYS'   ) AS good_fri_plus_28
+    FROM dim_calendar
+    WHERE calc_western_good_fri = TRUE
+)
+UPDATE dim_calendar
+SET hol_dk = TRUE
+FROM cte
+WHERE dim_calendar.calendar_date = cte.good_fri_plus_28
+;
+
+
+-- Constitution Day (Denmark) 	Grundlovsdag
+-- With few exceptions, all shops stay closed on Grundlovsdag by law.[1]
+UPDATE dim_calendar
+SET hol_dk = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 5
+AND   EXTRACT( MONTH FROM calendar_date) = 6
+;
+
 
 -- 39 days after Easter	Ascension Day	Kristi Himmelfartsdag	 
 UPDATE dim_calendar
@@ -83,28 +97,29 @@ WHERE calc_western_ascension_thu = TRUE
 -- 7 weeks after Easter	Pentecost	Pinsedag	This is a Sunday. Danes celebrate two days of Whitsun.
 UPDATE dim_calendar
 SET hol_dk = TRUE 
-WHERE calc_western_whit_mon = TRUE
+WHERE calc_western_whit_sun = TRUE
 ;
 
 
 -- 7 weeks +1 day after Easter	Whit Monday	2. Pinsedag	This is a Monday. Danes celebrate two days of Whitsun.
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '1 DAY'   ) AS whit_plus_1
-    FROM dim_calendar 
-    WHERE calc_western_whit_mon = TRUE
-)
 UPDATE dim_calendar
 SET hol_dk = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.whit_plus_1
-; 
+WHERE calc_western_whit_mon = TRUE
+;
 
 
--- 25 December	First Day of Christmas	Juledag / 1. juledag	Danes celebrate three days of Christmas, starting early on December 24 in the evening.
+-- Danes celebrate three days of Christmas, starting early on December 24 in the evening.
 UPDATE dim_calendar
 SET hol_dk = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas_eve = TRUE
+;
+
+
+
+-- 25 December	First Day of Christmas	Juledag / 1. juledag
+UPDATE dim_calendar
+SET hol_dk = TRUE
+WHERE calc_western_christmas = TRUE
 ; 
 
 
@@ -115,6 +130,13 @@ WHERE EXTRACT( DAY   FROM calendar_date) = 26
 AND   EXTRACT( MONTH FROM calendar_date) = 12
 ; 
 
+
+-- With few exceptions, all shops stay closed by law from 3 PM on Nytårsaftensdag, the day of Nytårsaften.[1]
+UPDATE dim_calendar
+SET hol_dk = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 31
+AND   EXTRACT( MONTH FROM calendar_date) = 12
+;
 
 
 COMMIT;
