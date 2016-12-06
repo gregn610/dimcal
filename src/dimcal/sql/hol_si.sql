@@ -61,15 +61,10 @@ AND   EXTRACT( YEAR  FROM calendar_date) >= 1949
 
 -- -	Whit Sunday	binkoštna nedelja, binkošti	Work-free day (it is always on Sunday),
 -- in May or June, fifty days after the Easter (date varies).
-WITH cte AS (
-    SELECT ( calendar_date  - INTERVAL '1 DAY'   ) AS whit_mon_minus_1
-    FROM dim_calendar
-    WHERE calc_western_whit_mon = TRUE
-)
 UPDATE dim_calendar
 SET hol_si = TRUE
 FROM cte
-WHERE dim_calendar.calendar_date = cte.whit_mon_minus_1
+WHERE calc_western_whit_sun = TRUE
 ;
 
 
