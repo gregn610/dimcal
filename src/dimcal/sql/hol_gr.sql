@@ -23,11 +23,16 @@ WHERE calc_western_epiphany = TRUE
 
 
 -- moveable Easter – 48 days. Clean Monday or Shrove Monday	Kathará Deftéra	Καθαρά Δευτέρα	The first day of Lent
+-- wikipedia says 14March2016 which doesn't match the usual formula.
 UPDATE dim_calendar
 SET hol_gr = TRUE
-FROM cte
 WHERE calc_western_clean_mon = TRUE
+AND calendar_date <> '2016-02-28'
 ; 
+UPDATE dim_calendar
+SET hol_gr = TRUE
+WHERE calendar_date = '2016-03-14'
+;
 
 
 -- (lit. 25 March)	Εικοστή Πέμπτη Μαρτίου	Anniversary of the declaration of the start of Greek War of Independence from the Ottoman Empire

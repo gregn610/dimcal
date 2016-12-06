@@ -1,5 +1,5 @@
 -- Slovenia
--- "1991-06-25" Slovenia split from Yugoslavia ( YU ) and became an independent country
+-- '1991-06-25' Slovenia split from Yugoslavia ( YU ) and became an independent country
 
 BEGIN;
 
@@ -15,7 +15,7 @@ UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1
 AND   EXTRACT( MONTH FROM calendar_date) = 1
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ; 
 
 
@@ -26,7 +26,7 @@ UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 8
 AND   EXTRACT( MONTH FROM calendar_date) = 2
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ;
 
 -- Easter Sunday and Monday	velikonočna nedelja in ponedeljek, velika noč
@@ -34,7 +34,7 @@ AND   calendar_date >= "1991-06-25"
 UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE calc_western_easter_sun = TRUE
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ;
 
 
@@ -42,7 +42,7 @@ AND   calendar_date >= "1991-06-25"
 UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE calc_western_easter_mon = TRUE
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ;
 
 -- 27 April	Day of Uprising Against Occupation	dan upora proti okupatorju	State holiday, work-free. 
@@ -50,7 +50,7 @@ UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 27
 AND   EXTRACT( MONTH FROM calendar_date) = 4
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ; 
 
 
@@ -59,7 +59,7 @@ UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) IN (1, 2)
 AND   EXTRACT( MONTH FROM calendar_date) = 5
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ; 
 
 
@@ -67,9 +67,8 @@ AND   calendar_date >= "1991-06-25"
 -- in May or June, fifty days after the Easter (date varies).
 UPDATE dim_calendar
 SET hol_si = TRUE
-FROM cte
 WHERE calc_western_whit_sun = TRUE
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ;
 
 
@@ -81,7 +80,7 @@ UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 25
 AND   EXTRACT( MONTH FROM calendar_date) = 6
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ; 
 
 
@@ -89,7 +88,7 @@ AND   calendar_date >= "1991-06-25"
 UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE calc_western_assumption = TRUE
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ; 
 
 
@@ -100,7 +99,7 @@ AND   calendar_date >= "1991-06-25"
 -- SET hol_si = TRUE
 -- WHERE EXTRACT( DAY   FROM calendar_date) = 17
 -- AND   EXTRACT( MONTH FROM calendar_date) = 8
--- AND   calendar_date >= "1991-06-25"
+-- AND   calendar_date >= '1991-06-25'
 -- ;
 
 
@@ -114,7 +113,7 @@ UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 31
 AND   EXTRACT( MONTH FROM calendar_date) = 10
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ;
 
 
@@ -123,7 +122,7 @@ AND   calendar_date >= "1991-06-25"
 UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE calc_western_all_saints = TRUE
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ;
 
 
@@ -143,7 +142,7 @@ UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE calc_western_christmas = TRUE
 AND   EXTRACT(YEAR FROM calendar_date) NOT BETWEEN 1953 AND 1991
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ; 
 
 
@@ -153,7 +152,7 @@ UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 26
 AND   EXTRACT( MONTH FROM calendar_date) = 12
-AND   calendar_date >= "1991-06-25"
+AND   calendar_date >= '1991-06-25'
 ; 
 
 
