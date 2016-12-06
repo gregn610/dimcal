@@ -25,15 +25,9 @@ AND   EXTRACT( YEAR  FROM calendar_date) >= 2011
 
 
 -- Sunday in Spring (movable)	Easter Sunday	pierwszy dzień Wielkiej Nocy (Niedziela Wielkanocna)	
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar 
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_pl = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ;
 
 
@@ -86,17 +80,16 @@ WHERE calc_western_corpuschristi_thu = TRUE
 -- August 15	Assumption of the Blessed Virgin Mary	Wniebowzięcie Najświętszej Maryi Panny (Święto Wojska Polskiego or Święto Matki Boskiej Zielnej)
 UPDATE dim_calendar
 SET hol_pl = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
 ;
 
 
 -- November 1	All Saints' Day	Wszystkich Świętych (Dzień Zmarłych)	
 UPDATE dim_calendar
 SET hol_pl = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
+WHERE calc_western_all_saints = TRUE
 ;
+
 
 
 -- November 11	Independence Day	Narodowe Święto Niepodległości (Dzień Niepodległości)	
@@ -110,8 +103,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 11
 -- December 25	Christmas Day	pierwszy dzień Bożego Narodzenia	
 UPDATE dim_calendar
 SET hol_pl = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 

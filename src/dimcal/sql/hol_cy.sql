@@ -19,9 +19,8 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 -- Epiphany – 6 January
 UPDATE dim_calendar
 SET hol_cy = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 6
-AND   EXTRACT( MONTH FROM calendar_date) = 1
-; 
+WHERE calc_western_epiphany = TRUE
+;
 
 
 -- Clean Monday – date variable
@@ -75,15 +74,9 @@ WHERE dim_calendar.calendar_date = cte.good_fri_plus_1
 
 
 -- Easter Sunday – date variable
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar 
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_cy = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ; 
 
 
@@ -148,16 +141,14 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 -- Christmas Eve – 24 December
 UPDATE dim_calendar
 SET hol_cy = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 24
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas_eve = TRUE
 ; 
 
 
 -- Christmas Day – 25 December
 UPDATE dim_calendar
 SET hol_cy = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 

@@ -18,8 +18,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 -- 6 January	Epiphany or Theophany	Theophánia	Θεοφάνεια		[1]
 UPDATE dim_calendar
 SET hol_gr = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 6
-AND   EXTRACT( MONTH FROM calendar_date) = 1
+WHERE calc_western_epiphany = TRUE
 ;
 
 
@@ -85,8 +84,7 @@ WHERE calc_western_whit_mon = TRUE
 -- 15 August	Assumption or Dormition of the Holy Virgin	Kímisi tis Theotókou	Κοίμηση της Θεοτόκου	
 UPDATE dim_calendar
 SET hol_gr = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
 ;
 
 
@@ -101,8 +99,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 -- 25 December	Christmas	Christoúyenna	Χριστούγεννα		[2]
 UPDATE dim_calendar
 SET hol_gr = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 

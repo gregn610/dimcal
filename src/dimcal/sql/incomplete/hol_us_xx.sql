@@ -190,8 +190,7 @@ AND   EXTRACT( DOW   FROM calendar_date) = 4 -- Thu yyyy/01/15
 -- Observed by Arkansas, Georgia, Indiana, Kentucky, Michigan, North Carolina, South Carolina, Tennessee, Texas, Virginia, West Virginia, Wisconsin
 UPDATE dim_calendar
 SET hol_us_xx = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 24
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas_eve = TRUE
 ;
 
 
@@ -200,8 +199,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 12
 -- Observed by the state governments of all 50 states
 UPDATE dim_calendar
 SET hol_us_xx = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 -- Day after Christmas	

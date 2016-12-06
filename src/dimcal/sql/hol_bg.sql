@@ -66,15 +66,14 @@ AND   EXTRACT( MONTH FROM calendar_date) = 9
 -- 1 November	National Awakening Day	Ден на народните будители	Non-attendance day for schools, otherwise a working day.
 UPDATE dim_calendar
 SET hol_bg = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
+WHERE calc_western_all_saints = TRUE
 ;
+
 
 -- 24 December	Christmas Eve	Бъдни вечер	 
 UPDATE dim_calendar
 SET hol_bg = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 24
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas_eve = TRUE
 ;
 
 -- 25 & 26 December	Christmas	Рождество Христово	The Bulgarians have two days of Christmas, both called Christmas Day.

@@ -32,15 +32,9 @@ WHERE calc_western_good_fri = TRUE
 
 
 -- Moveable Sunday	Easter Sunday	ülestõusmispühade 1. püha	Commonly known as lihavõtted.
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar 
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_ee = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ; 
 
 
@@ -81,16 +75,14 @@ AND   EXTRACT( YEAR  FROM calendar_date) >= 1991
 -- December 24	Christmas Eve	jõululaupäev	UPDATE dim_calendar
 UPDATE dim_calendar
 SET hol_ee = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 24
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas_eve = TRUE
 ; 
 
 
 -- December 25	Christmas Day	esimene jõulupüha	
 UPDATE dim_calendar
 SET hol_ee = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 

@@ -90,16 +90,14 @@ AND   EXTRACT( MONTH FROM calendar_date) = 11
 -- 24 December	Christmas Eve	Štědrý den	Christmas is celebrated during the evening of the 24th.
 UPDATE dim_calendar
 SET hol_cz = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 24
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas_eve = TRUE
 ; 
 
 
 -- 25 December	Christmas Day	1. svátek vánoční	 
 UPDATE dim_calendar
 SET hol_cz = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 

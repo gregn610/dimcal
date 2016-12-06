@@ -38,15 +38,9 @@ WHERE calc_western_good_fri = TRUE
 
 
 -- moveable	Easter	Domingo de Páscoa	Sunday, date varies. *	Yes	Yes
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar 
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_pt = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ; 
 
 
@@ -100,8 +94,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 7
 -- 15 August	Assumption	Assunção de Nossa Senhora	A religious account of the taking up of Mary into heaven.	Yes	Yes
 UPDATE dim_calendar
 SET hol_pt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
 ; 
 
 
@@ -116,9 +109,9 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 -- 1 November	All Saints Day	Dia de Todos-os-Santos	In terms of Western Christian theology, the feast commemorates all those who have attained the beatific vision in heaven.	Yes	Yes
 UPDATE dim_calendar
 SET hol_pt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
-; 
+WHERE calc_western_all_saints = TRUE
+;
+
 
 
 -- 1 December	Restoration of Independence	Restauração da Independência	Celebrates the end of the Philippine Dynasty (1580–1640)	Yes	Yes
@@ -132,16 +125,14 @@ AND   EXTRACT( MONTH FROM calendar_date) = 12
 -- 8 December	Immaculate Conception	Imaculada Conceição	According to Roman Catholic Dogma, the conception of the Virgin Mary without any stain of original sin	Yes	Yes
 UPDATE dim_calendar
 SET hol_pt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 8
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_immaculate_con = TRUE
 ; 
 
 
 -- 25 December	Christmas Day	Natal		Yes	Yes
 UPDATE dim_calendar
 SET hol_pt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 

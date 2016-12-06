@@ -159,8 +159,7 @@ AND EXTRACT(YEAR FROM calendar_date) >= 1965
 --   25 December	Christmas Day	Traditional common law holiday[1][2][3][4]
 UPDATE dim_calendar
 SET hol_gb_nir = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 -- Outside Scotland, if Christmas Day is a Sunday there is an additional statutory holiday on 27 December.

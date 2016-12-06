@@ -15,9 +15,8 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 -- January 6	Epiphany	Bogojavljenje, Sveta tri kralja	
 UPDATE dim_calendar
 SET hol_hr = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 6
-AND   EXTRACT( MONTH FROM calendar_date) = 1
-; 
+WHERE calc_western_epiphany = TRUE
+;
 
 -- Easter and the day after	Easter and Easter Monday	Uskrs i uskrsni ponedjeljak	variable date
 UPDATE dim_calendar
@@ -62,8 +61,9 @@ AND   EXTRACT( MONTH FROM calendar_date) = 8
 -- August 15	Assumption of Mary	Velika Gospa	
 UPDATE dim_calendar
 SET hol_hr = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
+;
+
 ; 
 
 -- October 8	Independence Day	Dan neovisnosti	
@@ -76,15 +76,14 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 -- November 1	All Saints' Day	Dan svih svetih	
 UPDATE dim_calendar
 SET hol_hr = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
-; 
+WHERE calc_western_all_saints = TRUE
+;
+
 
 -- December 25	Christmas	Božić	
 UPDATE dim_calendar
 SET hol_hr = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 -- December 26	St. Stephen's Day	Prvi dan po Božiću, Sveti Stjepan, Štefanje	

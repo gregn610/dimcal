@@ -103,8 +103,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 11
 -- Christmas day 25 Dec
 UPDATE dim_calendar
 SET hol_gb_sct = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 

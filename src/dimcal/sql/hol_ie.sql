@@ -114,8 +114,7 @@ WHERE dim_calendar.calendar_date = cte.last_mon_oct
 -- Christmas Day	Lá Nollag	
 UPDATE dim_calendar
 SET hol_ie = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 -- 26 December	

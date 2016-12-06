@@ -63,24 +63,22 @@ AND EXTRACT( MONTH FROM calendar_date) = 6)
 -- 15 August	Assumption	Léiffrawëschdag / Mariä Himmelfaart	Maria Himmelfahrt	Assomption	
 UPDATE dim_calendar
 SET hol_lu = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
 ;
 
 
 -- 1 November	All Saint's Day	Allerhellgen	Allerheiligen	Toussaint	
 UPDATE dim_calendar
 SET hol_lu = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
+WHERE calc_western_all_saints = TRUE
 ;
+
 
 
 -- 25 December	Christmas Day	Chrëschtdag	Weihnachten	Noël	
 UPDATE dim_calendar
 SET hol_lu = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 

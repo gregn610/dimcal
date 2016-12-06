@@ -18,9 +18,8 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 -- 6 January	Epiphany	Epifania	
 UPDATE dim_calendar
 SET hol_it = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 6
-AND   EXTRACT( MONTH FROM calendar_date) = 1
-; 
+WHERE calc_western_epiphany = TRUE
+;
 
 
 -- Monday after Easter	Easter Monday	Lunedì dell'Angelo, Lunedì in Albis or more commonly Pasquetta	
@@ -57,32 +56,31 @@ AND   EXTRACT( MONTH FROM calendar_date) = 6
 -- 15 August	Ferragosto/Assumption Day	Ferragosto and Assunzione	
 UPDATE dim_calendar
 SET hol_it = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
+;
+
 ; 
 
 
 -- 1 November	All Saints' Day	Tutti i santi (or Ognissanti)	
 UPDATE dim_calendar
 SET hol_it = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
-; 
+WHERE calc_western_all_saints = TRUE
+;
+
 
 
 -- 8 December	Immaculate Conception	Immacolata Concezione (or just Immacolata)	
 UPDATE dim_calendar
 SET hol_it = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 8
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_immaculate_con = TRUE
 ; 
 
 
 -- 25 December	Christmas Day	Natale	
 UPDATE dim_calendar
 SET hol_it = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 

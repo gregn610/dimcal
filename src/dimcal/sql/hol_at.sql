@@ -17,8 +17,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 -- 6 January	Epiphany	Heilige Drei Könige
 UPDATE dim_calendar
 SET hol_at = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 6
-AND   EXTRACT( MONTH FROM calendar_date) = 1
+WHERE calc_western_epiphany = TRUE
 ; 
 
 -- *	Easter Monday	Ostermontag	
@@ -55,8 +54,7 @@ WHERE calc_western_corpuschristi_thu = TRUE
 -- 15 August	Assumption of the Virgin Mary	Mariä Himmelfahrt	
 UPDATE dim_calendar
 SET hol_at = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
 ;
 
 -- 26 October	National Holiday	Nationalfeiertag	day of the Declaration of Neutrality
@@ -69,22 +67,20 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 -- 1 November	All Saints' Day	Allerheiligen	
 UPDATE dim_calendar
 SET hol_at = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
+WHERE calc_western_all_saints = TRUE
 ;
+
 
 -- 8 December	Immaculate Conception	Mariä Empfängnis	retail stores are allowed to open for Christmas shopping
 UPDATE dim_calendar
 SET hol_at = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 8
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_immaculate_con = TRUE
 ;
 
 -- 25 December	Christmas Day	Christtag	
 UPDATE dim_calendar
 SET hol_at = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 -- 26 December	St. Stephen's Day	Stefanitag	

@@ -48,16 +48,15 @@ AND   EXTRACT( MONTH FROM calendar_date) = 7
 -- Assumption of Mary	August 15	Onze Lieve Vrouw hemelvaart	Assomption	Mariä Himmelfahrt
 UPDATE dim_calendar
 SET hol_be = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
-; 
+WHERE calc_western_assumption = TRUE
+;
 
 -- All Saints' Day	November 1	Allerheiligen	Toussaint	Allerheiligen
 UPDATE dim_calendar
 SET hol_be = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
-; 
+WHERE calc_western_all_saints = TRUE
+;
+
 
 -- Armistice Day	November 11	Wapenstilstand	Jour de l'Armistice	Waffenstillstand
 UPDATE dim_calendar
@@ -69,8 +68,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 11
 -- Christmas	December 25	Kerstmis	Noël	Weihnachten
 UPDATE dim_calendar
 SET hol_be = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 COMMIT;

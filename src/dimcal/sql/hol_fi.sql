@@ -51,15 +51,9 @@ WHERE calc_western_good_fri = TRUE
 
 -- Moveable Sunday	Easter Sunday	Pääsiäispäivä	Påskdagen	 
 -- Easter Sunday – date variable
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar 
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_fi = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ; 
 
 
@@ -150,8 +144,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 12
 -- 24 December	Christmas Eve	Jouluaatto	Julafton	Non-official – Non-business day in the Annual Holidays Act (162/2005) - holiday in some collective labor agreements
 UPDATE dim_calendar
 SET hol_fi = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 24
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas_eve = TRUE
 AND   EXTRACT( YEAR FROM calendar_date) >= 2005
 ; 
 
@@ -159,8 +152,7 @@ AND   EXTRACT( YEAR FROM calendar_date) >= 2005
 -- 25 December	Christmas Day	Joulupäivä	Juldagen	 
 UPDATE dim_calendar
 SET hol_fi = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 

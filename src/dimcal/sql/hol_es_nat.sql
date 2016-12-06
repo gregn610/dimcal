@@ -20,8 +20,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 -- January 6	Epiphany (national holiday)	Día de Reyes / Epifanía del Señor	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
 UPDATE dim_calendar
 SET hol_es_nat = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 6
-AND   EXTRACT( MONTH FROM calendar_date) = 1
+WHERE calc_western_epiphany = TRUE
 ;
 
 
@@ -73,8 +72,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 -- August 15	Assumption (national holiday)	Asunción	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
 UPDATE dim_calendar
 SET hol_es_nat = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
 ;
 
 
@@ -109,9 +107,9 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 -- November 1	All Saints Day (national holiday)	Día de todos los Santos	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
 UPDATE dim_calendar
 SET hol_es_nat = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
+WHERE calc_western_all_saints = TRUE
 ;
+
 
 
 -- December 6	Constitution Day (national holiday)	Día de la Constitución	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
@@ -125,16 +123,14 @@ AND   EXTRACT( MONTH FROM calendar_date) = 12
 -- December 8	Immaculate Conception (national holiday)	Inmaculada Concepción	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
 UPDATE dim_calendar
 SET hol_es_nat = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 8
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_immaculate_con = TRUE
 ;
 
 
 -- December 25	Christmas Day (national holiday)	Navidad	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
 UPDATE dim_calendar
 SET hol_es_nat = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 

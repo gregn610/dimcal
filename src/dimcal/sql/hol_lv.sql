@@ -22,15 +22,9 @@ WHERE calc_western_good_fri = TRUE
 ;
 
 -- March/April	Easter Sunday	Lieldienas	
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar 
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_lv = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ; 
 
 
@@ -124,16 +118,14 @@ AND   EXTRACT( MONTH FROM calendar_date) = 11
 -- 24 December	Christmas Eve	Ziemassvētku vakars	
 UPDATE dim_calendar
 SET hol_lv = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 24
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas_eve = TRUE
 ;
 
 
 -- 25 December	Christmas Day	Ziemassvētki	
 UPDATE dim_calendar
 SET hol_lv = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 

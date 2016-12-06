@@ -35,15 +35,9 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 
 -- April/May	Paștele	Easter	The official holiday is the Orthodox Easter. 
 -- The holiday is three days long, the Easter Sunday and Monday are non-working, Tuesday is not a public holiday.
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar 
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_ro = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ; 
 
 UPDATE dim_calendar
@@ -67,7 +61,8 @@ WHERE calc_western_whit_mon = TRUE
 ;
 
 
--- August 15	Adormirea Maicii Domnului/Sfânta Maria Mare	Dormition of the Theotokos	Also the Day of the Romanian Naval Forces since St. Mary is the patron saint of the Navy.
+-- August 15	Adormirea Maicii Domnului/Sfânta Maria Mare	Dormition of the Theotokos
+-- Also the Day of the Romanian Naval Forces since St. Mary is the patron saint of the Navy.
 UPDATE dim_calendar
 SET hol_ro = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 15
@@ -94,8 +89,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 12
 -- December 25/26	Crăciunul	Christmas	Both first and second Christmas Day are holidays. Third Christmas Day is not a public holiday.
 UPDATE dim_calendar
 SET hol_ro = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 

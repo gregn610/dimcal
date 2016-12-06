@@ -77,8 +77,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 7
 -- 15 August	Assumption of Mary to Heaven	Assomption	
 UPDATE dim_calendar
 SET hol_fr = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
 ;
 
 
@@ -101,8 +100,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 11
 -- 25 December	Christmas Day	Noël	
 UPDATE dim_calendar
 SET hol_fr = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12 
+WHERE calc_western_christmas = TRUE
 ;
 
 

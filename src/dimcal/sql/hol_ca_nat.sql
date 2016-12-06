@@ -51,8 +51,7 @@ WHERE dim_calendar.calendar_date = cte.first_mon_sep
 -- December 25	Christmas Day	Noël	Celebrates the nativity of Jesus.
 UPDATE dim_calendar
 SET hol_ca_nat = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 

@@ -20,15 +20,9 @@ WHERE calc_western_good_fri = TRUE
 
 -- March/April	Easter	Pasen	A two-day holiday (Easter Sunday and the subsequent Monday).
 -- Easter Sunday – date variable
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_nl = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ;
 
 UPDATE dim_calendar

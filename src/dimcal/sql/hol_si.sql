@@ -27,18 +27,11 @@ AND   EXTRACT( MONTH FROM calendar_date) = 2
 AND   EXTRACT( YEAR  FROM calendar_date) >= 1991
 ;
 
--- -	Easter Sunday and Monday	velikonočna nedelja in ponedeljek, velika noč
+-- Easter Sunday and Monday	velikonočna nedelja in ponedeljek, velika noč
 -- Work-free days, in March or April (date varies).
--- Easter Sunday – date variable
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_si = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ;
 
 
@@ -95,8 +88,7 @@ AND   EXTRACT(YEAR FROM calendar_date) >= 1991
 -- 15 August	Assumption Day	Marijino vnebovzetje (veliki šmaren)	Work-free day since 1992.[6]
 UPDATE dim_calendar
 SET hol_si = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
 AND   EXTRACT(YEAR FROM calendar_date) >= 1992
 ; 
 
@@ -129,9 +121,9 @@ AND   EXTRACT( YEAR  FROM calendar_date) >= 1992
 -- Before 1991, in the time of the Socialist Republic of Slovenia, it was named dan mrtvih ('day of the dead').[11]
 UPDATE dim_calendar
 SET hol_si = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
-; 
+WHERE calc_western_all_saints = TRUE
+;
+
 
 
 -- -- 23 November	Rudolf Maister Day	dan Rudolfa Maistra
@@ -147,8 +139,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 11
 -- 25 December	Christmas	božič	Work-free day. Abolished in 1953 and re-instituted in 1991.[3]
 UPDATE dim_calendar
 SET hol_si = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 AND   EXTRACT(YEAR FROM calendar_date) NOT BETWEEN 1953 AND 1991
 ; 
 

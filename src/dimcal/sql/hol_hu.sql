@@ -23,16 +23,10 @@ AND   EXTRACT( MONTH FROM calendar_date) = 3
 ; 
 
 
--- Moveable	Easter Sunday	Húsvétvasárnap	
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar 
-    WHERE calc_western_good_fri = TRUE
-)
+-- Moveable	Easter Sunday	Húsvétvasárnap
 UPDATE dim_calendar
 SET hol_hu = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ;
 
 -- Moveable	Easter Monday	Húsvéthétfő	
@@ -88,16 +82,15 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 -- 1 November	All Saints Day	Mindenszentek	Day of remembrance of the dead.
 UPDATE dim_calendar
 SET hol_hu = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
-; 
+WHERE calc_western_all_saints = TRUE
+;
+
 
 
 -- 25 December	Christmas	Karácsony	
 UPDATE dim_calendar
 SET hol_hu = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 

@@ -102,22 +102,19 @@ AND   EXTRACT( MONTH FROM calendar_date) = 6
 -- August 15 - Feast of the Assumption of Our Lady (Santa Marija)
 UPDATE dim_calendar
 SET hol_mt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
 ;
 
 -- December 8 - Feast of the Immaculate Conception (Il-Kunċizzjoni)
 UPDATE dim_calendar
 SET hol_mt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 8
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_immaculate_con = TRUE
 ;
 
 -- December 25 - Christmas Day (Il-Milied)
 UPDATE dim_calendar
 SET hol_mt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 

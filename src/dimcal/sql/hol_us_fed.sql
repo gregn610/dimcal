@@ -120,8 +120,7 @@ AND   EXTRACT( DOW   FROM calendar_date) = 4 -- Thu yyyy/01/15
 -- December 25 (Fixed)
 UPDATE dim_calendar
 SET hol_us_fed = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 

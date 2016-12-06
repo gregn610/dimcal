@@ -34,15 +34,9 @@ AND   EXTRACT( YEAR  FROM calendar_date) >= 1990
 
 -- The first Sunday after the full moon that occurs on or soonest after 21 March 
 -- and following Monday	Easter	Velykos	Commemorates resurrection of Jesus
-WITH cte AS (
-    SELECT ( calendar_date  + INTERVAL '2 DAYS'   ) AS good_fri_plus_2
-    FROM dim_calendar 
-    WHERE calc_western_good_fri = TRUE
-)
 UPDATE dim_calendar
 SET hol_lt = TRUE
-FROM cte
-WHERE dim_calendar.calendar_date = cte.good_fri_plus_2
+WHERE calc_western_easter_sun = TRUE
 ; 
 -- Easter Monday – date variable
 UPDATE dim_calendar
@@ -109,32 +103,29 @@ AND   EXTRACT( MONTH FROM calendar_date) = 7
 -- August 15	Assumption Day	Žolinė (Švč. Mergelės Marijos ėmimo į dangų diena)	 
 UPDATE dim_calendar
 SET hol_lt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+WHERE calc_western_assumption = TRUE
 ;
 
 
 -- November 1	All Saints' Day	Visų šventųjų diena	 
 UPDATE dim_calendar
 SET hol_lt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
+WHERE calc_western_all_saints = TRUE
 ;
+
 
 
 -- December 24	Christmas Eve	Šv. Kūčios	 
 UPDATE dim_calendar
 SET hol_lt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 24
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas_eve = TRUE
 ;
 
 
 -- December 25 and 26	Christmas	Šv. Kalėdos	Commemorates birth of Jesus
 UPDATE dim_calendar
 SET hol_lt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ;
 
 

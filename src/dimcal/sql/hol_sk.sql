@@ -20,9 +20,8 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 -- 6 January	Epiphany (The Three Magi and Christmas Day of Orthodox Christians)	Zjavenie Pána (Traja králi a vianočný sviatok pravoslávnych kresťanov)	
 UPDATE dim_calendar
 SET hol_sk = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 6
-AND   EXTRACT( MONTH FROM calendar_date) = 1
-; 
+WHERE calc_western_epiphany = TRUE
+;
 
 
 -- March, April	Good Friday	Veľkonočný piatok	
@@ -90,13 +89,12 @@ AND   EXTRACT( MONTH FROM calendar_date) = 9
 -- 1 November	All Saints’ Day	Sviatok všetkých svätých	Cemeteries are visited on or around this day
 UPDATE dim_calendar
 SET hol_sk = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 11
-; 
+WHERE calc_western_all_saints = TRUE
+;
 
 
--- 17 November (1989/1939)	Struggle for Freedom and Democracy Day	Deň boja za slobodu a demokraciu	Commemorating the student demonstration against Nazi occupation in 1939, and 
--- especially the demonstration in 1989 in Bratislava and Prague considered to mark the beginning of the Velvet Revolution.
+
+-- 17 November (1989/1939)	Struggle for Freedom and Democracy Day	Deň boja za slobodu a demokraciu
 UPDATE dim_calendar
 SET hol_sk = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 17
@@ -107,16 +105,14 @@ AND   EXTRACT( MONTH FROM calendar_date) = 11
 -- 24 December	Christmas Eve	Štedrý deň	In Slovakia, Christmas presents are opened in the evening on Christmas Eve
 UPDATE dim_calendar
 SET hol_sk = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 24
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas_eve = TRUE
 ; 
 
 
 -- 25 December	Christmas Day	Prvý sviatok vianočný	Literally, First Christmas Holiday
 UPDATE dim_calendar
 SET hol_sk = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 25
-AND   EXTRACT( MONTH FROM calendar_date) = 12
+WHERE calc_western_christmas = TRUE
 ; 
 
 
