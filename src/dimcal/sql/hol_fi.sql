@@ -96,7 +96,7 @@ WHERE dim_calendar.calendar_date = cte.easter_mon_plus_33
 -- Moveable Sunday	Pentecost	Helluntaipäivä	Pingst	49 days after Easter Sunday
 UPDATE dim_calendar
 SET hol_fi = TRUE
-WHERE calc_western_whit_mon = TRUE
+WHERE calc_western_whit_sun = TRUE
 ;
 
 
