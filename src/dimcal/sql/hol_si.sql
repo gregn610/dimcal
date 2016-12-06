@@ -149,7 +149,7 @@ AND   EXTRACT(YEAR FROM calendar_date) NOT BETWEEN 1953 AND 1991
 UPDATE dim_calendar
 SET hol_si = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 26
-AND   EXTRACT( MONTH FROM calendar_date) = 6
+AND   EXTRACT( MONTH FROM calendar_date) = 12
 AND   EXTRACT(YEAR FROM calendar_date) >= 1991
 ; 
 
