@@ -115,7 +115,7 @@ AND   EXTRACT( YEAR  FROM calendar_date ) >= 1910
 -- the Monday following it will be a public holiday.
 WITH cte AS (
     SELECT calendar_date AS sunday_hol,
-           calendar_date + INTERNVAL '1 DAY' as following_mon
+           calendar_date + INTERVAL '1 DAY' as following_mon
            FROM dim_calendar AS dc2
            WHERE hol_za = TRUE
            AND EXTRACT(YEAR FROM calendar_date) >= 1994

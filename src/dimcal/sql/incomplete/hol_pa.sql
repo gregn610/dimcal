@@ -25,11 +25,9 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 
 -- Carnival's Monday. The Monday before Ash Wednesday.
 WITH cte AS (
-    SELECT EXTRACT(YEAR FROM dc2.calendar_date) AS yr,
-           calendar_date - INTERVAL '2 DAYS' AS mon_before_ash_wed
+    SELECT calendar_date - INTERVAL '2 DAYS' AS mon_before_ash_wed
            FROM dim_calendar AS dc2
-           WHERE calc_western_ash_wed = TRUE           
-           GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
+           WHERE calc_western_ash_wed = TRUE
 )
 UPDATE dim_calendar
 SET hol_pa = TRUE
@@ -40,11 +38,9 @@ WHERE dim_calendar.calendar_date = cte.mon_before_ash_wed
 
 -- Carnival's Tuesday. The Tuesday before Ash Wednesday.
 WITH cte AS (
-    SELECT EXTRACT(YEAR FROM dc2.calendar_date) AS yr,
-           calendar_date - INTERVAL '1 DAYS' AS tue_before_ash_wed
+    SELECT calendar_date - INTERVAL '1 DAYS' AS tue_before_ash_wed
            FROM dim_calendar AS dc2
-           WHERE calc_western_ash_wed = TRUE           
-           GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
+           WHERE calc_western_ash_wed = TRUE
 )
 UPDATE dim_calendar
 SET hol_pa = TRUE
@@ -74,7 +70,7 @@ SET hol_pa = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1
 AND   EXTRACT( MONTH FROM calendar_date) = 7 
 AND   EXTRACT( YEAR  FROM calendar_date) >= 2009
-AND   EXTRACT( YEAR  FROM calendar_date) % 5 = 4
+AND   EXTRACT( YEAR  FROM calendar_date)::INTEGER % 5 = 4
 ;
 
 
