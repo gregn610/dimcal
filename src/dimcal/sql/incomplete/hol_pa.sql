@@ -24,10 +24,34 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 
 
 -- Carnival's Monday. The Monday before Ash Wednesday.
-WIP
+WITH cte AS (
+    SELECT EXTRACT(YEAR FROM dc2.calendar_date) AS yr,
+           calendar_date - INTERVAL '2 DAYS' AS mon_before_ash_wed
+           FROM dim_calendar AS dc2
+           WHERE calc_western_ash_wed = TRUE           
+           GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
+)
+UPDATE dim_calendar
+SET hol_pa = TRUE
+FROM cte
+WHERE dim_calendar.calendar_date = cte.mon_before_ash_wed
+;
+
 
 -- Carnival's Tuesday. The Tuesday before Ash Wednesday.
-WIP
+WITH cte AS (
+    SELECT EXTRACT(YEAR FROM dc2.calendar_date) AS yr,
+           calendar_date - INTERVAL '1 DAYS' AS tue_before_ash_wed
+           FROM dim_calendar AS dc2
+           WHERE calc_western_ash_wed = TRUE           
+           GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
+)
+UPDATE dim_calendar
+SET hol_pa = TRUE
+FROM cte
+WHERE dim_calendar.calendar_date = cte.tue_before_ash_wed
+;
+
 
 -- Holy Friday - Good Friday - Death of Christ
 UPDATE dim_calendar
