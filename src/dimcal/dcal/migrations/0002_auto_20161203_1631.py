@@ -16,8 +16,9 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunSQL(
+            # Migrations are inside a transation block so no CONCURRENTLY allowed
             sql="""
-CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_dim_calendar_calendar_date
+CREATE INDEX  IF NOT EXISTS idx_dim_calendar_calendar_date
 ON dim_calendar(calendar_date);
 """, reverse_sql="""
 DROP INDEX idx_dim_calendar_calendar_date;
