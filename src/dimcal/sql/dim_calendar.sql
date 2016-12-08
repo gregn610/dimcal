@@ -62,15 +62,18 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,hol_lt                     BOOLEAN DEFAULT FALSE
     ,hol_lu                     BOOLEAN DEFAULT FALSE
     ,hol_lv                     BOOLEAN DEFAULT FALSE
+    ,hol_mg                     BOOLEAN DEFAULT FALSE
     ,hol_mt                     BOOLEAN DEFAULT FALSE
     ,hol_nl                     BOOLEAN DEFAULT FALSE
+    ,hol_pa                     BOOLEAN DEFAULT FALSE
     ,hol_pl                     BOOLEAN DEFAULT FALSE
     ,hol_pt                     BOOLEAN DEFAULT FALSE
     ,hol_ro                     BOOLEAN DEFAULT FALSE
     ,hol_si                     BOOLEAN DEFAULT FALSE
     ,hol_sk                     BOOLEAN DEFAULT FALSE
+    ,hol_st                     BOOLEAN DEFAULT FALSE
     ,hol_us_fed                 BOOLEAN DEFAULT FALSE
-
+    ,hol_za                     BOOLEAN DEFAULT FALSE
 );
 
 

@@ -46,7 +46,13 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 ; 
 
 
--- Moveable	Whitsunday (Pentecost)	nelipühade 1. püha	
+-- Moveable	Whitsunday (Pentecost)	nelipühade 1. püha
+UPDATE dim_calendar
+SET hol_ee = TRUE
+WHERE calc_western_whit_sun = TRUE
+;
+
+
 -- June 23	Victory Day	võidupüha and jaanilaupäev	Celebrates the victory in the Battle of Võnnu during the Estonian War of Independence.
 UPDATE dim_calendar
 SET hol_ee = TRUE

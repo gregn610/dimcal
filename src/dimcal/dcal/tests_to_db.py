@@ -2,7 +2,10 @@ from django.test import TestCase
 from django.core.exceptions import ObjectDoesNotExist
 from .models import DimCalendar
 from datetime import date
+from workalendar.core import Calendar, MON, TUE, WED, THU, FRI, SAT, SUN
 import workalendar.europe
+import workalendar.africa
+import workalendar.america
 
 class DimCalendarHolidayTestCase(TestCase):
     def setUp(self):
@@ -25,40 +28,66 @@ class DimCalendarHolidayTestCase(TestCase):
             'IT'        : workalendar.europe.Italy(),
 #            'LT'        : workalendar.europe.Latvia(),
             'LU'        : workalendar.europe.Luxembourg(),
+            'MG'        : workalendar.africa.Madagascar(),
             'NL'        : workalendar.europe.Netherlands(),
+            'PA'        : workalendar.america.Panama(),
             'PT'        : workalendar.europe.Portugal(),
             'SK'        : workalendar.europe.Slovakia(),
             'SI'        : workalendar.europe.Slovenia(),
-
-
+            'ST'        : workalendar.africa.SaoTomeAndPrincipe(),
+            'ZA'        :workalendar.africa.SouthAfrica()
         }
+
         # Too many discrepancies. Step back from 1970-2038 for a while
         self.yr_start = 2017
         self.yr_end   = 1970
         self.yr_step  = -1
-        
+
+    def suppress_discrepancy(self, wkal_dt, year, country_code):
+        """
+        Don't raise errors for some spcific known dates. Need to fix SQL or fix workalendar
+        :param wkal_dt:
+        :param year:
+        :param country_code:
+        :return: Boolean
+        """
+        # and wkal_dt == Calendar.get_nth_weekday_in_month(year, 5,MON,2 )
+        return (
+                    # EE independence
+                    (country_code == 'EE'
+                     and year < 1991) or
+                    # National flag day not an EE holiday
+                    (country_code == 'EE'
+                     and wkal_dt == date(year, 6, 4)) or
+                    # Workalendar issue 160
+                    (country_code in ['GB_ENG_WLS','GB_NIR']
+                     and wkal_dt == self.wkalendars[country_code].get_easter_sunday(year)) or
+                    # workalendar issue 154(fixed but waiting release)
+                    (country_code == 'NL'
+                    and wkal_dt == date(year, 12,31)) or
+                    # 1 January	New Year's Day not proclaimed if 1 January falls on Saturday or Sunday
+                    (country_code in ['GB_ENG_WLS', 'GB_NIR']
+                     and wkal_dt.month == 1
+                     and wkal_dt.day == 1)
+        )
+
 
     def compare_calendars(self, country_code, filter_args, years_range = None):
         if years_range is None:
             years_range = range(self.yr_start, self.yr_end, self.yr_step)
-        db_hols = DimCalendar.objects.filter(**filter_args)
-        for year in years_range:
-            for wkal_dt, holiday in self.wkalendars[country_code].holidays(year):
-                if (# Mothersday not an EE holiday
-                    (wkal_dt == date(year,5, 15) and country_code == 'EE') or
-                    # Workalendar issue 160
-                    (wkal_dt == self.wkalendars[country_code].get_easter_sunday(year)
-                        and country_code in ['GB_ENG_WLS','GB_NIR']) or
-                    # workalendar issue 154(fixed but waiting release)
-                    (wkal_dt == date(year, 12,31) and country_code == 'NL')
-                    ):
-                    break
-                else:
-                    try:
+        try:
+            db_hols = DimCalendar.objects.filter(**filter_args)
+            for year in years_range:
+                # Suppress known discrepancies with workalendar
+                for wkal_dt, holiday in self.wkalendars[country_code].holidays(year):
+                    if self.suppress_discrepancy(wkal_dt, year, country_code):
+                        break
+                    else:
                         dc = db_hols.get(calendar_date=wkal_dt)
                         self.assertEqual(dc.calendar_date, wkal_dt)
-                    except:
-                        self.fail("{0}\n{2}\n{1:%A %Y-%m-%d} not in the database".format(country_code, wkal_dt, holiday))
+        except ObjectDoesNotExist as e:
+            self.fail("{0}\n{2}\n{1:%A %Y-%m-%d} not in the database".format(country_code, wkal_dt, holiday))
+
 
 
     def test_to_db_hol_be(self):
@@ -219,6 +248,15 @@ class DimCalendarHolidayTestCase(TestCase):
         Test all Slovakia Workalendar holidays are in the database
         """
         country_code = 'SK'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
+
+
+    def test_to_db_hol_za(self):
+        """
+        Test all Slovakia Workalendar holidays are in the database
+        """
+        country_code = 'ZA'
         filter_args = {'hol_' + country_code.lower(): True}
         self.compare_calendars(country_code, filter_args)
 

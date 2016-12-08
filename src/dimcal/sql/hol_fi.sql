@@ -100,12 +100,13 @@ WHERE calc_western_whit_sun = TRUE
 ;
 
 
--- Friday between 19 June and 25 June	Midsummer Eve	Juhannusaatto	Midsommarafton	Non-official – Non-business day in the Annual Holidays Act (162/2005) - holiday in some collective labor agreements
+-- Friday between 19 June and 25 June	Midsummer Eve	Juhannusaatto	Midsommarafton	Non-official
+-- Non-business day in the Annual Holidays Act (162/2005) - holiday in some collective labor agreements
 UPDATE dim_calendar
 SET hol_fi = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 19 AND 25
 AND   EXTRACT( MONTH FROM calendar_date) = 6
-AND   EXTRACT( YEAR FROM calendar_date) >= 2005
+AND   EXTRACT( YEAR FROM calendar_date) >= 1955 -- Defacto holiday before 1995
 AND   EXTRACT( DOW  FROM calendar_date) = 5 -- Fri
 ; 
 
@@ -115,7 +116,7 @@ UPDATE dim_calendar
 SET hol_fi = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 20 AND 26
 AND   EXTRACT( MONTH FROM calendar_date) = 6
-AND   EXTRACT( YEAR FROM calendar_date) >= 2005
+AND   EXTRACT( YEAR FROM calendar_date) >= 1955 -- Defacto holiday before 1995
 AND   EXTRACT( DOW  FROM calendar_date) = 6 -- Sat
 ; 
 
@@ -128,7 +129,7 @@ WHERE (
 OR
 (EXTRACT( DAY   FROM calendar_date) BETWEEN 1 AND 6 AND   EXTRACT( MONTH FROM calendar_date) = 11)
 )
-AND   EXTRACT( YEAR FROM calendar_date) >= 2005
+AND   EXTRACT( YEAR FROM calendar_date) >= 1955
 AND   EXTRACT( DOW  FROM calendar_date) = 6 -- Sat
 ; 
 
@@ -141,11 +142,12 @@ AND   EXTRACT( MONTH FROM calendar_date) = 12
 ; 
 
 
--- 24 December	Christmas Eve	Jouluaatto	Julafton	Non-official – Non-business day in the Annual Holidays Act (162/2005) - holiday in some collective labor agreements
+-- 24 December	Christmas Eve	Jouluaatto	Julafton
+-- Non-official – Non-business day in the Annual Holidays Act (162/2005) - holiday in some collective labor agreements
 UPDATE dim_calendar
 SET hol_fi = TRUE
 WHERE calc_western_christmas_eve = TRUE
-AND   EXTRACT( YEAR FROM calendar_date) >= 2005
+-- AND   EXTRACT( YEAR FROM calendar_date) >= 2005 -- Defacto holiday before 1995
 ; 
 
 

@@ -65,14 +65,18 @@ class DimCalendar(models.Model):
     hol_lt                     = models.NullBooleanField()
     hol_lu                     = models.NullBooleanField()
     hol_lv                     = models.NullBooleanField()
+    hol_mg                     = models.NullBooleanField()
     hol_mt                     = models.NullBooleanField()
     hol_nl                     = models.NullBooleanField()
+    hol_pa                     = models.NullBooleanField()
     hol_pl                     = models.NullBooleanField()
     hol_pt                     = models.NullBooleanField()
     hol_ro                     = models.NullBooleanField()
     hol_si                     = models.NullBooleanField()
     hol_sk                     = models.NullBooleanField()
+    hol_st                     = models.NullBooleanField()
     hol_us_fed                 = models.NullBooleanField()
+    hol_za                     = models.NullBooleanField()
 
 
 
