@@ -2,6 +2,8 @@
 
 A collection of public holiday data in SQL format, to use in a data warehouse.
 
+[![Build Status](https://travis-ci.org/gregn610/dimcal.svg?branch=master)](https://travis-ci.org/gregn610/dimcal)
+
 <h2>How to use dim_calendar</h2>
  * Wait for <a href="./releases/">Release 1.0</a>
  * Create the <a href="./tree/master/src/dimcal/sql/dim_calendar.sql">dim_calendar</a> table, complete with all of the calc_* columns
