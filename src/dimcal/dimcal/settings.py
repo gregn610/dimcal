@@ -83,7 +83,8 @@ DATABASES = {
         'NAME'     : 'dimcaldb',
         'PASSWORD' : '735341548690707', # ToDo: Change this and stuff it into env
         'TEST': {
-                    'NAME': 'dimcaltestdatabase',
+                    'NAME' : 'dimcaltestdatabase',
+                    'USER' : 'postgres',
                 },
     }
 }
@@ -128,16 +129,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
 
-# For bakery
-BUILD_DIR    = os.path.join(BASE_DIR, 'bakery_build/')
-
-BAKERY_GZIP  = False
-
-BAKERY_VIEWS = (
-#    'dcal.views.YearView',
-#    'dcal.views.YearMonthView',
-    'dcal.views.YearMonthDayView',
-)
 
 # For Debug Toolbar
 INTERNAL_IPS = ['127.0.0.1',
