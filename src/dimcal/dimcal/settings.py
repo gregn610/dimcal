@@ -84,7 +84,6 @@ DATABASES = {
         'PASSWORD' : '735341548690707', # ToDo: Change this and stuff it into env
         'TEST': {
                     'NAME' : 'dimcaltestdatabase',
-                    'USER' : 'postgres',
                 },
     }
 }
