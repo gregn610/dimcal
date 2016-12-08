@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dcalcalendar_list</title>
+</head>
+<body>
+
+<div>
+    <h1>Dim_Calendar Holidays for {{ year|date:"Y" }}</h1>
+    <div>
+    See something not right? Please
+<a href="https://github.com/gregn610/dimcal/issues/new?title={{ country }}&nbsp;{{ year }};body=hi,">open a ticket</a> or submit a pull request.
+    </div>
+
+    <ul>
+    {% for dc in dimcalendar_list %}
+        {% if dc.countries|length %}
+        <li>
+            <a href="{% url 'dcal:year_month' dc.calendar_date|date:"Y" dc.calendar_date|date:"m" %}">{{ dc.calendar_date|date:"Y-m" }}</a>&nbsp;-
+            <a href="{% url 'dcal:year_month_day' dc.calendar_date|date:"Y" dc.calendar_date|date:"m" dc.calendar_date|date:"d" %}">{{ dc.calendar_date|date:"d" }}</a>
+            &nbsp;
+            {% for cc in dc.countries %}
+            <a href="{% url 'dcal:country_year' cc|upper dc.calendar_date|date:"Y" %}">{{ cc|upper }}</a>&nbsp;
+            {% endfor %}
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+
+
+<a href="{% url 'dcal:index' %}">Home</a>
+
+
+</body>
+</html>

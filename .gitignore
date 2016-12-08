@@ -1,0 +1,8 @@
+wget_build
+venv
+docs/*.xlxs
+#
+**/*.pyc
+**/.DS_Store
+.idea
+

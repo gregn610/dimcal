@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ country }} {{year}}</title>
+
+</head>
+<body>
+<h2>Dim_Calendar {{ country }} {{year}}</h2>
+<div><a href="https://github.com/gregn610/dimcal/blob/master/src/dimcal/sql/hol_{{ country|lower}}.sql">PL/pgSQL</a></div>
+    <div>
+    See something not right? Please
+<a href="https://github.com/gregn610/dimcal/issues/new?title={{ country }}&nbsp;{{ year }};body=hi,">open a ticket</a> or submit a pull request.
+    </div>
+<ul>
+    {% for dc in object_list %}
+        <li><time datetime="{{ dc.calendar_date|date:"Y-m-d" }}">{{ dc.calendar_date|date:"Y-m-d" }}</time></li>
+    {% endfor %}
+</ul>
+</div>
+<a href="{% url 'dcal:index' %}">Home</a>
+</body>
+</html>

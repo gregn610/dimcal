@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Archive Month</title>
+
+</head>
+<body>
+
+<h2>Dim_Calendar</h2>
+See something not right? Please
+<a href="https://github.com/gregn610/dimcal/issues/new?title={{ country }}&nbsp;{{ year }};body=hi,">open a ticket</a> or submit a pull request.
+
+<ul>
+    {% for dc in dimcalendar_list %}
+        {% if dc.countries|length %}
+        <li><a href="{% url 'dcal:year_month_day' dc.calendar_date|date:"Y" dc.calendar_date|date:"m" dc.calendar_date|date:"d" %}">{{ dc.calendar_date|date:"Y-m-d" }}</a>
+        &nbsp;
+        {% for cc in dc.countries %}
+            <a href="{%url 'dcal:country' cc|upper %}">{{ cc }}</a>&nbsp;
+        {% endfor %}
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<p>
+    {% if previous_month %}
+        <a href="{% url 'dcal:year_month' month|date:"Y" previous_month|date:"m" %}">Previous Month: {{ previous_month|date:"Y/m/d" }}</a>
+    {% endif %}
+    {% if next_month %}
+        <a href="{% url 'dcal:year_month' month|date:"Y" next_month|date:"m" %}" }}">Next Month: {{ next_month|date:"Y/m/d" }}</a>
+    {% endif %}
+</p>
+
+<a href="{% url 'dcal:index' %}">Home</a>
+
+</body>
+</html>
