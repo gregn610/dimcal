@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ dimcalendar.calendar_date|date:"Y-m-d" }} - Countries</title>
-</head>
-<body>
-<h2>Dim_Calendar {{ dimcalendar.calendar_date|date:"Y-m-d" }}</h2>
+{% extends 'dcal/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load range %}
+
+{% block title %}Dim_Calendar Public Holidays{% endblock %}
+
+{% block content %}
+
+<h2>{{ dimcalendar.calendar_date|date:"Y-m-d" }}</h2>
     <div>
     See something not right? Please
 <a href="https://github.com/gregn610/dimcal/issues/new?title={{ country }}&nbsp;{{ year }};body=hi,">open a ticket</a> or submit a pull request.
@@ -13,13 +15,8 @@
 
 <ul>
     {% for cc in dimcalendar.countries %}
-    <li><a href="{% url 'dcal:country' cc|upper %}">{{ cc }}</a></li>
+    <li><a href="{% url 'dcal:country' cc|upper %}">{{ cc|upper }}</a></li>
     {% endfor %}
 </ul>
 
-
-<a href="{% url 'dcal:index' %}">Home</a>
-
-
-</body>
-</html>
+{% endblock %}

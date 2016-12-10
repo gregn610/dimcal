@@ -17,6 +17,12 @@ class AboutView( TemplateView):
 class IndexView( TemplateView):
     template_name = "dcal/index.html"
 
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        context['first_date'] = DimCalendar.objects.order_by('calendar_date').first()
+        context['last_date']  = DimCalendar.objects.order_by('calendar_date').last()
+        return context
+
 
 class CountryView( ListView):
     template_name = "dcal/country.html"

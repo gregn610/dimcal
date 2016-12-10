@@ -1,13 +1,13 @@
+{% extends 'dcal/base.html' %}
+{% load bootstrap3 %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ country }} {{year}}</title>
+{% load range %}
 
-</head>
-<body>
-<h2>Dim_Calendar {{ country }} {{year}}</h2>
+{% block title %}Dim_Calendar Public Holidays{% endblock %}
+
+{% block content %}
+
+<h2>{{ country }} {{year}}</h2>
 <div><a href="https://github.com/gregn610/dimcal/blob/master/src/dimcal/sql/hol_{{ country|lower}}.sql">PL/pgSQL</a></div>
     <div>
     See something not right? Please
@@ -19,6 +19,5 @@
     {% endfor %}
 </ul>
 </div>
-<a href="{% url 'dcal:index' %}">Home</a>
-</body>
-</html>
+
+{% endblock %}

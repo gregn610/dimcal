@@ -1,28 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About</title>
-</head>
-<body>
-<h2>Dim_Calendar Holidays.</h2>
-<p>
+{% extends 'dcal/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}About Dim_Calendar{% endblock %}
+
+{% block content %}
+
+<div>
 A collection of public holiday data in SQL format, to use in a data warehouse.
 
 Covering Jan 1970 - Jan 2038.
+</div>
 
-
-
+<div>
 Now using Python's <a href="https://github.com/novafloss/workalendar">Workalendar</a> module for unit tests.
 
+</div>
 
+<div>
 This data is provided as is under the terms of <a href="http://unlicense.org/">Unlicense</a>.
 
+Alternatively you could license data from <a href="http://www.qppstudio.net">professionals</a>.
+</div>
 
-Otherwise I recommend you look into licensing data from <a href="http://www.qppstudio.net">professionals</a>.
-</p>
-
-
-<a href="{% url 'dcal:index' %}">Home</a>
-</body>
-</html>
+{% endblock %}

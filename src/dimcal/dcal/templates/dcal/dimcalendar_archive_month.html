@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Archive Month</title>
+{% extends 'dcal/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load range %}
 
-</head>
-<body>
+{% block title %}Dim_Calendar Public Holidays{% endblock %}
 
-<h2>Dim_Calendar</h2>
+{% block content %}
+
+<h2>{{ country }} {{year}} {{ month|date:"M"}}</h2>
 See something not right? Please
 <a href="https://github.com/gregn610/dimcal/issues/new?title={{ country }}&nbsp;{{ year }};body=hi,">open a ticket</a> or submit a pull request.
 
@@ -33,7 +33,4 @@ See something not right? Please
     {% endif %}
 </p>
 
-<a href="{% url 'dcal:index' %}">Home</a>
-
-</body>
-</html>
+{% endblock %}

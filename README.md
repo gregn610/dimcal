@@ -60,4 +60,8 @@ A collection of public holiday data in SQL format, to use in a data warehouse.
  * CA_YT
  * US_FED
 
+<h3>Africa</h3>
+ * MG
+ * ST
+ * ZA
 
