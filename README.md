@@ -54,7 +54,7 @@ A collection of public holiday data in SQL format, to use in a data warehouse.
  * [Slovenia](./src/dimcal/sql/hol_si.sql)
  * [Slovakia](./src/dimcal/sql/hol_sk.sql)
  * [South Africa](./src/dimcal/sql/hol_za.sql)
- * [Spain](./src/dimcal/sql/hol_es_nat.sql)
+ * [Spain - National](./src/dimcal/sql/hol_es_nat.sql)
  * [United Kingdom - England &amp; Wales](./src/dimcal/sql/hol_gb_eng_wls.sql)
  * [United Kingdom - Northern Ireland](./src/dimcal/sql/hol_gb_nir.sql)
  * [United Kingdom - Scotland](./src/dimcal/sql/hol_gb_sct.sql)
