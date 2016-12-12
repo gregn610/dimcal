@@ -12,12 +12,12 @@ AND   EXTRACT( MONTH FROM calendar_date) = 1
 ; 
 
 
--- Epiphany	Heilige Drei Könige	6 January	Yes	Yes												Yes		
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 6
-AND   EXTRACT( MONTH FROM calendar_date) = 1
-; 
+-- -- Epiphany	Heilige Drei Könige	6 January	Yes	Yes												Yes		
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE EXTRACT( DAY   FROM calendar_date) = 6
+-- AND   EXTRACT( MONTH FROM calendar_date) = 1
+-- ; 
 
 
 -- Good Friday	Karfreitag	Easter Sunday - 2d	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
@@ -56,26 +56,26 @@ WHERE calc_western_whit_mon = TRUE
 ; 
 
 
--- Corpus Christi	Fronleichnam	Easter Sunday + 60d	Yes	Yes					Yes			Yes	Yes	Yes	(1)			(2)
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE calc_western_corpuschristi_thu = TRUE
-; 
-
-
--- Peace Festival	Friedensfest	8 August		(3)														
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 8
-AND   EXTRACT( MONTH FROM calendar_date) = 8
-; 
-
-
--- Assumption Day	Mariä Himmelfahrt	15 August		(5)(6)										Yes				
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE calc_western_assumption = TRUE
-; 
+-- -- Corpus Christi	Fronleichnam	Easter Sunday + 60d	Yes	Yes					Yes			Yes	Yes	Yes	(1)			(2)
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE calc_western_corpuschristi_thu = TRUE
+-- ; 
+-- 
+-- 
+-- -- Peace Festival	Friedensfest	8 August		(3)														
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE EXTRACT( DAY   FROM calendar_date) = 8
+-- AND   EXTRACT( MONTH FROM calendar_date) = 8
+-- ; 
+-- 
+-- 
+-- -- Assumption Day	Mariä Himmelfahrt	15 August		(5)(6)										Yes				
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE calc_western_assumption = TRUE
+-- ; 
 
 
 -- German Unity Day	Tag der Deutschen Einheit	3 October	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
@@ -94,11 +94,11 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 ; 
 
 
--- All Saints	Allerheiligen	1 November	Yes	Yes								Yes	Yes	Yes				
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE calc_western_all_saints = TRUE
-; 
+-- -- All Saints	Allerheiligen	1 November	Yes	Yes								Yes	Yes	Yes				
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE calc_western_all_saints = TRUE
+-- ; 
 
 
 -- Repentance and Prayer Day (4)	Buß- und Bettag	Second Wednesday before the First Advent		(6)											Yes
