@@ -63,19 +63,19 @@ WHERE calc_western_corpuschristi_thu = TRUE
 ; 
 
 
--- Peace Festival	Friedensfest	8 August		(3)														
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 8
-AND   EXTRACT( MONTH FROM calendar_date) = 8
-; 
-
-
--- Assumption Day	Mariä Himmelfahrt	15 August		(5)(6)										Yes				
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE calc_western_assumption = TRUE
-; 
+-- -- Peace Festival	Friedensfest	8 August		(3)														
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE EXTRACT( DAY   FROM calendar_date) = 8
+-- AND   EXTRACT( MONTH FROM calendar_date) = 8
+-- ; 
+-- 
+-- 
+-- -- Assumption Day	Mariä Himmelfahrt	15 August		(5)(6)										Yes				
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE calc_western_assumption = TRUE
+-- ; 
 
 
 -- German Unity Day	Tag der Deutschen Einheit	3 October	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
@@ -108,6 +108,7 @@ SET hol_dw_bw = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 16 AND 22
 AND   EXTRACT( DOW   FROM calendar_date) = 3
 AND   EXTRACT( MONTH FROM calendar_date) = 11
+AND   EXTRACT( YEAR  FROM calendar_date <= 1994)
 ;
 
 
