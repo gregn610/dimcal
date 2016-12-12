@@ -101,14 +101,15 @@ WHERE calc_western_all_saints = TRUE
 ; 
 
 
--- -- Repentance and Prayer Day (4)	Buß- und Bettag	Second Wednesday before the First Advent		(6)											Yes
--- --  it is the Wednesday that falls between 16th and 22nd November
--- UPDATE dim_calendar
--- SET hol_dw_bw = TRUE
--- WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 16 AND 22
--- AND   EXTRACT( DOW   FROM calendar_date) = 3
--- AND   EXTRACT( MONTH FROM calendar_date) = 11
--- ;
+-- Repentance and Prayer Day (4)	Buß- und Bettag	Second Wednesday before the First Advent		(6)											Yes
+--  it is the Wednesday that falls between 16th and 22nd November
+UPDATE dim_calendar
+SET hol_dw_bw = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 16 AND 22
+AND   EXTRACT( DOW   FROM calendar_date) = 3
+AND   EXTRACT( MONTH FROM calendar_date) = 11
+AND   EXTRACT( YEAR  FROM calendar_date <= 1994)
+;
 
 
 -- Christmas Day	Weihnachtstag	25 December	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
