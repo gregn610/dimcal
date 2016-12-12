@@ -63,19 +63,19 @@ WHERE calc_western_corpuschristi_thu = TRUE
 ; 
 
 
--- Peace Festival	Friedensfest	8 August		(3)														
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 8
-AND   EXTRACT( MONTH FROM calendar_date) = 8
-; 
-
-
--- Assumption Day	Mariä Himmelfahrt	15 August		(5)(6)										Yes				
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE calc_western_assumption = TRUE
-; 
+-- -- Peace Festival	Friedensfest	8 August		(3)														
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE EXTRACT( DAY   FROM calendar_date) = 8
+-- AND   EXTRACT( MONTH FROM calendar_date) = 8
+-- ; 
+-- 
+-- 
+-- -- Assumption Day	Mariä Himmelfahrt	15 August		(5)(6)										Yes				
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE calc_western_assumption = TRUE
+-- ; 
 
 
 -- German Unity Day	Tag der Deutschen Einheit	3 October	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
@@ -86,12 +86,12 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 ; 
 
 
--- Reformation Day	Reformationstag	31 October				Yes				Yes					Yes	Yes		Yes
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 31
-AND   EXTRACT( MONTH FROM calendar_date) = 10
-; 
+-- -- Reformation Day	Reformationstag	31 October				Yes				Yes					Yes	Yes		Yes
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE EXTRACT( DAY   FROM calendar_date) = 31
+-- AND   EXTRACT( MONTH FROM calendar_date) = 10
+-- ; 
 
 
 -- All Saints	Allerheiligen	1 November	Yes	Yes								Yes	Yes	Yes				
@@ -101,14 +101,14 @@ WHERE calc_western_all_saints = TRUE
 ; 
 
 
--- Repentance and Prayer Day (4)	Buß- und Bettag	Second Wednesday before the First Advent		(6)											Yes
---  it is the Wednesday that falls between 16th and 22nd November
-UPDATE dim_calendar
-SET hol_dw_bw = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 16 AND 22
-AND   EXTRACT( DOW   FROM calendar_date) = 3
-AND   EXTRACT( MONTH FROM calendar_date) = 11
-;
+-- -- Repentance and Prayer Day (4)	Buß- und Bettag	Second Wednesday before the First Advent		(6)											Yes
+-- --  it is the Wednesday that falls between 16th and 22nd November
+-- UPDATE dim_calendar
+-- SET hol_dw_bw = TRUE
+-- WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 16 AND 22
+-- AND   EXTRACT( DOW   FROM calendar_date) = 3
+-- AND   EXTRACT( MONTH FROM calendar_date) = 11
+-- ;
 
 
 -- Christmas Day	Weihnachtstag	25 December	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes	Yes
