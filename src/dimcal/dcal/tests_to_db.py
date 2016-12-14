@@ -20,6 +20,25 @@ class DimCalendarHolidayTestCase(TestCase):
             'GB_ENG_WLS': workalendar.europe.UnitedKingdom(),
             'GB_NIR'    : workalendar.europe.UnitedKingdomNorthernIreland(),
             'GR'        : workalendar.europe.Greece(),
+
+            'DE_BW' : workalendar.europe.BadenWurttemberg(),
+            'DE_BY' : workalendar.europe.Bavaria(),
+            'DE_BE' : workalendar.europe.Berlin(),
+            'DE_BB' : workalendar.europe.Brandenburg(),
+#            'DE_GDR': workalendar.europe.Germany(),
+            'DE_HB' : workalendar.europe.Bremen(),
+            'DE_HH' : workalendar.europe.Hamburg(),
+            'DE_HE' : workalendar.europe.Hesse(),
+            'DE_MV' : workalendar.europe.MecklenburgVorpommern(),
+            'DE_NI' : workalendar.europe.LowerSaxony(),
+            'DE_NW' : workalendar.europe.NorthRhineWestphalia(),
+            'DE_RP' : workalendar.europe.RhinelandPalatinate(),
+            'DE_SL' : workalendar.europe.Saarland(),
+            'DE_SN' : workalendar.europe.Saxony(),
+            'DE_ST' : workalendar.europe.SaxonyAnhalt(),
+            'DE_SH' : workalendar.europe.SchleswigHolstein(),
+            'DE_TH' : workalendar.europe.Thuringia(),
+
             'FI'        : workalendar.europe.Finland(),
             'FR'        : workalendar.europe.France(),
 #            'HR'        : workalendar.europe.Croatia(),
@@ -107,6 +126,90 @@ class DimCalendarHolidayTestCase(TestCase):
         filter_args = {'hol_' + country_code.lower(): True }
         self.compare_calendars(country_code, filter_args)
 
+    def test_to_db_hol_de_bw(self):
+        country_code = 'DE_BW'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_by(self):
+        country_code = 'DE_BY'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_be(self):
+        country_code = 'DE_BE'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_bb(self):
+        country_code = 'DE_BB'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    # def test_to_db_hol_de_gdr(self):
+    #     country_code = 'DE_GDR'
+    #     filter_args = {'hol_' + country_code.lower(): True }
+    #     self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_hb(self):
+        country_code = 'DE_HB'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_hh(self):
+        country_code = 'DE_HH'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_he(self):
+        country_code = 'DE_HE'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_mv(self):
+        country_code = 'DE_MV'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_ni(self):
+        country_code = 'DE_NI'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_nw(self):
+        country_code = 'DE_NW'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_rp(self):
+        country_code = 'DE_RP'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_sl(self):
+        country_code = 'DE_SL'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_sn(self):
+        country_code = 'DE_SN'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_st(self):
+        country_code = 'DE_ST'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_sh(self):
+        country_code = 'DE_SH'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_to_db_hol_de_th(self):
+        country_code = 'DE_TH'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
 
     def test_to_db_hol_dk(self):
         """
