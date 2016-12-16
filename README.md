@@ -59,6 +59,7 @@ A collection of public holiday data in SQL format, to use in a data warehouse.
  * [Hungary](./src/dimcal/sql/hol_hu.sql)
  * [Ireland](./src/dimcal/sql/hol_ie.sql)
  * [Italy](./src/dimcal/sql/hol_it.sql)
+ * [Latvia](./src/dimcal/sql/hol_lv.sql)
  * [Lithuania](./src/dimcal/sql/hol_lt.sql)
  * [Luxembourg](./src/dimcal/sql/hol_lu.sql)
  * [Madagascar](./src/dimcal/sql/hol_mg.sql)
