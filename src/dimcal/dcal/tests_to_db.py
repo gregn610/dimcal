@@ -11,7 +11,7 @@ class DimCalendarHolidayTestCase(TestCase):
     def setUp(self):
         self.wkalendars = {
             'BE'        : workalendar.europe.Belgium(),
-#            'BG': workalendar.europe.Bulgaria(),
+            'BG': workalendar.europe.Bulgaria(),
 #            'CY': workalendar.europe.Cyprus(),
             'CZ'        : workalendar.europe.CzechRepublic(),
             'DK'        : workalendar.europe.Denmark(),
@@ -41,7 +41,7 @@ class DimCalendarHolidayTestCase(TestCase):
 
             'FI'        : workalendar.europe.Finland(),
             'FR'        : workalendar.europe.France(),
-#            'HR'        : workalendar.europe.Croatia(),
+            'HR'        : workalendar.europe.Croatia(),
             'HU'        : workalendar.europe.Hungary(),
 #            'IE'        : workalendar.europe.Ireland(),
             'IT'        : workalendar.europe.Italy(),
@@ -51,6 +51,7 @@ class DimCalendarHolidayTestCase(TestCase):
             'NL'        : workalendar.europe.Netherlands(),
             'PA'        : workalendar.america.Panama(),
             'PT'        : workalendar.europe.Portugal(),
+            'SE'        : workalendar.europe.Sweden(),
             'SK'        : workalendar.europe.Slovakia(),
             'SI'        : workalendar.europe.Slovenia(),
             'ST'        : workalendar.africa.SaoTomeAndPrincipe(),
@@ -64,7 +65,7 @@ class DimCalendarHolidayTestCase(TestCase):
 
     def suppress_discrepancy(self, wkal_dt, year, country_code):
         """
-        Don't raise errors for some spcific known dates. Need to fix SQL or fix workalendar
+        Don't raise errors for some specific known dates. Need to fix SQL or fix workalendar
         :param wkal_dt:
         :param year:
         :param country_code:
@@ -118,6 +119,15 @@ class DimCalendarHolidayTestCase(TestCase):
         self.compare_calendars(country_code, filter_args)
 
 
+    def test_to_db_hol_bg(self):
+        """
+        Test all Bulgaria Workalendar holidays are in the database
+        """
+        country_code = 'BG'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+
     def test_to_db_hol_cz(self):
         """
         Test all Czech Workalendar holidays are in the database
@@ -125,6 +135,7 @@ class DimCalendarHolidayTestCase(TestCase):
         country_code = 'CZ'
         filter_args = {'hol_' + country_code.lower(): True }
         self.compare_calendars(country_code, filter_args)
+
 
     def test_to_db_hol_de_bw(self):
         country_code = 'DE_BW'
@@ -265,6 +276,14 @@ class DimCalendarHolidayTestCase(TestCase):
         self.compare_calendars(country_code, filter_args)
 
 
+    def test_to_db_hol_hr(self):
+        """
+        Test all Croatia Workalendar holidays are in the database
+        """
+        country_code = 'HR'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
+
 
     def test_to_db_hol_hu(self):
         """
@@ -329,6 +348,14 @@ class DimCalendarHolidayTestCase(TestCase):
         filter_args = {'hol_' + country_code.lower(): True}
         self.compare_calendars(country_code, filter_args)
 
+
+    def test_to_db_hol_se(self):
+        """
+        Test all Sweden Workalendar holidays are in the database
+        """
+        country_code = 'SE'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
 
 
     def test_to_db_hol_si(self):
