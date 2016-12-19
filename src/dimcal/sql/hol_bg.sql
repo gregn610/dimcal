@@ -25,6 +25,10 @@ AND   EXTRACT( MONTH FROM calendar_date) = 3
 -- Moveable	Easter	Велики петък, Велика събота и Великден	The Sunday and Monday of Easter are non-working days.
 UPDATE dim_calendar
 SET hol_bg = TRUE
+WHERE calc_western_easter_sun = TRUE
+;
+UPDATE dim_calendar
+SET hol_bg = TRUE
 WHERE calc_western_easter_mon = TRUE
 ;
 
