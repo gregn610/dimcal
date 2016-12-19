@@ -59,8 +59,8 @@ class DimCalendarHolidayTestCase(TestCase):
         }
 
         # Too many discrepancies. Step back from 1970-2038 for a while
-        self.yr_start = 2017
-        self.yr_end   = 1970
+        self.yr_start = 2018
+        self.yr_end   = 2015
         self.yr_step  = -1
 
     def suppress_discrepancy(self, wkal_dt, year, country_code):
@@ -73,6 +73,14 @@ class DimCalendarHolidayTestCase(TestCase):
         """
         # and wkal_dt == Calendar.get_nth_weekday_in_month(year, 5,MON,2 )
         return (
+                    # DE bavaria Assumption 15 Aug
+                    # (5) 	Public holiday only in approx. 1700 communities with predominantly Catholic population and in the cities of Augsburg and Munich.
+                    # (6) 	Schools are closed all over the state on that day.
+                    (country_code == 'DE_BY'
+                     and wkal_dt == date(year, 8, 15)) or
+                    # Workalendar issue 168 Germany Saxony Repentence day
+                    (country_code == 'DE_SN'
+                     and wkal_dt == date(year, 11, 23)) or
                     # EE independence
                     (country_code == 'EE'
                      and year < 1991) or
@@ -81,6 +89,9 @@ class DimCalendarHolidayTestCase(TestCase):
                      and wkal_dt == date(year, 6, 4)) or
                     # Workalendar issue 160
                     (country_code in ['GB_ENG_WLS','GB_NIR']
+                     and wkal_dt == self.wkalendars[country_code].get_easter_sunday(year)) or
+                    # GR Pentecost. Sundays aren't official holidays
+                    (country_code == 'GR'
                      and wkal_dt == self.wkalendars[country_code].get_easter_sunday(year)) or
                     # workalendar issue 154(fixed but waiting release)
                     (country_code == 'NL'

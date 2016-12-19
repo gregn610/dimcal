@@ -41,6 +41,8 @@ class Migration(migrations.Migration):
                 ('calc_western_whit_mon'          , models.NullBooleanField()),
                 ('calc_western_corpuschristi_thu' , models.NullBooleanField()),
                 #
+                ('calc_eastern_easter_sun'        , models.NullBooleanField()),
+                #
                 ('hol_at'         , models.NullBooleanField()),
                 ('hol_be'         , models.NullBooleanField()),
                 ('hol_bg'         , models.NullBooleanField()),
@@ -106,6 +108,7 @@ class Migration(migrations.Migration):
                 ('hol_sk'         , models.NullBooleanField()),
                 ('hol_st'         , models.NullBooleanField()),
                 ('hol_us_fed'     , models.NullBooleanField()),
+                ('hol_uy'         , models.NullBooleanField()),
                 ('hol_za'         , models.NullBooleanField()),
             ],
             options={

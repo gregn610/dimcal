@@ -26,6 +26,8 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,calc_western_whit_mon          BOOLEAN DEFAULT FALSE
     ,calc_western_corpuschristi_thu BOOLEAN DEFAULT FALSE
     --
+    ,calc_eastern_easter_sun        BOOLEAN DEFAULT FALSE
+    --
     ,hol_at                     BOOLEAN DEFAULT FALSE
     ,hol_be                     BOOLEAN DEFAULT FALSE
     ,hol_bg                     BOOLEAN DEFAULT FALSE
@@ -90,6 +92,7 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,hol_sk                     BOOLEAN DEFAULT FALSE
     ,hol_st                     BOOLEAN DEFAULT FALSE
     ,hol_us_fed                 BOOLEAN DEFAULT FALSE
+    ,hol_uy                     BOOLEAN DEFAULT FALSE
     ,hol_za                     BOOLEAN DEFAULT FALSE
 );
 

@@ -24,10 +24,16 @@ WHERE calc_western_epiphany = TRUE
 
 -- moveable Easter – 48 days. Clean Monday or Shrove Monday	Kathará Deftéra	Καθαρά Δευτέρα	The first day of Lent
 -- wikipedia says 14March2016 which doesn't match the usual formula.
+WITH cte AS (
+    SELECT ( calendar_date  - INTERVAL '48 DAYS'   ) AS eastern_easter_sun_minus_48
+    FROM dim_calendar
+    WHERE calc_eastern_easter_sun = TRUE
+)
 UPDATE dim_calendar
 SET hol_gr = TRUE
-WHERE calc_western_clean_mon = TRUE
-AND calendar_date <> '2016-02-28'
+FROM cte
+WHERE dim_calendar.calendar_date = cte.eastern_easter_sun_minus_48
+AND EXTRACT(YEAR FROM dim_calendar.calendar_date) <> '2016'
 ; 
 UPDATE dim_calendar
 SET hol_gr = TRUE
@@ -44,9 +50,15 @@ AND   EXTRACT( MONTH FROM calendar_date) = 3
 
 
 -- moveable Easter – 2 days Next: 29 April 2016	Good Friday	Megáli Paraskeví	Μεγάλη Παρασκευή		[1]
+WITH cte AS (
+    SELECT ( calendar_date  - INTERVAL '2 DAYS'   ) AS eastern_easter_sun_minus_2
+    FROM dim_calendar
+    WHERE calc_eastern_easter_sun = TRUE
+)
 UPDATE dim_calendar
 SET hol_gr = TRUE
-WHERE calc_western_good_fri = TRUE
+FROM cte
+WHERE dim_calendar.calendar_date = cte.eastern_easter_sun_minus_2
 ;
 
 
@@ -55,9 +67,15 @@ WHERE calc_western_good_fri = TRUE
 
 
 -- moveable Easter + 1 day Easter Monday	Deftéra tou Páscha	Δευτέρα του Πάσχα		[2]
+WITH cte AS (
+    SELECT ( calendar_date  + INTERVAL '1 DAY'   ) AS eastern_easter_sun_plus_1
+    FROM dim_calendar
+    WHERE calc_eastern_easter_sun = TRUE
+)
 UPDATE dim_calendar
 SET hol_gr = TRUE
-WHERE calc_western_easter_mon = TRUE
+FROM cte
+WHERE dim_calendar.calendar_date = cte.eastern_easter_sun_plus_1
 ;
 
 
@@ -74,9 +92,15 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 
 
 -- moveable Easter + 50 days Pentecost Monday or Whit Monday	Deftéra Pentikostís
+WITH cte AS (
+    SELECT ( calendar_date  + INTERVAL '50 DAYS'   ) AS eastern_easter_sun_plus_50
+    FROM dim_calendar
+    WHERE calc_eastern_easter_sun = TRUE
+)
 UPDATE dim_calendar
 SET hol_gr = TRUE
-WHERE calc_western_whit_mon = TRUE
+FROM cte
+WHERE dim_calendar.calendar_date = cte.eastern_easter_sun_plus_50
 ;
 
 
