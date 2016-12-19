@@ -72,7 +72,13 @@ WHERE EXTRACT( DAY   FROM calendar_date) = 6
 AND   EXTRACT( MONTH FROM calendar_date) = 6
 ;
 
-
+-- Midsummer Eve (midsommarafton) Defacto holiday
+UPDATE dim_calendar
+SET hol_se = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 19 AND 25
+AND   EXTRACT( DOW   FROM calendar_date) = 5
+AND   EXTRACT( MONTH FROM calendar_date) = 6
+;
 -- Midsummer's Day (midsommardagen) 	The Saturday during the period 20–26 June. (2016: June 25)
 UPDATE dim_calendar
 SET hol_se = TRUE
@@ -85,9 +91,21 @@ AND   EXTRACT( MONTH FROM calendar_date) = 6
 -- All Saints' Day (alla helgons dag) 	The Saturday during the period 31 October–6 November. (2016: November 5)
 UPDATE dim_calendar
 SET hol_se = TRUE
-WHERE calc_western_all_saints = TRUE
+WHERE EXTRACT( DOW   FROM calendar_date) = 6
+AND (
+     (EXTRACT( DAY FROM calendar_date) = 31 AND EXTRACT( MONTH FROM calendar_date) = 10)
+  OR (EXTRACT( DAY FROM calendar_date) <= 6 AND EXTRACT( MONTH FROM calendar_date) = 11)
+)
 ;
 
+
+-- Christmas Eve (julafton) 	December 24
+-- defacto holiday
+UPDATE dim_calendar
+SET hol_se = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 24
+AND   EXTRACT( MONTH FROM calendar_date) = 12
+;
 
 -- Christmas Day (juldagen) 	25 December
 UPDATE dim_calendar
@@ -104,6 +122,13 @@ WHERE EXTRACT( DAY   FROM calendar_date) = 26
 AND   EXTRACT( MONTH FROM calendar_date) = 12
 ;
 
+-- New Year's Eve (nyårsafton) 	December 31
+-- defacto holiday
+UPDATE dim_calendar
+SET hol_se = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 31
+AND   EXTRACT( MONTH FROM calendar_date) = 12
+;
 
 
 COMMIT;

@@ -21,6 +21,10 @@ WHERE calc_western_epiphany = TRUE
 -- Easter and the day after	Easter and Easter Monday	Uskrs i uskrsni ponedjeljak	variable date
 UPDATE dim_calendar
 SET hol_hr = TRUE
+WHERE calc_western_easter_sun = TRUE
+;
+UPDATE dim_calendar
+SET hol_hr = TRUE
 WHERE calc_western_easter_mon = TRUE
 ; 
 

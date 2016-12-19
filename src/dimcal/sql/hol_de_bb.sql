@@ -31,6 +31,14 @@ WHERE calc_western_good_fri = TRUE
 ; 
 
 
+-- Thus all Sundays are, in a manner, public holidays - but usually not understood by the term "holiday" (except for,
+-- normally, Easter Sunday and Pentecost Sunday).
+UPDATE dim_calendar
+SET hol_de_bb = TRUE
+WHERE calc_western_easter_sun = TRUE
+;
+
+
 -- Easter Monday	Ostermontag	Easter Sunday + 1d
 UPDATE dim_calendar
 SET hol_de_bb = TRUE

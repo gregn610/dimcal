@@ -91,11 +91,12 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 
 
 -- -- Reformation Day	Reformationstag	31 October
--- UPDATE dim_calendar
--- SET hol_de_bw = TRUE
--- WHERE EXTRACT( DAY   FROM calendar_date) = 31
--- AND   EXTRACT( MONTH FROM calendar_date) = 10
--- ; 
+UPDATE dim_calendar
+SET hol_de_bw = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 31
+AND   EXTRACT( MONTH FROM calendar_date) = 10
+AND   EXTRACT( YEAR  FROM calendar_date) = 2017
+;
 
 
 -- All Saints	Allerheiligen	1 November

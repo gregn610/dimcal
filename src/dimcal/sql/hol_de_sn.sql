@@ -113,6 +113,7 @@ WHERE EXTRACT( DAY   FROM calendar_date) BETWEEN 16 AND 22
 AND   EXTRACT( DOW   FROM calendar_date) = 3
 AND   EXTRACT( MONTH FROM calendar_date) = 11
 -- AND   EXTRACT( YEAR  FROM calendar_date) <= 1994
+-- Alterntaive defn It is on the last Wednesday before November 23 and 11 days before the start of Advent.
 ;
 
 

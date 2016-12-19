@@ -43,7 +43,7 @@ AND   EXTRACT( YEAR  FROM calendar_date ) >= 1910
 -- 27 April	Freedom Day	1994[2]
 UPDATE dim_calendar
 SET hol_za = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date ) = 24
+WHERE EXTRACT( DAY   FROM calendar_date ) = 27
 AND   EXTRACT( MONTH FROM calendar_date ) = 4
 AND   EXTRACT( YEAR  FROM calendar_date ) >= 1994
 ;
@@ -119,7 +119,7 @@ WITH cte AS (
            FROM dim_calendar AS dc2
            WHERE hol_za = TRUE
            AND EXTRACT(YEAR FROM calendar_date) >= 1994
-           AND EXTRACT(DOW FROM calendar_date) = 1
+           AND EXTRACT(DOW FROM calendar_date) = 0
 )
 UPDATE dim_calendar
 SET hol_za = TRUE

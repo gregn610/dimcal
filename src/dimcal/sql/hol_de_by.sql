@@ -75,7 +75,9 @@ WHERE calc_western_corpuschristi_thu = TRUE
 -- ; 
 -- 
 -- 
--- -- Assumption Day	Mariä Himmelfahrt	15 August		(5)(6)										Yes				
+-- -- Assumption Day	Mariä Himmelfahrt	15 August		(5)(6)
+-- (5) 	Public holiday only in approx. 1700 communities with predominantly Catholic population and in the cities of Augsburg and Munich.
+-- (6) 	Schools are closed all over the state on that day.
 -- UPDATE dim_calendar
 -- SET hol_de_by = TRUE
 -- WHERE calc_western_assumption = TRUE
@@ -91,11 +93,12 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 
 
 -- -- Reformation Day	Reformationstag	31 October
--- UPDATE dim_calendar
--- SET hol_de_by = TRUE
--- WHERE EXTRACT( DAY   FROM calendar_date) = 31
--- AND   EXTRACT( MONTH FROM calendar_date) = 10
--- ;
+UPDATE dim_calendar
+SET hol_de_by = TRUE
+WHERE EXTRACT( DAY   FROM calendar_date) = 31
+AND   EXTRACT( MONTH FROM calendar_date) = 10
+AND   EXTRACT( YEAR  FROM calendar_date) = 2017
+;
 
 
 -- All Saints	Allerheiligen	1 November	Yes	Yes								Yes	Yes	Yes				
