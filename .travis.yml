@@ -1,3 +1,4 @@
+---
 language: python
 python:
   - "3.2"
@@ -19,7 +20,7 @@ before_script:
 script: cd src/dimcal && ./manage.py test -v 3 --debug-sql
 ##
 #after_success:
-  - cd src/dimcal && ./manage.py runserver
+#  - cd src/dimcal && ./manage.py runserver
 ##
 #deploy:
 #  provider: s3
