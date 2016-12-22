@@ -94,7 +94,9 @@ class DimCalendar(models.Model):
     hol_sk                     = models.NullBooleanField()
     hol_st                     = models.NullBooleanField()
     hol_us_fed                 = models.NullBooleanField()
+    hol_uy                     = models.NullBooleanField()
     hol_za                     = models.NullBooleanField()
+
 
 
 
