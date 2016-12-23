@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-
+from pathlib import Path
 
 class Migration(migrations.Migration):
     """
@@ -14,37 +14,7 @@ class Migration(migrations.Migration):
         ('dcal', '0001_initial'),
     ]
 
+    file_sql = [Path(file).read_text() for file in sorted(Path('./sql/').glob('setup_*.sql'))]
     operations = [
-        migrations.RunSQL(
-            # Migrations are inside a transation block so no CONCURRENTLY allowed
-            sql="""
-CREATE INDEX  IF NOT EXISTS idx_dim_calendar_calendar_date
-ON dim_calendar(calendar_date);
-""", reverse_sql="""
-DROP INDEX idx_dim_calendar_calendar_date;
-"""),
-
-        migrations.RunSQL(
-            sql="""
-BEGIN;
-
-DELETE FROM
-dim_calendar;
-
-INSERT
-INTO
-dim_calendar(dim_calendar_pk, calendar_date)
-SELECT
-CAST(to_char(calendar_date, 'yyyymmdd')
-AS
-INT), calendar_date
-FROM
-generate_series('1970-01-01'::timestamp, '2038-01-19'::timestamp, '1 day'::interval) calendar_date
-;
-
-COMMIT;
-""", reverse_sql="""
-TRUNCATE TABLE dim_calendar;
-"""
-    )
+        migrations.RunSQL(sql) for sql in file_sql
     ]
