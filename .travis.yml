@@ -16,7 +16,7 @@ before_script:
 # command to run tests
 script: cd src/dimcal && ./manage.py test -v 2
 #
-after_success:
+before_deploy:
   - cd ../../wget_build && ./build_static.sh
 #
 deploy:
