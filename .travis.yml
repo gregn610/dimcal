@@ -17,7 +17,7 @@ before_script:
 script: cd src/dimcal && ./manage.py test -v 2
 #
 before_deploy:
-  - cd ../../wget_build && ./build_static.sh
+  - cd ../../wget_build && ./build_static.sh && echo `pwd` && ls -lR
 #
 deploy:
   on:
