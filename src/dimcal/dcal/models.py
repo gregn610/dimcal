@@ -29,6 +29,8 @@ class DimCalendar(models.Model):
     calc_western_whit_mon          = models.NullBooleanField()
     calc_western_corpuschristi_thu = models.NullBooleanField()
     #
+    calc_eastern_easter_sun        = models.NullBooleanField()
+    #
     hol_at                     = models.NullBooleanField()
     hol_be                     = models.NullBooleanField()
     hol_bg                     = models.NullBooleanField()
