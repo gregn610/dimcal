@@ -17,7 +17,7 @@ before_script:
 script: cd src/dimcal && ./manage.py test -v 2
 #
 after_success:
-  - /wget_build/build_static.sh
+  - wget_build/build_static.sh
 ##
 #deploy:
 #  provider: s3
