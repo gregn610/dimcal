@@ -1,4 +1,4 @@
-wget_build
+wget_build/localhost*
 venv
 docs/*.xlxs
 #
