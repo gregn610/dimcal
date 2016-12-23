@@ -14,7 +14,7 @@ def forwards_func(apps, schema_editor):
     old_isolation_level = realconn.isolation_level
     realconn.set_isolation_level(0)
     cursor = realconn.cursor()
-    cursor.execute('VACUUM ANALYZE')
+    cursor.execute('VACUUM ANALYZE dim_calendar;')
     realconn.set_isolation_level(old_isolation_level)
 
 def reverse_func(apps, schema_editor):
@@ -27,13 +27,11 @@ class Migration(migrations.Migration):
     ]
 
     file_sql = [ Path(file).read_text() for file in sorted(Path('./sql/').glob('hol_*.sql'))]
-    # use zip_longest() with fillvalue to intersperse SQL files with VACUUMs
-    # flatten the zipped tuples with chain.from_iterable
-    operations = list(chain.from_iterable(
-        zip_longest([migrations.RunSQL( sql ) for sql in file_sql],
-                    [],
-                    fillvalue=migrations.RunPython(forwards_func, reverse_func, atomic=False)
-        )
-    ))
-
+    # intersperse SQL files with VACUUMs to keep db size down, for Travis.
+    tmp_ops = [migrations.RunSQL( sql ) for sql in file_sql]
+    operations = []
+    every_n = 5
+    for start_index in range(0, len(tmp_ops), every_n):
+        operations.extend(tmp_ops[start_index:start_index + every_n])
+        operations.append(migrations.RunPython(forwards_func, reverse_func, atomic=False))
 
