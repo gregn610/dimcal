@@ -88,6 +88,7 @@ CREATE TABLE IF NOT EXISTS dim_calendar (
     ,hol_pl                     BOOLEAN DEFAULT FALSE
     ,hol_pt                     BOOLEAN DEFAULT FALSE
     ,hol_ro                     BOOLEAN DEFAULT FALSE
+    ,hol_se                     BOOLEAN DEFAULT FALSE
     ,hol_si                     BOOLEAN DEFAULT FALSE
     ,hol_sk                     BOOLEAN DEFAULT FALSE
     ,hol_st                     BOOLEAN DEFAULT FALSE
