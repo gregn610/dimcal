@@ -7,15 +7,23 @@
 
 {% block content %}
 
-<h2>{{ country }} {{year}}</h2>
+<h2><span itemscope itemtype="http://schema.org/addressCountry">{{ country }}</span> <span itemscope itemtype="https://schema.org/temporalCoverage" content="{{year}}/{{year|add:"1"}}">{{year}}</span></h2>
 <div><a href="https://github.com/gregn610/dimcal/blob/master/src/dimcal/sql/hol_{{ country|lower}}.sql">PL/pgSQL</a></div>
     <div>
     See something not right? Please
 <a href="https://github.com/gregn610/dimcal/issues/new?title={{ country }}&nbsp;{{ year }};body=hi,">open a ticket</a> or submit a pull request.
     </div>
-<ul>
-    {% for dc in object_list %}
-        <li><time datetime="{{ dc.calendar_date|date:"Y-m-d" }}">{{ dc.calendar_date|date:"Y-m-d" }}</time></li>
+<ul>{% for dc in object_list %}
+    <li>
+        <div itemscope itemtype="http://schema.org/BusinessEvent">
+        	<meta itemprop="name" content="Public Holiday">
+            <time itemprop="startDate" datetime="{{ dc.calendar_date|date:"Y-m-d" }}">{{ dc.calendar_date|date:"Y-m-d" }}</time>
+            <span itemprop="location" itemscope itemtype="http://schema.org/Country">
+            	<meta itemprop="name"    content="{{ country }}">
+            	<meta itemscope itemtype="http://schema.org/Text" itemprop="address" >
+            </span>
+        </div>
+    </li>
     {% endfor %}
 </ul>
 </div>

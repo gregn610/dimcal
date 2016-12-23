@@ -16,18 +16,27 @@
 
 
     <table>
+        <thead itemscope itemtype="https://schema.org/temporalCoverage" content="{{year|date:"Y"}}/{{year|date:"Y"|add:"1"}}">
+        </thead>
         <tbody>
     {% for dc in dimcalendar_list %}
         {% if dc.countries|length %}
-        <tr>
-            <td>
+
+        <tr itemscope itemtype="http://schema.org/BusinessEvent">
+            <td itemprop="startDate" datetime="{{ dc.calendar_date|date:"Y-m-d" }}">
+                <nobr>
             <a href="{% url 'dcal:year_month' dc.calendar_date|date:"Y" dc.calendar_date|date:"m" %}">{{ dc.calendar_date|date:"Y-m" }}</a>&nbsp;-
             <a href="{% url 'dcal:year_month_day' dc.calendar_date|date:"Y" dc.calendar_date|date:"m" dc.calendar_date|date:"d" %}">{{ dc.calendar_date|date:"d" }}</a>
-            &nbsp;</td>
+                </nobr>
+                <meta itemprop="name" content="Public Holiday">
+            </td>
             <td>&nbsp;&nbsp;</td>
             <td>
             {% for cc in dc.countries %}
-            <a href="{% url 'dcal:country_year' cc|upper dc.calendar_date|date:"Y" %}">{{ cc|upper }}</a>
+                <span itemprop="location" itemscope itemtype="http://schema.org/Country">
+                <a href="{% url 'dcal:country_year' cc|upper dc.calendar_date|date:"Y" %}" itemprop="name" content="{{ cc|upper }}">{{ cc|upper }}</a>
+                <meta itemscope itemtype="http://schema.org/Text" itemprop="address" >
+                </span>
             {% endfor %}
             </td>
         </tr>

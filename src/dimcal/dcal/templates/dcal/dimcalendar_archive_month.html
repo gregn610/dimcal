@@ -7,29 +7,50 @@
 
 {% block content %}
 
-<h2>{{ country }} {{year}} {{ month|date:"M"}}</h2>
+<h2>{{ country }} {{ month|date:"M Y"}}</h2>
+
 See something not right? Please
 <a href="https://github.com/gregn610/dimcal/issues/new?title={{ country }}&nbsp;{{ year }};body=hi,">open a ticket</a> or submit a pull request.
 
-<ul>
-    {% for dc in dimcalendar_list %}
-        {% if dc.countries|length %}
-        <li><a href="{% url 'dcal:year_month_day' dc.calendar_date|date:"Y" dc.calendar_date|date:"m" dc.calendar_date|date:"d" %}">{{ dc.calendar_date|date:"Y-m-d" }}</a>
-        &nbsp;
-        {% for cc in dc.countries %}
-            <a href="{%url 'dcal:country' cc|upper %}">{{ cc }}</a>&nbsp;
-        {% endfor %}
-        </li>
-        {% endif %}
-    {% endfor %}
-</ul>
+<table>
+    <thead>
+        <meta itemscope itemtype="http://schema.org/addressCountry" content="{{ country }}">
+        <meta itemscope itemtype="https://schema.org/temporalCoverage" content="{{month|date:"Y-m"}}-01/P1M">
+    </thead>
+    <tbody>
 
+
+            {% for dc in dimcalendar_list %}
+                {% if dc.countries|length %}
+
+                    <tr itemscope itemtype="http://schema.org/BusinessEvent">
+                        <td itemprop="startDate" datetime="{{ dc.calendar_date|date:"Y-m-d" }}" >
+                            <a href="{% url 'dcal:year_month_day' dc.calendar_date|date:"Y" dc.calendar_date|date:"m" dc.calendar_date|date:"d" %}">{{ dc.calendar_date|date:"Y-m-d" }}</a>
+                            <meta itemprop="name" content="Public Holiday">
+                        </td>
+                        <td> </td>
+                        {% for cc in dc.countries %}
+                        <td itemprop="location" itemscope itemtype="http://schema.org/Country">
+                            <span itemprop="name"    content="{{ cc|upper }}">
+                                <a href="{%url 'dcal:country' cc|upper %}">{{ cc|upper }}</a>
+                            </span>
+                            <meta itemscope itemtype="http://schema.org/Text" itemprop="address" >
+                        </td>
+                        {% endfor %}
+                    </tr>
+
+                {% endif %}
+            {% endfor %}
+    </tbody>
+</table>
+
+<hr>
 <p>
     {% if previous_month %}
-        <a href="{% url 'dcal:year_month' month|date:"Y" previous_month|date:"m" %}">Previous Month: {{ previous_month|date:"Y/m/d" }}</a>
+        <a href="{% url 'dcal:year_month' previous_month|date:"Y" previous_month|date:"m" %}">{{ previous_month|date:"M Y" }} &lt;&lt; </a>
     {% endif %}
     {% if next_month %}
-        <a href="{% url 'dcal:year_month' month|date:"Y" next_month|date:"m" %}" }}">Next Month: {{ next_month|date:"Y/m/d" }}</a>
+        <a href="{% url 'dcal:year_month' next_month|date:"Y" next_month|date:"m" %}" }}"> &gt;&gt; {{ next_month|date:"M Y" }}</a>
     {% endif %}
 </p>
 
