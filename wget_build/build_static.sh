@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 DIR=`dirname $0`
 createdb --owner=dimcaluser dimcaldb
 ${DIR}/../src/dimcal/manage.py migrate
