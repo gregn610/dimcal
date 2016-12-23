@@ -26,6 +26,6 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: "dimcalendar.gregnicol.xyz"
-#  local_dir: ./localhost\:8000/
+  local_dir: ${TRAVIS_BUILD_DIR}/wget_build/localhost\:8000/
   skip_cleanup: true
   region: "eu-central-1"
