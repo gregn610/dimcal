@@ -3,9 +3,9 @@
 import requests
 import lxml.html
 
-server = 'http://localhost:8000/'
+server = 'http://localhost:8000'
 root = 'dim_calendar'
-dom = lxml.html.fromstring(requests.get(server + root).content)
+dom = lxml.html.fromstring(requests.get(server +'/'+ root).content)
 
 all_links = [x for x in dom.xpath('//a/@href') if 'github.com' not in x ]
 
