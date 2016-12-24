@@ -9,6 +9,7 @@ class Migration(migrations.Migration):
     """
     Set up indexes and populate PK
     """
+
     dependencies = [
         ('dcal', '0001_initial'),
     ]

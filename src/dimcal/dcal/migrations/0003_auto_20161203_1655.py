@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-
 from pathlib import Path
 
 class Migration(migrations.Migration):
@@ -18,7 +17,8 @@ class Migration(migrations.Migration):
     file_sql = [Path(file).read_text() for file in sorted(Path('./sql/').glob('calc_*.sql'))]
     if not file_sql:
         raise FileNotFoundError
+
     operations = [
-        [migrations.RunSQL(sql) for sql in file_sql]
+        migrations.RunSQL(sql) for sql in file_sql
     ]
 

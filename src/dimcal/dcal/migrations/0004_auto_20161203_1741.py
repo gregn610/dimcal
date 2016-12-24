@@ -21,6 +21,9 @@ def reverse_func(apps, schema_editor):
     pass
 
 class Migration(migrations.Migration):
+    """
+    Populate hol_* columns
+    """
 
     dependencies = [
         ('dcal', '0003_auto_20161203_1655'),
