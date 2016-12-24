@@ -21,14 +21,18 @@ def reverse_func(apps, schema_editor):
     pass
 
 class Migration(migrations.Migration):
-    attomic = False
+
     dependencies = [
         ('dcal', '0003_auto_20161203_1655'),
     ]
 
     file_sql = [ Path(file).read_text() for file in sorted(Path('./sql/').glob('hol_*.sql'))]
+    if not file_sql:
+        raise FileNotFoundError
+
     # intersperse SQL files with VACUUMs to keep db size down, for Travis.
     tmp_ops = [migrations.RunSQL( sql ) for sql in file_sql]
+
     operations = []
     every_n = 5
     for start_index in range(0, len(tmp_ops), every_n):
