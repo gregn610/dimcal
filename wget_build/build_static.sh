@@ -25,5 +25,6 @@ cd ${TRAVIS_BUILD_DIR}/wget_build/
 ./extract_links.py | sort -r | xargs -n 1 -P 2 wget --recursive --no-host-directories --no-clobber --quiet
 
 rm dim_calendar/about # This is configured on s3 with a redirect
+find dim_calendar/ -type f -execdir gzip {} \;
 cd ${OLDDIR}
 echo "**************************************** DONE! ****************************************"
