@@ -19,4 +19,4 @@ sqlparse==0.2.2
 tox==2.5.0
 virtualenv==15.1.0
 -e git+https://github.com/novafloss/workalendar.git#egg=workalendar
-WSGI==2.0.14
+uWSGI==2.0.14
