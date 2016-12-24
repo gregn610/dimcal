@@ -13,7 +13,8 @@ uwsgi --master                                     \
       --env DJANGO_SETTINGS_MODULE=dimcal.settings \
       --http :8000                                 \
       --processes 2 --threads 2                    \
-      --stats 127.0.0.1:9191                       &
+      --stats 127.0.0.1:9191                       \
+      --logto /dev/null                            &
 echo "Waiting 11sec for the server to start"
 sleep 11s
 echo "Starting crawl"
