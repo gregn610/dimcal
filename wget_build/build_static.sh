@@ -20,8 +20,9 @@ echo "Starting crawl"
 cd ${TRAVIS_BUILD_DIR}/wget_build/
 
 # Thanks: http://stackoverflow.com/a/11850469/266387
+./extract_links.py
 ./extract_links.py | xargs -n 1 -P 8 \
-                 wget --recursive --no-host-directories --quiet
+                 wget --recursive --no-host-directories --no-verbose
 
 rm dim_calendar/about # This is configured on s3 with a redirect
 cd ${OLDDIR}
