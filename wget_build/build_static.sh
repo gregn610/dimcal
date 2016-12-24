@@ -12,13 +12,16 @@ uwsgi --master                                     \
       --module=dimcal.wsgi:application             \
       --env DJANGO_SETTINGS_MODULE=dimcal.settings \
       --http :8000                                 \
-      --processes 4 --threads 2                    \
+      --processes 8 --threads 2                    \
       --stats 127.0.0.1:9191                       &
 echo "Waiting 11sec for the server to start"
 sleep 11s
 echo "Starting crawl"
 cd ${TRAVIS_BUILD_DIR}/wget_build/
-wget --recursive --no-host-directories --quiet localhost:8000/dim_calendar/
+
+# Thanks: http://stackoverflow.com/a/11850469/266387
+./extract_links.py | xargs -n 1 -P 8 \
+                 wget --recursive --no-host-directories --quiet localhost:8000/dim_calendar/
 
 rm dim_calendar/about # This is configured on s3 with a redirect
 kill $!
