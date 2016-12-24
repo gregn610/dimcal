@@ -8,7 +8,6 @@ install: "pip install -r requirements.txt"
 #
 addons:
   postgresql: "9.5"
-sudo: required
 services:
   - postgresql
 before_script:
