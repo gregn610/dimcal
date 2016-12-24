@@ -24,6 +24,6 @@ cd ${TRAVIS_BUILD_DIR}/wget_build/
                  wget --recursive --no-host-directories --quiet localhost:8000/dim_calendar/
 
 rm dim_calendar/about # This is configured on s3 with a redirect
-kill $!
-
 cd ${OLDDIR}
+echo **************************************** DONE! ****************************************
+
