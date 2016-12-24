@@ -18,7 +18,7 @@ echo "Waiting 11sec for the server to start"
 sleep 11s
 echo "Starting crawl"
 cd ${TRAVIS_BUILD_DIR}/wget_build/
-wget --recursive --no-host-directories --no-verbose localhost:8000/dim_calendar/
+wget --recursive --no-host-directories --quiet localhost:8000/dim_calendar/
 
 rm dim_calendar/about # This is configured on s3 with a redirect
 kill $!
