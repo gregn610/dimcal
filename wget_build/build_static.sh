@@ -21,8 +21,7 @@ cd ${TRAVIS_BUILD_DIR}/wget_build/
 
 # Thanks: http://stackoverflow.com/a/11850469/266387
 ./extract_links.py
-./extract_links.py | xargs -n 1 -P 2 \
-                 wget --recursive --no-host-directories --no-verbose
+./extract_links.py | sort -r | xargs -n 1 -P 2 wget --recursive --no-host-directories --quiet
 
 rm dim_calendar/about # This is configured on s3 with a redirect
 cd ${OLDDIR}
