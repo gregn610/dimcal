@@ -26,6 +26,6 @@ cd ${TRAVIS_BUILD_DIR}/wget_build/
 
 rm dim_calendar/about # This is configured on s3 with a redirect
 PATH=`echo $PATH | sed -e 's/:.\/node_modules\/.bin//'`
-find dim_calendar/ -type f -execdir gzip {} \;
+find dim_calendar/ -type f -execdir gzip {} \; -execdir mv {}.gz {} \;
 cd ${OLDDIR}
 echo "**************************************** DONE! ****************************************"
