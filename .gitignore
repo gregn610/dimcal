@@ -1,4 +1,4 @@
-wget_build/dim_calendar*
+build/html/*/*
 venv
 docs/*.xlxs
 #

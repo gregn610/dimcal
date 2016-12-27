@@ -16,7 +16,7 @@ before_script:
 script: cd src/dimcal && ./manage.py test -v 2
 #
 before_deploy:
-  - cd ../../wget_build && ./build_static.sh
+  - cd ../../build/html && ./build_static.sh
 #
 deploy:
   on:
@@ -25,7 +25,7 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: "dimcalendar.gregnicol.xyz"
-  local_dir:   ${TRAVIS_BUILD_DIR}/wget_build/
+  local_dir:   ${TRAVIS_BUILD_DIR}/build/html/
   skip_cleanup: true
   region: "eu-central-1"
   detect_encoding: true
