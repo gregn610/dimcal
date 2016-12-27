@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['localhost']
 
 INSTALLED_APPS = [
     'dcal.apps.DCalConfig',
+    'buildsql.apps.BuildsqlConfig',
 #
     'django.contrib.admin',
     'django.contrib.auth',
