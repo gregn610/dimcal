@@ -18,14 +18,17 @@ uwsgi --master                                     \
 echo "Waiting 11sec for the server to start"
 sleep 11s
 echo "Starting crawl"
-cd ${TRAVIS_BUILD_DIR}/wget_build/
+cd ${TRAVIS_BUILD_DIR}/build/html/
+# make rerunnable for local builds
+find dim_calendar/ -type f -exec rm {} \;
 
 # Thanks: http://stackoverflow.com/a/11850469/266387
 ./extract_links.py
 ./extract_links.py | sort -r | xargs -n 1 -P 2 wget --recursive --no-host-directories --no-clobber --quiet
 
 rm dim_calendar/about # This is configured on s3 with a redirect
-PATH=`echo $PATH | sed -e 's/:.\/node_modules\/.bin//'`
+
+PATH=`echo $PATH | sed -e 's/:.\/node_modules\/.bin//'` # for travis CI security
 find dim_calendar/ -type f -execdir gzip {} \; -execdir mv {}.gz {} \;
 cd ${OLDDIR}
 echo "**************************************** DONE! ****************************************"
