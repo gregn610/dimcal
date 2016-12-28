@@ -12,9 +12,9 @@ urlpatterns = [
     url(r'^(?P<year>\d{4})/(?P<month>\d{2})/$', YearMonthView.as_view(month_format='%m'), name='year_month'),
     url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', YearMonthDayView.as_view(), name='year_month_day'),
 
-    url(r'^(?P<country>[A-Z][A-Z]_?\w*)/$', CountryView.as_view(), name='country'),
+    url(r'^(?P<country>[a-zA-Z][a-zA-Z]_?\w*)/$', CountryView.as_view(), name='country'),
 
-    url(r'^(?P<country>[A-Z][A-Z]_?\w*)/(?P<year>[0-9]{4})/$',
+    url(r'^(?P<country>[a-zA-Z][a-zA-Z]_?\w*)/(?P<year>[0-9]{4})/$',
         CountryYearView.as_view(),
         name='country_year'),
 

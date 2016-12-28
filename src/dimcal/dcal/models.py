@@ -105,16 +105,26 @@ class DimCalendar(models.Model):
     class Meta:
         db_table = 'dim_calendar'
 
+    # static methods would look better but then can't get to a model static method from a template
     def _get_countries(self):
-        return [att[4:] for att in dir(DimCalendar) if att.startswith('hol_') and getattr(self, att)]
+        return [att[4:] for att in dir(DimCalendar) if att.startswith('hol_') ]
 
-    countries = property(_get_countries)
+    def _get_date_countries(self):
+        return [att for att in self._get_countries() if getattr(self, 'hol_'+att)]
+
+    countries      = property(_get_countries)
+    date_countries = property(_get_date_countries)
 
 
     def _get_calcs(self):
-        return [att[4:] for att in dir(DimCalendar) if getattr(self, att) and (att.startswith('calc_') and not att.startswith('calc_tbc'))]
+        return [att[5:] for att in dir(DimCalendar) if att.startswith('calc_')
+                and not att.startswith('calc_tbc') ]
 
-    calcs = property(_get_calcs)
+    def _get_date_calcs(self):
+        return [att for att in self._get_calcs() if getattr(self, 'calc_'+att) ]
+
+    calcs      = property(_get_calcs)
+    date_calcs = property(_get_date_calcs)
 
 
 

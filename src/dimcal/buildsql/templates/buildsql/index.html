@@ -1,0 +1,52 @@
+{% extends 'dcal/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}Dim_Calendar SQL Index{% endblock %}
+
+{% block content %}
+<h2>Common SQL</h2>
+<table>
+    <thead>
+        <tr>
+            <th colspan="5">Dialect</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <td><a href="{% url 'buildsql:sqltable' %}">SQL92</a></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><a href="{% url 'buildsql:sqltable' %}?d=plpgsql">PL/pgSQL</a></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><a href="{% url 'buildsql:sqltable' %}?d=tsql">T-SQL</a></td>
+        </tr>
+
+    </tbody>
+</table>
+
+<h2>Country Specific SQL</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Country</th>
+        <th colspan="5">Dialect</th>
+    </tr></thead>
+    <tbody>
+
+    {% for country in countries %}
+    <tr>
+        <td>{{ country|upper }}</td>
+        <td><a href="{% url 'buildsql:sqldata' country|upper %}">SQL92</a></td>
+        <td>&nbsp;&nbsp;</td>
+        <td><a href="{% url 'buildsql:sqldata' country|upper %}?d=plpgsql">PL/pgSQL</a></td>
+        <td>&nbsp;&nbsp;</td>
+        <td><a href="{% url 'buildsql:sqldata' country|upper %}?d=tsql">T-SQL</a></td>
+    </tr>
+
+{% endfor %}
+</tbody></table>
+
+</body>
+</html>
+{% endblock %}

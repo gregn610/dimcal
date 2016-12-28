@@ -20,7 +20,7 @@
         </thead>
         <tbody>
     {% for dc in dimcalendar_list %}
-        {% if dc.countries|length %}
+        {% if dc.date_countries|length %}
 
         <tr itemscope itemtype="http://schema.org/BusinessEvent">
             <td itemprop="startDate" datetime="{{ dc.calendar_date|date:"Y-m-d" }}">
@@ -30,9 +30,9 @@
                 </nobr>
                 <meta itemprop="name" content="Public Holiday">
             </td>
-            <td>&nbsp;&nbsp;</td>
+            <td>&nbsp;</td>
             <td>
-            {% for cc in dc.countries %}
+            {% for cc in dc.date_countries %}
                 <span itemprop="location" itemscope itemtype="http://schema.org/Country">
                 <a href="{% url 'dcal:country_year' cc|upper dc.calendar_date|date:"Y" %}" itemprop="name" content="{{ cc|upper }}">{{ cc|upper }}</a>
                 <meta itemscope itemtype="http://schema.org/Text" itemprop="address" >

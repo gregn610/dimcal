@@ -21,15 +21,15 @@ See something not right? Please
 
 
             {% for dc in dimcalendar_list %}
-                {% if dc.countries|length %}
+                {% if dc.date_countries|length %}
 
                     <tr itemscope itemtype="http://schema.org/BusinessEvent">
                         <td itemprop="startDate" datetime="{{ dc.calendar_date|date:"Y-m-d" }}" >
                             <a href="{% url 'dcal:year_month_day' dc.calendar_date|date:"Y" dc.calendar_date|date:"m" dc.calendar_date|date:"d" %}">{{ dc.calendar_date|date:"Y-m-d" }}</a>
                             <meta itemprop="name" content="Public Holiday">
                         </td>
-                        <td> </td>
-                        {% for cc in dc.countries %}
+                        <td>&nbsp;</td>
+                        {% for cc in dc.date_countries %}
                         <td itemprop="location" itemscope itemtype="http://schema.org/Country">
                             <span itemprop="name"    content="{{ cc|upper }}">
                                 <a href="{%url 'dcal:country' cc|upper %}">{{ cc|upper }}</a>

@@ -20,6 +20,8 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^dim_calendar/', include('dcal.urls')),
+    url(r'^build/', include('buildsql.urls')),
+
     url(r'^admin/', admin.site.urls),
 ]
 
