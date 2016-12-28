@@ -218,12 +218,12 @@ AND   EXTRACT( YEAR  FROM calendar_date ) = 2008
 ;
 
 
--- 27 December 2011 was declared a holiday by (acting) president Kgalema Motlanthe
+-- 27 December 2011 was declared a holiday by (acting) president Kgalema Motlanthe & 2016 
 UPDATE dim_calendar
 SET hol_za = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date ) = 27
 AND   EXTRACT( MONTH FROM calendar_date ) = 12
-AND   EXTRACT( YEAR  FROM calendar_date ) = 2011
+AND   EXTRACT( YEAR  FROM calendar_date ) IN (2011, 2016)
 ;
 
 
