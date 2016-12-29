@@ -24,7 +24,7 @@ class SQLIndexView(TemplateView):
 
 class SQLTableView(TemplateView):
     """
-    Table, indexes and insert keys
+    Tables & indexes
     """
     template_name = "buildsql/table.sql92.sql"
 
@@ -34,12 +34,34 @@ class SQLTableView(TemplateView):
         context['calcs'] = dc.calcs
         context['countries'] = dc.countries
 
-        dialect = self.request.GET.get('d') or 'SQL92'
+        dialect = context['dialect'] or 'SQL92'
         dialect = dialect.upper()
         if dialect == 'TSQL':
             self.template_name = "buildsql/table.tsql.sql"
         if dialect == 'PLPGSQL':
             self.template_name = "buildsql/table.plpgsql.sql"
+
+        return context
+
+
+class SQLCommonView(TemplateView):
+    """
+    Insert keys
+    """
+    template_name = "buildsql/common.sql92.sql"
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        dc = DimCalendar()
+        context['calcs'] = dc.calcs
+        context['countries'] = dc.countries
+
+        dialect = context['dialect'] or 'SQL92'
+        dialect = dialect.upper()
+        if dialect == 'TSQL':
+            self.template_name = "buildsql/common.tsql.sql"
+        if dialect == 'PLPGSQL':
+            self.template_name = "buildsql/common.plpgsql.sql"
 
         return context
 
@@ -71,7 +93,7 @@ class SQLDataView(TemplateView):
             year_dict.setdefault(dc.calendar_date.year, []).append(dc)
         context['year_dict'] = year_dict
 
-        dialect = self.request.GET.get('d') or 'SQL92'
+        dialect = context['dialect'] or 'SQL92'
         dialect = dialect.upper()
         if dialect == 'TSQL':
             self.template_name = "buildsql/data.tsql.sql"

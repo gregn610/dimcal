@@ -10,11 +10,15 @@ urlpatterns = [
         name='sqlindex'
         ),
 #
-    url(r'^table.sql$',
-        SQLTableView.as_view( content_type='text/plain; charset=utf-8'),
+    url(r'^(?P<dialect>[a-zA-Z][a-zA-Z]_?\w*)/[tT][aA][bB][lL][eE].[sS][qQ][lL]$',
+        SQLTableView.as_view(content_type='text/plain; charset=utf-8'),
         name='sqltable'
         ),
-    url(r'^(?P<country>[a-zA-Z][a-zA-Z]_?\w*)/data.sql$',
+    url(r'^(?P<dialect>[a-zA-Z][a-zA-Z]_?\w*)/[cC][oO][mM][mM][oO][nN].[sS][qQ][lL]$',
+        SQLCommonView.as_view(content_type='text/plain; charset=utf-8'),
+        name='sqlcommon'
+        ),
+    url(r'^(?P<dialect>[a-zA-Z][a-zA-Z]_?\w*)/(?P<country>[a-zA-Z][a-zA-Z]_?\w*)/[dD][aA][tT][aA].[sS][qQ][lL]$',
         SQLDataView.as_view( content_type='text/plain; charset=utf-8'),
         name='sqldata'
         ),
