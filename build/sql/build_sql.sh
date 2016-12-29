@@ -15,3 +15,6 @@ mkdir -p build
 
 cd ${TRAVIS_BUILD_DIR}/build/sql/build
 tar -czvf dim_calendar.plpgsql.tar.gz plpgsql
+echo "************** DEBUG ****************"
+echo `pwd`
+ls -la
