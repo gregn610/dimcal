@@ -1,4 +1,5 @@
 build/html/*/*
+build/sql/*/*
 venv
 docs/*.xlxs
 #
