@@ -19,10 +19,10 @@ from django.conf import settings
 
 
 urlpatterns = [
-    url(r'^dim_calendar/', include('dcal.urls')),
-    url(r'^build/', include('buildsql.urls')),
+    url(r'^[dD][iI][mM]_[cC][aA][lL][eE][nN][dD][aA][rR]/', include('dcal.urls')),
+    url(r'^[bB][uU][iI][lL][dD]/', include('buildsql.urls')),
 
-    url(r'^admin/', admin.site.urls),
+    url(r'^[aA][dD][mM][iI][nN]/', admin.site.urls),
 ]
 
 if settings.DEBUG:

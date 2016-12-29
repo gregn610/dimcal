@@ -6,7 +6,7 @@ from .views import *
 app_name = 'dcal'
 urlpatterns = [
     url(r'^$',      IndexView.as_view(), name='index'),
-    url(r'^about$', AboutView.as_view(), name='about'),
+    url(r'^[Aa][Bb][Oo][Uu][Tt]$', AboutView.as_view(), name='about'),
 
     url(r'^(?P<year>\d{4})/$', YearView.as_view(), name='year'),
     url(r'^(?P<year>\d{4})/(?P<month>\d{2})/$', YearMonthView.as_view(month_format='%m'), name='year_month'),
