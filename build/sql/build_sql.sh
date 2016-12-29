@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -x
+#!/bin/bash -x
 echo "Starting crawl"
 
 cd ${TRAVIS_BUILD_DIR}/build/sql/
