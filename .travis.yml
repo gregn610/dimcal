@@ -35,8 +35,9 @@ deploy:
   provider: releases
   api_key:
     secure: IPUEln0yTqD7qkxVgpCn7j7/jMYcATSwdDlJTqVNfB9YW/87pl8rK8jK0uFEQmoQ5xXEcvkYP+wsV+wK6RycB0x5XjNp0+15h7r1Cwbgv9CogLmvoM9HKlHJeNP2B4su0sxfeixvK1EE05w4L3Y5Wg53sRuz0xJ05UmZ2znpkFZ//vUzUTkc3T+DPIJZIymf5IBnU8xlssQ6+fs8c17/ZhWIyKsijb5XojON3m/MXm5z5HXSmudRkkQJloVtzVtIeOa7yocDPnvz5gOf6sNV2UbVNl4qu3MibEYDd3dTSeLooULnnjtin59mgMxbTxkzkxuLMHeAfWC+tx56sX98JILs/BOC9/gMZsTbF0e5xF+doIJQyMFGjidppjzgL0odpyZMG6WFtnzFHOFSC+xuhgIGjPYgucnSflh+gvPOqgrkcjVrn3uNhe/LfALKum6Yzdz7FToN8OkxVglh7xoWj7L4M1PrzYi+E33Yd28mABoawk4SVic9N08RUWeXoQR3UVw8hddlrNQTRc/iCa9nq2KDuUM5DOgUBzt7YjeKx3a+lqY88omVtUVMJw+FWoFN1xYseNuDN+vZ0NsYUaHPdRSnVopJ9JRLBYAggFNz3165Qtj1RIGTOrN2iJNprawY0y4KUZWzuU/rKEYHW35FphoZJL5Lji5dyxQYJJKbesc=
-  file: ${TRAVIS_BUILD_DIR}/build/sql/build/dim_calendar.plpgsql.tar.gz
+    file: /home/travis/build/gregn610/dimcal/build/sql/build/dim_calendar.plpgsql.tar.gz
   overwrite: true
+  skip_cleanup: true
   on:
     repo: gregn610/dimcal
     branch: s3deploy
