@@ -14,7 +14,8 @@
     <tbody>
         <tr>
             <td><a href="{% url 'buildsql:sqltable' 'plpgsql' %}">PL/pgSQL Table</a></td>
-
+            <td>&nbsp;&nbsp;</td>
+            <td><a href="{% url 'buildsql:sqltable' 'mysql' %}">MySQL Table</a></td>
             {% comment %}
             <td>&nbsp;&nbsp;</td>
             <td><a href="{% url 'buildsql:sqltable' 'sql92' %}">SQL92 Table</a></td>
@@ -24,16 +25,20 @@
         </tr>
         <tr>
             <td><a href="{% url 'buildsql:sqlcommon' 'plpgsql' %}">PL/pgSQL Keys</a></td>
+            <td>&nbsp;&nbsp;</td>
+            <td><a href="{% url 'buildsql:sqlcommon' 'mysql' %}">MySQL Keys</a></td>
 
             {% comment %}
             <td>&nbsp;&nbsp;</td>
             <td><a href="{% url 'buildsql:sqlcommon' 'sql92' %}">SQL92 Keys</a></td>
             <td>&nbsp;&nbsp;</td>
-            <td><a href="{% url 'buildsql:sqlcommon' 'tsql' %}">T-SQL Keys</a></td>
+            <td><a href="{% url 'buildsql:sqlcommon' 'tsql' %}">SQL Keys</a></td>
             {% endcomment %}
         </tr>
         <tr>
             <td><a href="{% url 'buildsql:sqlcalcs' 'plpgsql' %}">PL/pgSQL Calculations</a> ( Optional )</td>
+            <td>&nbsp;&nbsp;</td>
+            <td><a href="{% url 'buildsql:sqlcalcs' 'mysql' %}">MySQL Calculations</a> ( Optional )</td>
 
             {% comment %}
             <td>&nbsp;&nbsp;</td>
@@ -58,6 +63,8 @@
     <tr>
         <td>{{ country|upper }}</td>
         <td><a href="{% url 'buildsql:sqldata' 'plpgsql' country|upper %}">PL/pgSQL</a></td>
+        <td>&nbsp;&nbsp;</td>
+        <td><a href="{% url 'buildsql:sqldata' 'mysql' country|upper %}">MySQL</a></td>
 
         {% comment %}
         <td>&nbsp;&nbsp;</td>

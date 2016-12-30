@@ -39,6 +39,8 @@ class SQLTableView(TemplateView):
 
         dialect = context['dialect'] or 'SQL92'
         dialect = dialect.upper()
+        if dialect == 'MYSQL':
+            self.template_name = "buildsql/table.mysql.sql"
         if dialect == 'TSQL':
             self.template_name = "buildsql/table.tsql.sql"
         if dialect == 'PLPGSQL':
@@ -61,6 +63,8 @@ class SQLCommonView(TemplateView):
 
         dialect = context['dialect'] or 'SQL92'
         dialect = dialect.upper()
+        if dialect == 'MYSQL':
+            self.template_name = "buildsql/common.mysql.sql"
         if dialect == 'TSQL':
             self.template_name = "buildsql/common.tsql.sql"
         if dialect == 'PLPGSQL':
@@ -106,6 +110,8 @@ class SQLCalculationsView(TemplateView):
 
         dialect = context['dialect'] or 'SQL92'
         dialect = dialect.upper()
+        if dialect == 'MYSQL':
+            self.template_name = "buildsql/calc.mysql.sql"
         if dialect == 'TSQL':
             self.template_name = "buildsql/calc.tsql.sql"
         if dialect == 'PLPGSQL':
@@ -143,6 +149,8 @@ class SQLDataView(TemplateView):
 
         dialect = context['dialect'] or 'SQL92'
         dialect = dialect.upper()
+        if dialect == 'MYSQL':
+            self.template_name = "buildsql/data.mysql.sql"
         if dialect == 'TSQL':
             self.template_name = "buildsql/data.tsql.sql"
         if dialect == 'PLPGSQL':
