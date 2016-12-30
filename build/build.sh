@@ -2,6 +2,9 @@
 OLDDIR=`pwd`
 
 dropdb --if-exists dimcaldb
+dropuser --if-exists dimcaluser
+
+createuser dimcaluser
 createdb --owner=dimcaluser dimcaldb
 
 # Migrations use relative paths so it's important to run them from project root
@@ -14,6 +17,7 @@ uwsgi --master                                     \
       --http :8000                                 \
       --processes 2 --threads 2                    \
       --stats 127.0.0.1:9191                       \
+      --pidfile /tmp/uwsgi.build.pid               \
       --logto /dev/null                            &
 echo "Waiting 11sec for the server to start"
 sleep 11s
@@ -24,6 +28,7 @@ sleep 11s
 cd ${TRAVIS_BUILD_DIR}/build/sql/
 ./build_sql.sh
 
+uwsgi --stop /tmp/uwsgi.build.pid
+
 cd ${OLDDIR}
-kill $!
 echo "**************************************** DONE! ****************************************"
