@@ -14,7 +14,7 @@ mkdir -p build
                      xargs -n 1 -P 2 wget --recursive --no-host-directories --no-clobber --quiet
 
 cd ${TRAVIS_BUILD_DIR}/build/sql/build
-tar -czvf dim_calendar.tar.gz plpgsql
+tar -czvf dim_calendar.tar.gz plpgsql mysql
 echo "************** DEBUG ****************"
 echo `pwd`
 ls -la
