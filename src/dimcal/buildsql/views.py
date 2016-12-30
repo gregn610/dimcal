@@ -1,3 +1,6 @@
+from functools import reduce
+
+from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render
 from django.db import models
@@ -66,6 +69,51 @@ class SQLCommonView(TemplateView):
         return context
 
 
+class SQLCalculationsView(TemplateView):
+    """
+    SQL Updates for calc_ columns
+    """
+    template_name = "buildsql/calc.sql92.sql"
+
+    def get_queryset(self):
+        dc = DimCalendar()
+
+        queryset = DimCalendar.objects.raw("""
+        SELECT *
+        FROM dim_calendar
+        WHERE
+        """ + reduce(lambda x, y: x + """ OR
+        """ + y, ['calc_{0} = True '.format(cc) for cc in dc.calcs]) + """
+        ORDER BY calendar_date""")
+
+        if list(queryset):
+            return queryset
+        else:
+            raise Http404('Oops, no data found')
+
+    def get_context_data(self, **kwargs):
+        context = super(TemplateView, self).get_context_data(**kwargs)
+        dc = DimCalendar()
+        context['calcs'] = dc.calcs
+
+        # bucket the Dim_Calendars by calculation column
+        calculations_dict = {}
+        for dc in self.get_queryset():
+            for cc in ['calc_' + short_name for short_name in dc.calcs]:
+                if getattr(dc, cc): # Is this calc column set on this Dim_Calendar.calendar_date ?
+                    calculations_dict.setdefault(cc, []).append(dc.calendar_date)
+        context['calculations_dict'] = calculations_dict
+
+        dialect = context['dialect'] or 'SQL92'
+        dialect = dialect.upper()
+        if dialect == 'TSQL':
+            self.template_name = "buildsql/calc.tsql.sql"
+        if dialect == 'PLPGSQL':
+            self.template_name = "buildsql/calc.plpgsql.sql"
+
+        return context
+
+
 class SQLDataView(TemplateView):
     """
     SQL Updates for a dim_calendar country
@@ -87,7 +135,7 @@ class SQLDataView(TemplateView):
         context = super(TemplateView, self).get_context_data(**kwargs)
         context['country_col'] = 'hol_' + self.kwargs['country'].lower()
 
-        # bucket the Dim_Calendars by decade
+        # bucket the Dim_Calendars by year
         year_dict = {}
         for dc in self.get_queryset():
             year_dict.setdefault(dc.calendar_date.year, []).append(dc)
@@ -101,10 +149,3 @@ class SQLDataView(TemplateView):
             self.template_name = "buildsql/data.plpgsql.sql"
 
         return context
-
-
-
-
-
-
-

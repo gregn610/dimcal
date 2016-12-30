@@ -32,7 +32,16 @@
             <td><a href="{% url 'buildsql:sqlcommon' 'tsql' %}">T-SQL Keys</a></td>
             {% endcomment %}
         </tr>
+        <tr>
+            <td><a href="{% url 'buildsql:sqlcalcs' 'plpgsql' %}">PL/pgSQL Calculations</a> ( Optional )</td>
 
+            {% comment %}
+            <td>&nbsp;&nbsp;</td>
+            <td><a href="{% url 'buildsql:sqlcalcs' 'sql92' %}">SQL92 Calculations</a> ( Optional )</td>
+            <td>&nbsp;&nbsp;</td>
+            <td><a href="{% url 'buildsql:sqlcalcs' 'tsql' %}">T-SQL Calculations</a> ( Optional )</td>
+            {% endcomment %}
+        </tr>
     </tbody>
 </table>
 
