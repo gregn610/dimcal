@@ -18,6 +18,10 @@ urlpatterns = [
         SQLCommonView.as_view(content_type='text/plain; charset=utf-8'),
         name='sqlcommon'
         ),
+    url(r'^(?P<dialect>[a-zA-Z][a-zA-Z]_?\w*)/[cC][aA][lL][cC][uU][lL][aA][tT][iI][oO][nN][sS].[sS][qQ][lL]$',
+        SQLCalculationsView.as_view(content_type='text/plain; charset=utf-8'),
+        name='sqlcalcs'
+        ),
     url(r'^(?P<dialect>[a-zA-Z][a-zA-Z]_?\w*)/(?P<country>[a-zA-Z][a-zA-Z]_?\w*)/[dD][aA][tT][aA].[sS][qQ][lL]$',
         SQLDataView.as_view( content_type='text/plain; charset=utf-8'),
         name='sqldata'
