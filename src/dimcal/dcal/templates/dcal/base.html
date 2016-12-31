@@ -7,8 +7,9 @@
         <h1>{% block title %}(no title){% endblock %}</h1>
 
         <p>
-            <a href="{% url 'dcal:index' %}">home</a>
-            <a href="{% url 'dcal:about' %}">about</a>
+            <a href="{% url 'dcal:index' %}">Home</a>
+            <a href="{% url 'dcal:about' %}">About</a>
+            <a href="https://github.com/gregn610/dimcal/releases">Download</a>
         </p>
 
         {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
