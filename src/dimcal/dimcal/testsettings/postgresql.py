@@ -18,6 +18,3 @@ DATABASES['releasedb'] = {
                 },
     }
 TEST_DIALECT='PLPGSQL'
-
-DEBUG=True
-DJANGO_LOG_LEVEL=DEBUG
