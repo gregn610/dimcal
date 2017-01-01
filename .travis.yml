@@ -12,8 +12,9 @@ services:
   - postgresql
 before_script:
   - createuser --createdb --createrole --echo --login --username=postgres dimcaluser
+  - createuser --createdb --createrole --echo --login --username=postgres releaseuser
 # command to run tests
-script: cd src/dimcal && ./manage.py test -v 2
+script: cd src/dimcal && ./manage.py test -v 2 --settings=dimcal.testsettings.postgresql
 #
 before_deploy:
   - cd ../../build/ && ./build.sh
