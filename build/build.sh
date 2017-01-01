@@ -4,7 +4,7 @@ OLDDIR=`pwd`
 dropdb --if-exists dimcaldb
 dropuser --if-exists dimcaluser
 
-createuser dimcaluser
+createuser --createdb dimcaluser
 createdb --owner=dimcaluser dimcaldb
 
 # Migrations use relative paths so it's important to run them from project root
