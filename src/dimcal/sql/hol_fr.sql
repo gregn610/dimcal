@@ -10,11 +10,12 @@ SET hol_fr = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1
 AND   EXTRACT( MONTH FROM calendar_date) = 1
 ;
--- moveable	Good Friday	Vendredi saint	Friday before Easter Sunday (observed only in Alsace and Moselle)
-UPDATE dim_calendar
-SET hol_fr = TRUE
-WHERE calc_western_good_fri = TRUE
-;
+-- moveable	Good Friday	Vendredi saint	Friday before Easter Sunday
+-- (observed only in Alsace and Moselle)
+-- UPDATE dim_calendar
+-- SET hol_fr = TRUE
+-- WHERE calc_western_good_fri = TRUE
+-- ;
 
 
 -- moveable	Easter Monday	Lundi de Pâques	Monday after Easter Sunday (one day after Easter Sunday)

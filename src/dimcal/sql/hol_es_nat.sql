@@ -83,11 +83,11 @@ WHERE calc_western_assumption = TRUE
 -- Día de Extremadura								Yes
 
 -- September 11	National Day of Catalonia	Diada Nacional de Catalunya							Yes
-UPDATE dim_calendar
-SET hol_es_nat = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 11
-AND   EXTRACT( MONTH FROM calendar_date) = 9
-;
+-- UPDATE dim_calendar
+-- SET hol_es_nat = TRUE
+-- WHERE EXTRACT( DAY   FROM calendar_date) = 11
+-- AND   EXTRACT( MONTH FROM calendar_date) = 9
+-- ;
 
 
 -- September 15	Regional Holiday	Día de Cantabria																	Yes

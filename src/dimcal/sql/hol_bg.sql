@@ -67,11 +67,12 @@ WHERE EXTRACT( DAY   FROM calendar_date) = 22
 AND   EXTRACT( MONTH FROM calendar_date) = 9
 ;
 
--- 1 November	National Awakening Day	Ден на народните будители	Non-attendance day for schools, otherwise a working day.
-UPDATE dim_calendar
-SET hol_bg = TRUE
-WHERE calc_western_all_saints = TRUE
-;
+-- 1 November	National Awakening Day	Ден на народните будители
+-- Non-attendance day for schools, otherwise a working day.
+-- UPDATE dim_calendar
+-- SET hol_bg = TRUE
+-- WHERE calc_western_all_saints = TRUE
+-- ;
 
 
 -- 24 December	Christmas Eve	Бъдни вечер	 

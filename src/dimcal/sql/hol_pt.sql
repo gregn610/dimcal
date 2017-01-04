@@ -83,12 +83,12 @@ AND   EXTRACT( MONTH FROM calendar_date) = 6
 ; 
 
 
--- 1 July	Madeira Day	Dia da Madeira	Celebrated in Madeira Island	Yes	
-UPDATE dim_calendar
-SET hol_pt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 1
-AND   EXTRACT( MONTH FROM calendar_date) = 7
-; 
+-- -- 1 July	Madeira Day	Dia da Madeira	Celebrated in Madeira Island	Yes
+-- UPDATE dim_calendar
+-- SET hol_pt = TRUE
+-- WHERE EXTRACT( DAY   FROM calendar_date) = 1
+-- AND   EXTRACT( MONTH FROM calendar_date) = 7
+-- ;
 
 
 -- 15 August	Assumption	Assunção de Nossa Senhora	A religious account of the taking up of Mary into heaven.	Yes	Yes

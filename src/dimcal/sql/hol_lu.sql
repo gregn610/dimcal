@@ -44,19 +44,15 @@ WHERE calc_western_whit_mon = TRUE
 ;
 
 
--- 23 June	National Holiday (Sovereign's birthday)	Nationalfeierdag / Groussherzogsgebuertsdag / Gehaansdag	Nationalfeiertag	Fête nationale	
---  If June 23 is a Sunday, the celebration is moved to Monday June 24
+-- 23 June	National Holiday (Sovereign's birthday)	Nationalfeierdag / Groussherzogsgebuertsdag / Gehaansdag	Nationalfeiertag	Fête nationale
+
+--  Wikpedia says If June 23 is a Sunday, the celebration is moved to Monday June 24 but
+-- no trace of this on the web http://www.men.public.lu/fr/actualites/vacances-scolaires/index.html
 UPDATE dim_calendar
 SET hol_lu = TRUE
-WHERE (
-(   EXTRACT( DOW   FROM calendar_date) > 0
-AND EXTRACT( DAY   FROM calendar_date) = 23
-AND EXTRACT( MONTH FROM calendar_date) = 6)
-OR
-(   EXTRACT( DOW   FROM calendar_date) = 0
-AND EXTRACT( DAY   FROM calendar_date) = 24
-AND EXTRACT( MONTH FROM calendar_date) = 6)
-)
+WHERE
+    EXTRACT( DAY   FROM calendar_date) = 23
+AND EXTRACT( MONTH FROM calendar_date) = 6
 ;
 
 
