@@ -18,9 +18,11 @@ six==1.10.0
 sqlparse==0.2.2
 tox==2.5.0
 virtualenv==15.1.0
--e git+https://github.com/novafloss/workalendar.git#egg=workalendar
+-e git+https://github.com/gregn610/workalendar.git@master#egg=workalendar
 
 # Build & Deploy requirements
 uWSGI==2.0.14
 lxml==3.7.1
 requests==2.12.4
+mysqlclient==1.3.9
+
