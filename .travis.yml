@@ -20,25 +20,24 @@ before_deploy:
   - cd ${TRAVIS_BUILD_DIR}/build/ && ./build.sh
 #
 deploy:
-  on:
-    branch: s3deploy
-  provider: s3
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY
-  bucket: "dimcalendar.gregnicol.xyz"
-  local_dir:   ${TRAVIS_BUILD_DIR}/build/html/
-  skip_cleanup: true
-  region: "eu-central-1"
-  detect_encoding: true
-  cache_control: "max-age=3600"
-
-deploy:
-  provider: releases
-  api_key:
-    secure: gc4DB4LHN+UUHb+t3dkwhA/gXp1PFTGBfHP9Dj4dqwJEJ+Yq7vd1SoXgCMl+N9x1tWzSURY4FFCISlAqMClNMFm8wL/TR5L/tzkOpRi2cHPPDlPBryUQopPW87mhKNYmsIdWl71o/ywpeG99BM1DEvWkQAMno5D6kOorYaqbnqJ4arnnrEx+u9zMVM4DH/ag7Q4roqFrlsXxx/mXBnWn4+kJ1hlyzNxqCPvcClG6YJxTn5laAqG+BO0UP+uYjA7gy6irR/s8f0PVs0nJcTnLUOKD2f7Y8LHebmXpdcSagtWGsYM3otkxB0ViTqCeS9ZmSegj4XlqAloKIArapj0UQ8rYOzv8cp3LqhklwHs/kzlpMxMRFUEK+gD8zzIDG7i5HIxZE3bFKsH0iJqBx4AI99ONqJB9LTOiiLY9ATnDVbLiN5cjLCIpYYDk4CNG5BMicdiIIuOvk3ehg0POw3srFK6/8dnVxVqureQtTlv42iJV7gyZ68NTtifptBL5LR1wgjdJpxAbS8AVrooe+w0wviSmXMKW0Xpjg/nsDMjTl7MDoEJUb7iVFnk4vs4eJYH+rCvJDxgQZfVKm3mt5RVSGtGE/FvEwqKeI+OvUtIRbTYfWQScj7sRmd/hr/2OFQSR7TWF4St4S+pXYMx42j7L+x/YFwfoRobrPJWbC7caNmM=
-  file: /home/travis/build/gregn610/dimcal/build/sql/build/dim_calendar.tar.gz
-  overwrite: true
-  skip_cleanup: true
-  on:
-    repo: gregn610/dimcal
-    branch: s3deploy
+  - provider: s3
+    on:
+      branch: s3deploy  
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: "dimcalendar.gregnicol.xyz"
+    local_dir:   ${TRAVIS_BUILD_DIR}/build/html/
+    skip_cleanup: true
+    region: "eu-central-1"
+    detect_encoding: true
+    cache_control: "max-age=3600"
+ #
+  - provider: releases
+    api_key:
+      secure: gc4DB4LHN+UUHb+t3dkwhA/gXp1PFTGBfHP9Dj4dqwJEJ+Yq7vd1SoXgCMl+N9x1tWzSURY4FFCISlAqMClNMFm8wL/TR5L/tzkOpRi2cHPPDlPBryUQopPW87mhKNYmsIdWl71o/ywpeG99BM1DEvWkQAMno5D6kOorYaqbnqJ4arnnrEx+u9zMVM4DH/ag7Q4roqFrlsXxx/mXBnWn4+kJ1hlyzNxqCPvcClG6YJxTn5laAqG+BO0UP+uYjA7gy6irR/s8f0PVs0nJcTnLUOKD2f7Y8LHebmXpdcSagtWGsYM3otkxB0ViTqCeS9ZmSegj4XlqAloKIArapj0UQ8rYOzv8cp3LqhklwHs/kzlpMxMRFUEK+gD8zzIDG7i5HIxZE3bFKsH0iJqBx4AI99ONqJB9LTOiiLY9ATnDVbLiN5cjLCIpYYDk4CNG5BMicdiIIuOvk3ehg0POw3srFK6/8dnVxVqureQtTlv42iJV7gyZ68NTtifptBL5LR1wgjdJpxAbS8AVrooe+w0wviSmXMKW0Xpjg/nsDMjTl7MDoEJUb7iVFnk4vs4eJYH+rCvJDxgQZfVKm3mt5RVSGtGE/FvEwqKeI+OvUtIRbTYfWQScj7sRmd/hr/2OFQSR7TWF4St4S+pXYMx42j7L+x/YFwfoRobrPJWbC7caNmM=
+    file: /home/travis/build/gregn610/dimcal/build/sql/build/dim_calendar.tar.gz
+    overwrite: true
+    skip_cleanup: true
+    on:
+      repo: gregn610/dimcal
+      branch: s3deploy

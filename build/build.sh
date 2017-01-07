@@ -21,10 +21,10 @@ uwsgi --master                                     \
       --logto /dev/null                            &
 echo "Waiting 11sec for the server to start"
 sleep 11s
-#
-#cd ${TRAVIS_BUILD_DIR}/build/html/
-#./build_static.sh
-#
+
+cd ${TRAVIS_BUILD_DIR}/build/html/
+./build_static.sh
+
 cd ${TRAVIS_BUILD_DIR}/build/sql/
 ./build_sql.sh
 
