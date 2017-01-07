@@ -87,9 +87,20 @@ DATABASES = {
         'TEST': {
                     'NAME' : 'dimcaltestdatabase',
                 },
-    }
+    },
+    # This is the db the release scripts are tested against.
+    'releasedb' : {
+        'ENGINE'   : 'django.db.backends.postgresql',
+        'USER'     : 'releaseuser',
+        'NAME'     : 'releasedb',
+        'PASSWORD' : '735341548690707',
+        'TEST': {
+                    'NAME' : 'releasetestdb',
+                },
+        }
 }
-
+# This is the default until Workalendar becomes the sole backend
+TEST_DIALECT='PLPGSQL'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
