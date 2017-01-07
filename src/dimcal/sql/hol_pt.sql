@@ -64,6 +64,9 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 UPDATE dim_calendar
 SET hol_pt = TRUE
 WHERE calc_western_corpuschristi_thu = TRUE
+AND ((EXTRACT( YEAR  FROM calendar_date) < 2013)
+  OR (EXTRACT( YEAR  FROM calendar_date) > 2015)
+  )
 ;
 
 
@@ -103,6 +106,9 @@ UPDATE dim_calendar
 SET hol_pt = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 5
 AND   EXTRACT( MONTH FROM calendar_date) = 10
+AND ((EXTRACT( YEAR  FROM calendar_date) < 2013)
+  OR (EXTRACT( YEAR  FROM calendar_date) > 2015)
+  )
 ; 
 
 
@@ -110,6 +116,9 @@ AND   EXTRACT( MONTH FROM calendar_date) = 10
 UPDATE dim_calendar
 SET hol_pt = TRUE
 WHERE calc_western_all_saints = TRUE
+AND ((EXTRACT( YEAR  FROM calendar_date) < 2013)
+  OR (EXTRACT( YEAR  FROM calendar_date) > 2015)
+  )
 ;
 
 
@@ -119,6 +128,9 @@ UPDATE dim_calendar
 SET hol_pt = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 1
 AND   EXTRACT( MONTH FROM calendar_date) = 12
+AND ((EXTRACT( YEAR  FROM calendar_date) < 2013)
+  OR (EXTRACT( YEAR  FROM calendar_date) > 2015)
+  )
 ; 
 
 

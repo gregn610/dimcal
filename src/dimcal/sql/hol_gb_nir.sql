@@ -60,6 +60,16 @@ WHERE EXTRACT( DAY   FROM calendar_date) = 17
 AND   EXTRACT( MONTH FROM calendar_date) = 3
 AND   EXTRACT( YEAR  FROM calendar_date) >= 1989
 ;
+-- Observed St Patricks
+UPDATE dim_calendar
+SET hol_gb_nir = TRUE
+WHERE (
+        (EXTRACT( DOW   FROM calendar_date) = 1 AND   EXTRACT( DAY   FROM calendar_date) = 18)
+     OR (EXTRACT( DOW   FROM calendar_date) = 1 AND   EXTRACT( DAY   FROM calendar_date) = 19)
+     )
+AND   EXTRACT( MONTH FROM calendar_date) = 3
+AND   EXTRACT( YEAR  FROM calendar_date) >= 1989
+;
 
 
 

@@ -105,12 +105,13 @@ WHERE calc_western_christmas = TRUE
 ;
 
 
--- 26 December	St. Stephen's Day	Saint-Étienne	Observed only in Alsace and Moselle
-UPDATE dim_calendar
-SET hol_fr = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 26
-AND   EXTRACT( MONTH FROM calendar_date) = 12 
-;
+-- 26 December	St. Stephen's Day	Saint-Étienne
+-- Observed only in Alsace and Moselle
+-- UPDATE dim_calendar
+-- SET hol_fr = TRUE
+-- WHERE EXTRACT( DAY   FROM calendar_date) = 26
+-- AND   EXTRACT( MONTH FROM calendar_date) = 12
+-- ;
 
 
 

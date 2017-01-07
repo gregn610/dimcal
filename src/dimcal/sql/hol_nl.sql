@@ -46,14 +46,14 @@ SET hol_nl = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 27
 AND   EXTRACT( MONTH FROM calendar_date) = 4
 AND   EXTRACT( YEAR  FROM calendar_date) > 2013
-AND   EXTRACT( DOW   FROM calendar_date) > 0
+AND   EXTRACT( DOW   FROM calendar_date) > 0 -- Sun
 ; 
 UPDATE dim_calendar
 SET hol_nl = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 26
 AND   EXTRACT( MONTH FROM calendar_date) = 4
 AND   EXTRACT( YEAR  FROM calendar_date) > 2013
-AND   EXTRACT( DOW   FROM calendar_date) = 0
+AND   EXTRACT( DOW   FROM calendar_date) = 6 -- Sat
 ; 
 
 
