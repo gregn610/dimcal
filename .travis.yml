@@ -19,5 +19,16 @@ script: cd src/dimcal && ./manage.py test -v 2 --settings=dimcal.testsettings.po
 before_deploy:
   - cd ${TRAVIS_BUILD_DIR}/build/ && ./build.sh
 #
-#deploy:
-# Now on separate branches
+deploy:
+  - provider: s3
+    on:
+      repo: gregn610/dimcal
+      branch: s3deploy  
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: "dimcalendar.gregnicol.xyz"
+    local_dir:   ${TRAVIS_BUILD_DIR}/build/html/
+    skip_cleanup: true
+    region: "eu-central-1"
+    detect_encoding: true
+    cache_control: "max-age=3600"
