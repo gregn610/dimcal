@@ -167,6 +167,11 @@ WHERE calc_western_christmas = TRUE
 
 -- Outside Scotland, if Christmas Day is a Sunday there is an additional statutory holiday on 27 December.
 -- By Royal Proclamation, if Christmas Day is a Saturday there is a substitute holiday on 28 December
+
+-- BUT !
+-- http://www.legislation.gov.uk/ukpga/1971/80          # 26th unless Sunday
+-- https://www.thegazette.co.uk/notice/L-59248-979134   # 2009 28th in place of 26th
+-- https://www.thegazette.co.uk/notice/2370676          # 2015 26th plus 28th
 UPDATE dim_calendar
 SET hol_gb_eng_wls = TRUE
 WHERE EXTRACT( MONTH FROM calendar_date) = 12
@@ -175,11 +180,10 @@ AND (
      EXTRACT( DOW   FROM calendar_date) = 2 -- Tue yyyy/12/27 )
     ) OR (
      EXTRACT( DAY   FROM calendar_date) = 28 AND
-     EXTRACT( DOW   FROM calendar_date) = 2 -- Tue yyyy/12/8 )
+     EXTRACT( DOW   FROM calendar_date) = 2 -- Tue yyyy/12/27 )
     )
 )
 ;
-
 
 
 -- Boxing day
@@ -190,8 +194,20 @@ UPDATE dim_calendar
 SET hol_gb_eng_wls = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 26
 AND   EXTRACT( MONTH FROM calendar_date) = 12
-AND   EXTRACT( DOW   FROM calendar_date) != 0 -- Sun yyyy/12/26 )
 ;
+UPDATE dim_calendar
+SET hol_gb_eng_wls = TRUE
+WHERE EXTRACT( MONTH FROM calendar_date) = 12
+AND   (
+        (EXTRACT( DAY   FROM calendar_date) = 27 AND
+         EXTRACT( DOW   FROM calendar_date) = 1 -- Mon yyyy/12/27
+        ) OR (
+         EXTRACT( DAY   FROM calendar_date) = 28 AND
+         EXTRACT( DOW   FROM calendar_date) = 1 -- Mon yyyy/12/28
+        )
+)
+;
+
 
 -- Silver Jubilee of Elizabeth II
 -- Wikpedia Says 7 June 1977 was made a special bank holiday as part of the Silver Jubilee of Elizabeth II

@@ -283,10 +283,6 @@ FROM cte
 WHERE dim_calendar.calendar_date = cte.easter_sun_plus_60
 ; 
 
-
-
-COMMIT;
-
 -- Unit test
 --
 -- select calc_western_good_fri,
@@ -367,3 +363,7 @@ UPDATE dim_calendar SET calc_eastern_easter_sun = TRUE WHERE calendar_date = '20
 UPDATE dim_calendar SET calc_eastern_easter_sun = TRUE WHERE calendar_date = '2036-04-20';
 UPDATE dim_calendar SET calc_eastern_easter_sun = TRUE WHERE calendar_date = '2037-04-05';
 
+
+
+
+COMMIT;
