@@ -1,6 +1,27 @@
 #!/bin/bash -x
-echo "Starting crawl"
+OLDDIR=`pwd`
 
+dropdb --if-exists dimcaldb
+dropuser --if-exists dimcaluser
+
+createuser --createdb dimcaluser
+createdb --owner=dimcaluser dimcaldb
+
+# Migrations use relative paths so it's important to run them from project root
+cd ${TRAVIS_BUILD_DIR}/src/dimcal/
+./manage.py migrate
+uwsgi --master                                     \
+      --socket 127.0.0.1:3031                      \
+      --module=dimcal.wsgi:application             \
+      --env DJANGO_SETTINGS_MODULE=dimcal.settings \
+      --http :8000                                 \
+      --processes 2 --threads 2                    \
+      --stats 127.0.0.1:9191                       \
+      --pidfile /tmp/uwsgi.build.pid               \
+      --logto /dev/null                            &
+echo "Waiting 11sec for the server to start"
+sleep 11s
+echo "Starting crawl"
 cd ${TRAVIS_BUILD_DIR}/build/sql/
 # make rerunnable for local builds
 rm -rf build
@@ -15,6 +36,7 @@ mkdir -p build
 
 cd ${TRAVIS_BUILD_DIR}/build/sql/build
 tar -czvf dim_calendar.tar.gz plpgsql mysql
-echo "************** DEBUG ****************"
-echo `pwd`
-ls -la
+
+uwsgi --stop /tmp/uwsgi.build.pid
+cd ${OLDDIR}
+echo "**************************************** DONE! ****************************************"
