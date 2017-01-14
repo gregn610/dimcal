@@ -28,4 +28,3 @@ deploy:
     on:
       repo: gregn610/dimcal
       branch: github_release
-
