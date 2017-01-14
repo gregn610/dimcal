@@ -18,7 +18,7 @@ six==1.10.0
 sqlparse==0.2.2
 tox==2.5.0
 virtualenv==15.1.0
--e git+file:///Users/gregn/Projects/Software/workalendar/src/workalendar@local_dimcal#egg=workalendar
+-e git+https://github.com/gregn610/workalendar.git@master#egg=workalendar
 
 # Build & Deploy requirements
 uWSGI==2.0.14
