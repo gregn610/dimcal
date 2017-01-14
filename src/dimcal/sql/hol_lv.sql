@@ -28,7 +28,12 @@ WHERE calc_western_easter_sun = TRUE
 ; 
 
 
--- The day after Easter Sunday	Easter Monday	Otrās Lieldienas	
+-- The day after Easter Sunday	Easter Monday	Otrās Lieldienas
+UPDATE dim_calendar
+SET hol_lv = TRUE
+WHERE calc_western_easter_mon = TRUE
+;
+
 -- 1 May	Labour Day	Darba svētki	
 UPDATE dim_calendar
 SET hol_lv = TRUE
@@ -42,23 +47,22 @@ AND   EXTRACT( MONTH FROM calendar_date) = 5
 -- If the day is on the weekend the next Monday is a holiday.
 UPDATE dim_calendar
 SET hol_lv = TRUE
-WHERE EXTRACT( DOW   FROM calendar_date) BETWEEN 1 AND 5
-AND   EXTRACT( DAY   FROM calendar_date) = 4
+WHERE EXTRACT( DAY   FROM calendar_date) = 4
 AND   EXTRACT( MONTH FROM calendar_date) = 5
 AND   EXTRACT( YEAR  FROM calendar_date) >= 1990
 ;
--- Sat roll
+-- Sat Observed
 UPDATE dim_calendar
 SET hol_lv = TRUE
-WHERE EXTRACT( DOW   FROM calendar_date) = 6
+WHERE EXTRACT( DOW   FROM calendar_date) = 1
 AND   EXTRACT( DAY   FROM calendar_date) = 6
 AND   EXTRACT( MONTH FROM calendar_date) = 5
 AND   EXTRACT( YEAR  FROM calendar_date) >= 1990 
 ;
--- Sun roll
+-- Sun Observed
 UPDATE dim_calendar
 SET hol_lv = TRUE
-WHERE EXTRACT( DOW   FROM calendar_date) = 0
+WHERE EXTRACT( DOW   FROM calendar_date) = 1
 AND   EXTRACT( DAY   FROM calendar_date) = 5
 AND   EXTRACT( MONTH FROM calendar_date) = 5
 AND   EXTRACT( YEAR  FROM calendar_date) >= 1990 
@@ -95,21 +99,20 @@ AND   EXTRACT( MONTH FROM calendar_date) = 6
 -- If the day is on the weekend the next Monday is a holiday.
 UPDATE dim_calendar
 SET hol_lv = TRUE
-WHERE EXTRACT( DOW   FROM calendar_date) BETWEEN 1 AND 5
-AND   EXTRACT( DAY   FROM calendar_date) = 18
+WHERE EXTRACT( DAY   FROM calendar_date) = 18
 AND   EXTRACT( MONTH FROM calendar_date) = 11
 ;
--- Sat roll
+-- Sat Observed
 UPDATE dim_calendar
 SET hol_lv = TRUE
-WHERE EXTRACT( DOW   FROM calendar_date) = 6 -- sat
+WHERE EXTRACT( DOW   FROM calendar_date) = 1 -- sat
 AND   EXTRACT( DAY   FROM calendar_date) = 20
 AND   EXTRACT( MONTH FROM calendar_date) = 11
 ;
--- Sun roll
+-- Sun Observed
 UPDATE dim_calendar
 SET hol_lv = TRUE
-WHERE EXTRACT( DOW   FROM calendar_date) = 0 -- sun
+WHERE EXTRACT( DOW   FROM calendar_date) = 1 -- sun
 AND   EXTRACT( DAY   FROM calendar_date) = 19
 AND   EXTRACT( MONTH FROM calendar_date) = 11
 ;
