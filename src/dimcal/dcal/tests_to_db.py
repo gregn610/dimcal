@@ -10,52 +10,57 @@ import workalendar.america
 class DimCalendarHolidayTestCase(TestCase):
     def setUp(self):
         self.wkalendars = {
+            'AT'        : workalendar.europe.Austria(),
             'BE'        : workalendar.europe.Belgium(),
-            'BG': workalendar.europe.Bulgaria(),
-            'CY': workalendar.europe.Cyprus(),
+            'BG'        : workalendar.europe.Bulgaria(),
+            'CY'        : workalendar.europe.Cyprus(),
             'CZ'        : workalendar.europe.CzechRepublic(),
+
+            'DE_BW'     : workalendar.europe.BadenWurttemberg(),
+            'DE_BY'     : workalendar.europe.Bavaria(),
+            'DE_BE'     : workalendar.europe.Berlin(),
+            'DE_BB'     : workalendar.europe.Brandenburg(),
+#            'DE_GDR'   : workalendar.europe.Germany(),
+            'DE_HB'     : workalendar.europe.Bremen(),
+            'DE_HH'     : workalendar.europe.Hamburg(),
+            'DE_HE'     : workalendar.europe.Hesse(),
+            'DE_MV'     : workalendar.europe.MecklenburgVorpommern(),
+            'DE_NI'     : workalendar.europe.LowerSaxony(),
+            'DE_NW'     : workalendar.europe.NorthRhineWestphalia(),
+            'DE_RP'     : workalendar.europe.RhinelandPalatinate(),
+            'DE_SL'     : workalendar.europe.Saarland(),
+            'DE_SN'     : workalendar.europe.Saxony(),
+            'DE_ST'     : workalendar.europe.SaxonyAnhalt(),
+            'DE_SH'     : workalendar.europe.SchleswigHolstein(),
+            'DE_TH'     : workalendar.europe.Thuringia(),
+
             'DK'        : workalendar.europe.Denmark(),
             'EE'        : workalendar.europe.Estonia(),
             'ES_NAT'    : workalendar.europe.Spain(),
+            'FI'        : workalendar.europe.Finland(),
+            'FR'        : workalendar.europe.France(),
             'GB_ENG_WLS': workalendar.europe.UnitedKingdom(),
             'GB_NIR'    : workalendar.europe.UnitedKingdomNorthernIreland(),
             'GR'        : workalendar.europe.Greece(),
-
-            'DE_BW' : workalendar.europe.BadenWurttemberg(),
-            'DE_BY' : workalendar.europe.Bavaria(),
-            'DE_BE' : workalendar.europe.Berlin(),
-            'DE_BB' : workalendar.europe.Brandenburg(),
-#            'DE_GDR': workalendar.europe.Germany(),
-            'DE_HB' : workalendar.europe.Bremen(),
-            'DE_HH' : workalendar.europe.Hamburg(),
-            'DE_HE' : workalendar.europe.Hesse(),
-            'DE_MV' : workalendar.europe.MecklenburgVorpommern(),
-            'DE_NI' : workalendar.europe.LowerSaxony(),
-            'DE_NW' : workalendar.europe.NorthRhineWestphalia(),
-            'DE_RP' : workalendar.europe.RhinelandPalatinate(),
-            'DE_SL' : workalendar.europe.Saarland(),
-            'DE_SN' : workalendar.europe.Saxony(),
-            'DE_ST' : workalendar.europe.SaxonyAnhalt(),
-            'DE_SH' : workalendar.europe.SchleswigHolstein(),
-            'DE_TH' : workalendar.europe.Thuringia(),
-
-            'FI'        : workalendar.europe.Finland(),
-            'FR'        : workalendar.europe.France(),
             'HR'        : workalendar.europe.Croatia(),
             'HU'        : workalendar.europe.Hungary(),
             'IE'        : workalendar.europe.Ireland(),
             'IT'        : workalendar.europe.Italy(),
-#            'LT'        : workalendar.europe.Latvia(),
+            #'LI'       : workalendar.europe.Lithuania(),
             'LU'        : workalendar.europe.Luxembourg(),
+            'LV'        : workalendar.europe.Latvia(),
             'MG'        : workalendar.africa.Madagascar(),
+            'MT'        : workalendar.europe.Malta(),
             'NL'        : workalendar.europe.Netherlands(),
             'PA'        : workalendar.america.Panama(),
+            'PL'        : workalendar.europe.Poland(),
             'PT'        : workalendar.europe.Portugal(),
+            #'RO'       : workalendar.europe.Romania(),
             'SE'        : workalendar.europe.Sweden(),
             'SK'        : workalendar.europe.Slovakia(),
             'SI'        : workalendar.europe.Slovenia(),
             'ST'        : workalendar.africa.SaoTomeAndPrincipe(),
-            'ZA'        :workalendar.africa.SouthAfrica()
+            'ZA'        : workalendar.africa.SouthAfrica()
         }
 
         # Too many discrepancies. Step back from 1970-2038 for a while
@@ -93,6 +98,14 @@ class DimCalendarHolidayTestCase(TestCase):
 
 
 
+    def test_hol_at(self):
+        """
+        Test all Austria Workalendar holidays are in the database
+        """
+        country_code = 'AT'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
     def test_hol_be(self):
         """
         Test all Belgian Workalendar holidays are in the database
@@ -100,7 +113,6 @@ class DimCalendarHolidayTestCase(TestCase):
         country_code = 'BE'
         filter_args = {'hol_' + country_code.lower(): True }
         self.compare_calendars(country_code, filter_args)
-
 
     def test_hol_bg(self):
         """
@@ -110,6 +122,13 @@ class DimCalendarHolidayTestCase(TestCase):
         filter_args = {'hol_' + country_code.lower(): True }
         self.compare_calendars(country_code, filter_args)
 
+    def test_hol_cy(self):
+        """
+        Test all Cyprus Workalendar holidays are in the database
+        """
+        country_code = 'CY'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
 
     def test_hol_cz(self):
         """
@@ -118,7 +137,6 @@ class DimCalendarHolidayTestCase(TestCase):
         country_code = 'CZ'
         filter_args = {'hol_' + country_code.lower(): True }
         self.compare_calendars(country_code, filter_args)
-
 
     def test_hol_de_bw(self):
         country_code = 'DE_BW'
@@ -205,6 +223,7 @@ class DimCalendarHolidayTestCase(TestCase):
         filter_args = {'hol_' + country_code.lower(): True }
         self.compare_calendars(country_code, filter_args)
 
+
     def test_hol_dk(self):
         """
         Test all Denmark Workalendar holidays are in the database
@@ -212,7 +231,6 @@ class DimCalendarHolidayTestCase(TestCase):
         country_code = 'DK'
         filter_args = {'hol_' + country_code.lower(): True }
         self.compare_calendars(country_code, filter_args)
-
 
     def test_hol_ee(self):
         """
@@ -222,7 +240,6 @@ class DimCalendarHolidayTestCase(TestCase):
         filter_args = {'hol_' + country_code.lower(): True}
         self.compare_calendars(country_code, filter_args)
 
-
     def test_hol_es(self):
         """
         Test all Spanish Workalendar holidays are in the database
@@ -230,7 +247,6 @@ class DimCalendarHolidayTestCase(TestCase):
         country_code = 'ES_NAT'
         filter_args = {'hol_' + country_code.lower(): True}
         self.compare_calendars(country_code, filter_args)
-
 
     def test_hol_fi(self):
         """
@@ -240,7 +256,6 @@ class DimCalendarHolidayTestCase(TestCase):
         filter_args = {'hol_' + country_code.lower(): True}
         self.compare_calendars(country_code, filter_args)
 
-
     def test_hol_fr(self):
         """
         Test all French Workalendar holidays are in the database
@@ -248,62 +263,6 @@ class DimCalendarHolidayTestCase(TestCase):
         country_code = 'FR'
         filter_args = {'hol_' + country_code.lower(): True}
         self.compare_calendars(country_code, filter_args)
-
-
-    def test_hol_gr(self):
-        """
-        Test all Greece Workalendar holidays are in the database
-        """
-        country_code = 'GR'
-        filter_args = {'hol_' + country_code.lower(): True}
-        self.compare_calendars(country_code, filter_args)
-
-
-    def test_hol_hr(self):
-        """
-        Test all Croatia Workalendar holidays are in the database
-        """
-        country_code = 'HR'
-        filter_args = {'hol_' + country_code.lower(): True}
-        self.compare_calendars(country_code, filter_args)
-
-
-    def test_hol_hu(self):
-        """
-        Test all Hungary Workalendar holidays are in the database
-        """
-        country_code = 'HU'
-        filter_args = {'hol_' + country_code.lower(): True}
-        self.compare_calendars(country_code, filter_args)
-
-
-
-    def test_hol_it(self):
-        """
-        Test all Italy Workalendar holidays are in the database
-        """
-        country_code = 'IT'
-        filter_args = {'hol_' + country_code.lower(): True}
-        self.compare_calendars(country_code, filter_args)
-
-
-    def test_hol_lu(self):
-        """
-        Test all Luxembourg Workalendar holidays are in the database
-        """
-        country_code = 'LU'
-        filter_args = {'hol_' + country_code.lower(): True}
-        self.compare_calendars(country_code, filter_args)
-
-
-    def test_hol_nl(self):
-        """
-        Test all Netherlands Workalendar holidays are in the database
-        """
-        country_code = 'NL'
-        filter_args = {'hol_' + country_code.lower(): True }
-        self.compare_calendars(country_code, filter_args)
-
 
     def test_hol_gb_eng_wls(self):
         """
@@ -313,7 +272,6 @@ class DimCalendarHolidayTestCase(TestCase):
         filter_args = {'hol_' + country_code.lower(): True }
         self.compare_calendars(country_code, filter_args)
 
-
     def test_hol_gb_ni(self):
         """
         Test all Northern Ireland Workalendar holidays are in the database
@@ -322,6 +280,101 @@ class DimCalendarHolidayTestCase(TestCase):
         filter_args = {'hol_' + country_code.lower(): True}
         self.compare_calendars(country_code, filter_args)
 
+    def test_hol_gr(self):
+        """
+        Test all Greece Workalendar holidays are in the database
+        """
+        country_code = 'GR'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_hr(self):
+        """
+        Test all Croatia Workalendar holidays are in the database
+        """
+        country_code = 'HR'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_hu(self):
+        """
+        Test all Hungary Workalendar holidays are in the database
+        """
+        country_code = 'HU'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_ie(self):
+        """
+        Test all Ireland Workalendar holidays are in the database
+        """
+        country_code = 'IE'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_it(self):
+        """
+        Test all Italy Workalendar holidays are in the database
+        """
+        country_code = 'IT'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_lu(self):
+        """
+        Test all Luxembourg Workalendar holidays are in the database
+        """
+        country_code = 'LU'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_lv(self):
+        """
+        Test all Latvia Workalendar holidays are in the database
+        """
+        country_code = 'LV'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_mg(self):
+        """
+        Test all Madagasgar Workalendar holidays are in the database
+        """
+        country_code = 'MG'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_mt(self):
+        """
+        Test all Malta Workalendar holidays are in the database
+        """
+        country_code = 'MT'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_nl(self):
+        """
+        Test all Netherlands Workalendar holidays are in the database
+        """
+        country_code = 'NL'
+        filter_args = {'hol_' + country_code.lower(): True }
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_pa(self):
+        """
+        Test all Panama Workalendar holidays are in the database
+        """
+        country_code = 'PA'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
+
+    def test_hol_pl(self):
+        """
+        Test all Poland Workalendar holidays are in the database
+        """
+        country_code = 'PL'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
 
     def test_hol_pt(self):
         """
@@ -331,7 +384,6 @@ class DimCalendarHolidayTestCase(TestCase):
         filter_args = {'hol_' + country_code.lower(): True}
         self.compare_calendars(country_code, filter_args)
 
-
     def test_hol_se(self):
         """
         Test all Sweden Workalendar holidays are in the database
@@ -339,7 +391,6 @@ class DimCalendarHolidayTestCase(TestCase):
         country_code = 'SE'
         filter_args = {'hol_' + country_code.lower(): True}
         self.compare_calendars(country_code, filter_args)
-
 
     def test_hol_si(self):
         """
@@ -354,8 +405,6 @@ class DimCalendarHolidayTestCase(TestCase):
 
         self.compare_calendars(country_code, filter_args, yr_range)
 
-
-
     def test_hol_sk(self):
         """
         Test all Slovakia Workalendar holidays are in the database
@@ -364,6 +413,13 @@ class DimCalendarHolidayTestCase(TestCase):
         filter_args = {'hol_' + country_code.lower(): True}
         self.compare_calendars(country_code, filter_args)
 
+    def test_hol_st(self):
+        """
+        Test all SaoTomeAndPrincipe Workalendar holidays are in the database
+        """
+        country_code = 'ST'
+        filter_args = {'hol_' + country_code.lower(): True}
+        self.compare_calendars(country_code, filter_args)
 
     def test_hol_za(self):
         """

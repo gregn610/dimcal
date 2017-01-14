@@ -51,7 +51,7 @@ AND   EXTRACT( MONTH FROM calendar_date) = 9
 -- December 13 - Republic Day (Jum ir-Repubblika)
 UPDATE dim_calendar
 SET hol_mt = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 31
+WHERE EXTRACT( DAY   FROM calendar_date) = 13
 AND   EXTRACT( MONTH FROM calendar_date) = 12
 ;
 

@@ -56,6 +56,13 @@ WHERE calc_western_good_fri = TRUE
 ;
 
 
+-- Easter Saturday
+UPDATE dim_calendar
+SET hol_pa = TRUE
+WHERE calc_western_easter_sat = TRUE
+;
+
+
 -- May 1, May Day - Labor Day
 UPDATE dim_calendar
 SET hol_pa = TRUE
@@ -103,11 +110,25 @@ AND   EXTRACT( MONTH FROM calendar_date) = 11
 ;
 
 -- November 28. Independence Day (from Spain).
+WITH cte AS (
+    SELECT EXTRACT(YEAR FROM dc2.calendar_date) AS yr,
+           MIN(calendar_date) AS first_mon_after_28nov
+           FROM dim_calendar AS dc2
+           WHERE (
+                (EXTRACT(MONTH FROM calendar_date) = 11 AND EXTRACT(DAY FROM calendar_date) >= 28
+                ) OR (
+                EXTRACT(MONTH FROM calendar_date) = 12)
+           )
+           AND EXTRACT(DOW FROM calendar_date) = 1
+           GROUP BY EXTRACT(YEAR FROM dc2.calendar_date)
+)
 UPDATE dim_calendar
 SET hol_pa = TRUE
-WHERE EXTRACT( DAY   FROM calendar_date) = 28
-AND   EXTRACT( MONTH FROM calendar_date) = 11 
+FROM cte
+WHERE dim_calendar.calendar_date = cte.first_mon_after_28nov
 ;
+
+
 
 -- December 8. Mothers' Day.
 UPDATE dim_calendar

@@ -118,7 +118,7 @@ WHERE calc_western_whit_mon = TRUE
 UPDATE dim_calendar
 SET hol_cy = TRUE
 WHERE EXTRACT( DAY   FROM calendar_date) = 15
-AND   EXTRACT( MONTH FROM calendar_date) = 8
+AND   EXTRACT( MONTH FROM calendar_date) = 7
 ; 
 
 
