@@ -69,13 +69,13 @@ AND   EXTRACT( YEAR  FROM calendar_date) >= 1990
 ;
 
 
--- Second Sunday of May	Mother's day	Mātes diena	
-UPDATE dim_calendar
-SET hol_lv = TRUE
-WHERE EXTRACT( DOW   FROM calendar_date) = 0 -- Sun
-AND   EXTRACT( DAY   FROM calendar_date) BETWEEN 8 and 15 
-AND   EXTRACT( MONTH FROM calendar_date) = 5
-;
+-- -- Second Sunday of May	Mother's day	Mātes diena
+-- UPDATE dim_calendar
+-- SET hol_lv = TRUE
+-- WHERE EXTRACT( DOW   FROM calendar_date) = 0 -- Sun
+-- AND   EXTRACT( DAY   FROM calendar_date) BETWEEN 8 and 15
+-- AND   EXTRACT( MONTH FROM calendar_date) = 5
+-- ;
 
 
 -- 23 June	Midsummer Eve	Līgo Diena	
