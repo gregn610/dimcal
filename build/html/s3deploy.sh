@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -x
+#!/bin/bash -x
 OLDDIR=`pwd`
 
 LOAD_DIR=${TRAVIS_BUILD_DIR}/build/html/dim_calendar
