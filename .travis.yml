@@ -20,7 +20,7 @@ before_script:
   - createuser --createdb --createrole --echo --login --username=postgres releaseuser
   - mysql -u root -e "CREATE USER 'releaseuser'@'localhost' IDENTIFIED BY '735341548690707';"
   - mysql -u root -e "CREATE DATABASE releasedb;"
-  - mysql -u root -e "GRANT ALL PRIVILEGES ON releasedb.* TO 'releaseuser'@'%' IDENTIFIED BY '735341548690707' WITH GRANT OPTION;"
+  - mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'releaseuser'@'%' IDENTIFIED BY '735341548690707' WITH GRANT OPTION;"
 # command to run tests
 script: cd src/dimcal && ./manage.py test -v 2
 #
