@@ -17,6 +17,7 @@ before_script:
 script: cd src/dimcal && ./manage.py test -v 2 --settings=dimcal.testsettings.postgresql
 #
 before_deploy:
+  - pip install awscli
   - cd ${TRAVIS_BUILD_DIR}/build/ && ./build.sh
 #
 deploy:
