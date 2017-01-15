@@ -15,6 +15,7 @@ DATABASES['releasedb'] = {
         'NAME'     : 'releasedb',
         'PASSWORD' : '735341548690707',
         'TEST': {
+                    'HOST': '192.168.99.100',
                     'NAME' : 'releasetestdb',
                 },
     }

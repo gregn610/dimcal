@@ -2,6 +2,10 @@
 language: python
 python:
   - "3.5"
+env:
+  - DJANGO_SETTINGS_MODULE=dimcal.testsettings.postgresql
+  - DJANGO_SETTINGS_MODULE=dimcal.testsettings.mysql
+
 # command to install dependencies
 install: "pip install -r requirements.txt"
 #
@@ -10,11 +14,15 @@ addons:
 sudo: false
 services:
   - postgresql
+  - mysql
 before_script:
   - createuser --createdb --createrole --echo --login --username=postgres dimcaluser
   - createuser --createdb --createrole --echo --login --username=postgres releaseuser
+  - mysql -e "CREATE USER IF NOT EXISTS 'releaseuser'@'localhost' IDENTIFIED BY '735341548690707';"
+  - mysql -e "CREATE DATABASE releasedb;"
+  - mysql -e "GRANT ALL PRIVILEGES ON releasedb.* TO 'releaseuser'@'%' IDENTIFIED BY '735341548690707' WITH GRANT OPTION;"
 # command to run tests
-script: cd src/dimcal && ./manage.py test -v 2 --settings=dimcal.testsettings.postgresql
+script: cd src/dimcal && ./manage.py test -v 2
 #
 before_deploy:
   - pip install awscli
