@@ -6,4 +6,4 @@ DEPLOY_TARGET_PATH="s3://dimcalendar.gregnicol.xyz/"
 aws s3 sync ${LOAD_DIR} ${DEPLOY_TARGET_PATH} --content-encoding gzip --cache-control "max-age=3600"
 
 cd ${OLDDIR}
-echo "**************************************** DONE! ****************************************"
+echo "*************************************** DONE! ****************************************"
