@@ -6,7 +6,7 @@ Now available for PL/pgSQL and MySQL
 
 [![Build Status](https://travis-ci.org/gregn610/dimcal.svg?branch=master)](https://travis-ci.org/gregn610/dimcal)
 
-<h2>How to use dim_calendar</h2>
+## How to use dim_calendar
  * Wait for release v1.0.0. Pre-releases are working but not yet extensively tested.
  * Download and extract the release tarball [dim_calendar.tar.gz](https://github.com/gregn610/dimcal/releases)
  * Create the __dim_calendar__ table with `table.sql`. You can add and remove any columns except for __calendar_date__
@@ -15,7 +15,7 @@ Now available for PL/pgSQL and MySQL
  * Apply the `data.sql` files for the countries you choose
 
 
-<h2>European Union Countries</h2>
+## European Union Countries
  * Austria
  * Belgium
  * Bulgaria
@@ -65,7 +65,7 @@ Now available for PL/pgSQL and MySQL
 
 
 
-<h2>More Countries</h2>
+## More Countries
  * Canada - AB
  * Canada - BC
  * Canada - FED
